@@ -6,133 +6,255 @@
 <title>Tarot by Ilayda</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Georgia, serif;
-  background: #f5eef5;
-  color: #302236;
+  background:
+    radial-gradient(circle at 50% 10%, #51345f 0%, #24152e 45%, #100b16 100%);
+  color: #f8edf8;
   text-align: center;
+  min-height: 100vh;
 }
 
 .container {
-  max-width: 700px;
+  max-width: 900px;
   margin: auto;
-  padding: 30px 18px;
+  padding: 35px 16px 50px;
 }
 
 h1 {
-  font-size: 32px;
-  margin-bottom: 8px;
+  font-size: 36px;
+  margin: 5px 0 10px;
+  letter-spacing: 1px;
 }
 
 .subtitle {
-  color: #6d5a6e;
+  color: #d9c5dc;
+  max-width: 650px;
+  margin: 0 auto 25px;
+  line-height: 1.6;
+}
+
+.instruction {
+  color: #ead9eb;
+  font-size: 17px;
   margin-bottom: 25px;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  max-width: 550px;
-  margin: 25px auto;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .card {
-  height: 150px;
-  border: none;
-  border-radius: 14px;
-  background: #392441;
-  color: white;
+  position: relative;
+  height: 170px;
+  border: 2px solid #b99a62;
+  border-radius: 13px;
   cursor: pointer;
-  font-family: Georgia, serif;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-  transition: 0.2s;
+  overflow: hidden;
+  color: #f6e7bd;
+  background:
+    radial-gradient(circle at center, rgba(190,154,98,.25) 0 2px, transparent 3px),
+    radial-gradient(circle at 20% 25%, rgba(255,255,255,.15) 0 1px, transparent 2px),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.15) 0 1px, transparent 2px),
+    linear-gradient(145deg, #21142b, #452552 50%, #17101e);
+  box-shadow:
+    0 9px 22px rgba(0,0,0,.45),
+    inset 0 0 0 3px rgba(185,154,98,.12);
+  transition: transform .25s, box-shadow .25s;
+}
+
+.card::before {
+  content: "✦";
+  position: absolute;
+  inset: 9px;
+  border: 1px solid rgba(203,170,105,.65);
+  border-radius: 9px;
+  font-size: 54px;
+  line-height: 145px;
+  color: #c8a96a;
+  text-shadow: 0 0 12px rgba(218,185,105,.5);
+}
+
+.card::after {
+  content: "☾  ✧  ☽";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15px;
+  font-size: 14px;
+  letter-spacing: 5px;
+  color: #d2b676;
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-7px) scale(1.025);
+  box-shadow:
+    0 15px 30px rgba(0,0,0,.55),
+    0 0 20px rgba(193,156,91,.22);
 }
 
 .card.selected {
-  outline: 4px solid #c69abb;
+  outline: 3px solid #e4c77e;
+  transform: translateY(-7px);
 }
 
 .card.revealed {
-  background: white;
+  background:
+    linear-gradient(145deg, #fffdf7, #eee3ef);
   color: #302236;
-  border: 1px solid #d8c8d8;
+  border-color: #c6a86a;
 }
 
-.symbol {
-  font-size: 38px;
-  margin-bottom: 8px;
+.card.revealed::before,
+.card.revealed::after {
+  display: none;
+}
+
+.card-number {
+  position: relative;
+  z-index: 2;
+  font-size: 14px;
+  margin-top: 65px;
+  opacity: .9;
 }
 
 .card-name {
+  position: relative;
+  z-index: 2;
   font-size: 16px;
   font-weight: bold;
+  padding: 8px;
 }
 
 form {
   display: none;
-  background: white;
-  padding: 22px;
-  border-radius: 16px;
-  margin-top: 25px;
+  background: #fff;
+  color: #302236;
+  padding: 25px;
+  border-radius: 18px;
+  margin: 35px auto 0;
+  max-width: 650px;
   text-align: left;
+  box-shadow: 0 15px 40px rgba(0,0,0,.35);
+}
+
+form h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+#chosenCards {
+  background: #f4ebf4;
+  padding: 15px;
+  border-radius: 10px;
+  line-height: 1.7;
 }
 
 label {
   display: block;
-  margin-top: 12px;
-  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: 6px;
   font-weight: bold;
 }
 
 input,
 textarea {
   width: 100%;
-  box-sizing: border-box;
-  padding: 12px;
-  border: 1px solid #d8c8d8;
+  padding: 13px;
+  border: 1px solid #d2c2d4;
   border-radius: 9px;
   font-family: inherit;
+  font-size: 15px;
 }
 
 textarea {
-  min-height: 100px;
+  min-height: 110px;
+  resize: vertical;
 }
 
 .submit {
-  margin-top: 18px;
+  margin-top: 20px;
   width: 100%;
-  padding: 14px;
+  padding: 15px;
   border: none;
-  border-radius: 9px;
+  border-radius: 10px;
   background: #392441;
   color: white;
-  font-size: 16px;
+  font-size: 17px;
+  font-family: Georgia, serif;
   cursor: pointer;
+}
+
+.submit:hover {
+  background: #51345f;
 }
 
 .note {
   font-size: 13px;
-  color: #766878;
-  margin-top: 20px;
+  color: #cdbbd0;
+  margin-top: 25px;
+  line-height: 1.5;
 }
 
-@media (max-width: 500px) {
-  .cards {
-    gap: 8px;
-  }
+form .note {
+  color: #766878;
+}
 
-  .card {
-    height: 125px;
+@media (max-width: 600px) {
+
+  .container {
+    padding: 25px 10px 40px;
   }
 
   h1 {
-    font-size: 27px;
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+  }
+
+  .card {
+    height: 135px;
+  }
+
+  .card::before {
+    inset: 6px;
+    font-size: 40px;
+    line-height: 112px;
+  }
+
+  .card::after {
+    bottom: 10px;
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .card-number {
+    margin-top: 52px;
+    font-size: 11px;
+  }
+
+  .card-name {
+    font-size: 13px;
+  }
+
+  form {
+    padding: 20px 15px;
   }
 }
 </style>
@@ -145,12 +267,12 @@ textarea {
 <h1>🔮 Tarot by Ilayda</h1>
 
 <p class="subtitle">
-Take a deep breath, think about your question,
-and choose the three cards you feel drawn to.
+Take a deep breath, focus on your question,
+and let your intuition guide you.
 </p>
 
-<p>
-<strong>Choose 3 cards</strong>
+<p class="instruction">
+<strong>Choose 3 cards from the deck</strong>
 </p>
 
 <div id="cards" class="cards"></div>
@@ -161,7 +283,7 @@ and choose the three cards you feel drawn to.
   method="POST"
 >
 
-<h2>Your Reading</h2>
+<h2>✨ Your Reading ✨</h2>
 
 <p id="chosenCards"></p>
 
@@ -172,6 +294,7 @@ and choose the three cards you feel drawn to.
 >
 
 <label>Your Name</label>
+
 <input
   name="Name"
   type="text"
@@ -180,6 +303,7 @@ and choose the three cards you feel drawn to.
 >
 
 <label>Your Email</label>
+
 <input
   name="_replyto"
   type="email"
@@ -188,6 +312,7 @@ and choose the three cards you feel drawn to.
 >
 
 <label>Your Question</label>
+
 <textarea
   name="Question"
   placeholder="Example: What are his true feelings about me?"
@@ -297,7 +422,7 @@ const tarotCards = [
 
 let shuffled = [...tarotCards]
   .sort(() => Math.random() - 0.5)
-  .slice(0, 12);
+  .slice(0, 24);
 
 let selected = [];
 
@@ -313,8 +438,7 @@ shuffled.forEach((cardName, index) => {
   button.className = "card";
 
   button.innerHTML =
-    '<div class="symbol">✦</div>' +
-    '<div>Card ' +
+    '<div class="card-number">CARD ' +
     (index + 1) +
     '</div>';
 
@@ -355,7 +479,6 @@ shuffled.forEach((cardName, index) => {
               card.classList.add("revealed");
 
               card.innerHTML =
-                '<div class="symbol">🔮</div>' +
                 '<div class="card-name">' +
                 shuffled[i] +
                 '</div>';
@@ -385,7 +508,7 @@ shuffled.forEach((cardName, index) => {
           behavior: "smooth"
         });
 
-      }, 500);
+      }, 600);
     }
   };
 
