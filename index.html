@@ -90,7 +90,8 @@ label {
   font-weight: bold;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   box-sizing: border-box;
   padding: 12px;
@@ -121,14 +122,6 @@ textarea {
   margin-top: 20px;
 }
 
-.success {
-  display: none;
-  background: #efe4ef;
-  padding: 15px;
-  border-radius: 10px;
-  margin-top: 15px;
-}
-
 @media (max-width: 500px) {
   .cards {
     gap: 8px;
@@ -156,31 +149,54 @@ Take a deep breath, think about your question,
 and choose the three cards you feel drawn to.
 </p>
 
-<p><strong>Choose 3 cards</strong></p>
+<p>
+<strong>Choose 3 cards</strong>
+</p>
 
 <div id="cards" class="cards"></div>
 
-<form id="form" action="https://formspree.io/f/xwlkenzl" method="POST">
+<form
+  id="form"
+  action="https://formspree.io/f/xwlkenzl"
+  method="POST"
+>
 
 <h2>Your Reading</h2>
 
 <p id="chosenCards"></p>
 
-<input type="hidden" id="cardsInput" name="Selected Cards">
+<input
+  type="hidden"
+  id="cardsInput"
+  name="Selected Cards"
+>
 
 <label>Your Name</label>
-<input name="Name" type="text" placeholder="Your name" required>
+<input
+  name="Name"
+  type="text"
+  placeholder="Your name"
+  required
+>
+
+<label>Your Email</label>
+<input
+  name="_replyto"
+  type="email"
+  placeholder="Your email address"
+  required
+>
 
 <label>Your Question</label>
-<textarea name="Question" placeholder="Example: What are his true feelings about me?" required></textarea>
+<textarea
+  name="Question"
+  placeholder="Example: What are his true feelings about me?"
+  required
+></textarea>
 
 <button type="submit" class="submit">
 Submit My Reading
 </button>
-
-<div id="success" class="success">
-✨ Your reading request has been sent successfully. Thank you!
-</div>
 
 </form>
 
@@ -193,89 +209,179 @@ Tarot readings are intended for entertainment and personal reflection.
 <script>
 
 const tarotCards = [
-"The Fool","The Magician","The High Priestess","The Empress","The Emperor",
-"The Hierophant","The Lovers","The Chariot","Strength","The Hermit",
-"Wheel of Fortune","Justice","The Hanged Man","Death","Temperance",
-"The Devil","The Tower","The Star","The Moon","The Sun","Judgement","The World",
 
-"Ace of Wands","Two of Wands","Three of Wands","Four of Wands","Five of Wands",
-"Six of Wands","Seven of Wands","Eight of Wands","Nine of Wands","Ten of Wands",
-"Page of Wands","Knight of Wands","Queen of Wands","King of Wands",
+"The Fool",
+"The Magician",
+"The High Priestess",
+"The Empress",
+"The Emperor",
+"The Hierophant",
+"The Lovers",
+"The Chariot",
+"Strength",
+"The Hermit",
+"Wheel of Fortune",
+"Justice",
+"The Hanged Man",
+"Death",
+"Temperance",
+"The Devil",
+"The Tower",
+"The Star",
+"The Moon",
+"The Sun",
+"Judgement",
+"The World",
 
-"Ace of Cups","Two of Cups","Three of Cups","Four of Cups","Five of Cups",
-"Six of Cups","Seven of Cups","Eight of Cups","Nine of Cups","Ten of Cups",
-"Page of Cups","Knight of Cups","Queen of Cups","King of Cups",
+"Ace of Wands",
+"Two of Wands",
+"Three of Wands",
+"Four of Wands",
+"Five of Wands",
+"Six of Wands",
+"Seven of Wands",
+"Eight of Wands",
+"Nine of Wands",
+"Ten of Wands",
+"Page of Wands",
+"Knight of Wands",
+"Queen of Wands",
+"King of Wands",
 
-"Ace of Swords","Two of Swords","Three of Swords","Four of Swords","Five of Swords",
-"Six of Swords","Seven of Swords","Eight of Swords","Nine of Swords","Ten of Swords",
-"Page of Swords","Knight of Swords","Queen of Swords","King of Swords",
+"Ace of Cups",
+"Two of Cups",
+"Three of Cups",
+"Four of Cups",
+"Five of Cups",
+"Six of Cups",
+"Seven of Cups",
+"Eight of Cups",
+"Nine of Cups",
+"Ten of Cups",
+"Page of Cups",
+"Knight of Cups",
+"Queen of Cups",
+"King of Cups",
 
-"Ace of Pentacles","Two of Pentacles","Three of Pentacles","Four of Pentacles",
-"Five of Pentacles","Six of Pentacles","Seven of Pentacles","Eight of Pentacles",
-"Nine of Pentacles","Ten of Pentacles","Page of Pentacles","Knight of Pentacles",
-"Queen of Pentacles","King of Pentacles"
+"Ace of Swords",
+"Two of Swords",
+"Three of Swords",
+"Four of Swords",
+"Five of Swords",
+"Six of Swords",
+"Seven of Swords",
+"Eight of Swords",
+"Nine of Swords",
+"Ten of Swords",
+"Page of Swords",
+"Knight of Swords",
+"Queen of Swords",
+"King of Swords",
+
+"Ace of Pentacles",
+"Two of Pentacles",
+"Three of Pentacles",
+"Four of Pentacles",
+"Five of Pentacles",
+"Six of Pentacles",
+"Seven of Pentacles",
+"Eight of Pentacles",
+"Nine of Pentacles",
+"Ten of Pentacles",
+"Page of Pentacles",
+"Knight of Pentacles",
+"Queen of Pentacles",
+"King of Pentacles"
+
 ];
 
 let shuffled = [...tarotCards]
-.sort(() => Math.random() - 0.5)
-.slice(0, 12);
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 12);
 
 let selected = [];
 
-const cardsContainer = document.getElementById("cards");
+const cardsContainer =
+  document.getElementById("cards");
 
 shuffled.forEach((cardName, index) => {
 
-  const button = document.createElement("button");
+  const button =
+    document.createElement("button");
 
   button.type = "button";
   button.className = "card";
 
   button.innerHTML =
     '<div class="symbol">✦</div>' +
-    '<div>Card ' + (index + 1) + '</div>';
+    '<div>Card ' +
+    (index + 1) +
+    '</div>';
 
   button.onclick = function() {
 
-    if (button.classList.contains("selected")) return;
-    if (selected.length >= 3) return;
+    if (
+      button.classList.contains("selected")
+    ) {
+      return;
+    }
+
+    if (selected.length >= 3) {
+      return;
+    }
 
     selected.push(cardName);
+
     button.classList.add("selected");
 
     if (selected.length === 3) {
 
-      document.querySelectorAll(".card").forEach(card => {
-        card.disabled = true;
-      });
+      document
+        .querySelectorAll(".card")
+        .forEach(card => {
+          card.disabled = true;
+        });
 
       setTimeout(() => {
 
-        document.querySelectorAll(".card").forEach((card, i) => {
+        document
+          .querySelectorAll(".card")
+          .forEach((card, i) => {
 
-          if (selected.includes(shuffled[i])) {
+            if (
+              selected.includes(shuffled[i])
+            ) {
 
-            card.classList.add("revealed");
+              card.classList.add("revealed");
 
-            card.innerHTML =
-              '<div class="symbol">🔮</div>' +
-              '<div class="card-name">' +
-              shuffled[i] +
-              '</div>';
-          }
+              card.innerHTML =
+                '<div class="symbol">🔮</div>' +
+                '<div class="card-name">' +
+                shuffled[i] +
+                '</div>';
 
-        });
+            }
 
-        document.getElementById("chosenCards").innerHTML =
+          });
+
+        document.getElementById(
+          "chosenCards"
+        ).innerHTML =
           "<strong>Your cards:</strong><br>" +
           selected.join("<br>");
 
-        document.getElementById("cardsInput").value =
+        document.getElementById(
+          "cardsInput"
+        ).value =
           selected.join(", ");
 
-        document.getElementById("form").style.display = "block";
+        document.getElementById(
+          "form"
+        ).style.display = "block";
 
-        document.getElementById("form").scrollIntoView({
+        document.getElementById(
+          "form"
+        ).scrollIntoView({
           behavior: "smooth"
         });
 
@@ -284,6 +390,7 @@ shuffled.forEach((cardName, index) => {
   };
 
   cardsContainer.appendChild(button);
+
 });
 
 </script>
