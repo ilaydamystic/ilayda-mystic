@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tarot by Ilayda</title>
+<title>Tarot by Ilayda | Tarot • Katina • Coffee Reading</title>
 
 <style>
 * {
@@ -21,9 +21,9 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 950px;
   margin: auto;
-  padding: 35px 16px 50px;
+  padding: 35px 16px 60px;
 }
 
 h1 {
@@ -34,8 +34,8 @@ h1 {
 
 .subtitle {
   color: #d9c5dc;
-  max-width: 650px;
-  margin: 0 auto 25px;
+  max-width: 680px;
+  margin: 0 auto 28px;
   line-height: 1.6;
 }
 
@@ -44,6 +44,97 @@ h1 {
   font-size: 17px;
   margin-bottom: 25px;
 }
+
+/* READING TYPE */
+
+.reading-types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 850px;
+  margin: 30px auto;
+}
+
+.reading-type {
+  border: 1px solid #b99a62;
+  border-radius: 18px;
+  padding: 25px 15px;
+  background:
+    linear-gradient(145deg, #21142b, #452552 50%, #17101e);
+  color: #f6e7bd;
+  cursor: pointer;
+  transition: .25s;
+  box-shadow: 0 10px 25px rgba(0,0,0,.35);
+}
+
+.reading-type:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,.5);
+}
+
+.reading-type.active {
+  outline: 3px solid #e4c77e;
+  transform: translateY(-5px);
+}
+
+.reading-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.reading-title {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.reading-description {
+  font-size: 13px;
+  color: #d9c5dc;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+/* OPTIONS */
+
+.options {
+  display: none;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(203,170,105,.4);
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 650px;
+  margin: 25px auto;
+}
+
+.options h2 {
+  margin-top: 0;
+  color: #f6e7bd;
+}
+
+.option-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.option-button {
+  padding: 11px 17px;
+  border-radius: 10px;
+  border: 1px solid #b99a62;
+  background: #2c1b38;
+  color: #f6e7bd;
+  font-family: Georgia, serif;
+  cursor: pointer;
+}
+
+.option-button:hover,
+.option-button.active {
+  background: #51345f;
+  outline: 2px solid #e4c77e;
+}
+
+/* CARDS */
 
 .cards {
   display: grid;
@@ -130,10 +221,13 @@ h1 {
 .card-name {
   position: relative;
   z-index: 2;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   padding: 8px;
+  margin-top: 60px;
 }
+
+/* FORM */
 
 form {
   display: none;
@@ -142,7 +236,7 @@ form {
   padding: 25px;
   border-radius: 18px;
   margin: 35px auto 0;
-  max-width: 650px;
+  max-width: 680px;
   text-align: left;
   box-shadow: 0 15px 40px rgba(0,0,0,.35);
 }
@@ -167,7 +261,8 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   padding: 13px;
   border: 1px solid #d2c2d4;
@@ -198,6 +293,51 @@ textarea {
   background: #51345f;
 }
 
+/* COFFEE */
+
+.coffee-section {
+  display: none;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(203,170,105,.45);
+  padding: 25px;
+  border-radius: 18px;
+  max-width: 680px;
+  margin: 30px auto;
+}
+
+.coffee-section h2 {
+  color: #f6e7bd;
+}
+
+.upload-box {
+  background: rgba(255,255,255,.08);
+  border: 2px dashed #b99a62;
+  padding: 25px;
+  border-radius: 15px;
+  margin-top: 15px;
+}
+
+.upload-box input {
+  background: white;
+  color: #302236;
+}
+
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #b99a62;
+}
+
 .note {
   font-size: 13px;
   color: #cdbbd0;
@@ -209,18 +349,17 @@ form .note {
   color: #766878;
 }
 
-@media (max-width: 600px) {
+/* HIDDEN */
 
-  .container {
-    padding: 25px 10px 40px;
-  }
+.hidden {
+  display: none !important;
+}
 
-  h1 {
-    font-size: 28px;
-  }
+@media (max-width: 700px) {
 
-  .subtitle {
-    font-size: 14px;
+  .reading-types {
+    grid-template-columns: 1fr;
+    max-width: 400px;
   }
 
   .cards {
@@ -250,11 +389,16 @@ form .note {
   }
 
   .card-name {
-    font-size: 13px;
+    font-size: 12px;
+    margin-top: 45px;
   }
 
   form {
     padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 28px;
   }
 }
 </style>
@@ -267,71 +411,288 @@ form .note {
 <h1>🔮 Tarot by Ilayda</h1>
 
 <p class="subtitle">
-Take a deep breath, focus on your question,
-and let your intuition guide you.
+Choose the reading that speaks to you.
+Focus on your question and let your intuition guide you.
 </p>
 
-<p class="instruction">
-<strong>Choose 3 cards from the deck</strong>
-</p>
+<!-- READING TYPES -->
 
-<div id="cards" class="cards"></div>
+<div class="reading-types">
+
+  <div class="reading-type" onclick="selectReading('tarot', this)">
+    <div class="reading-icon">🔮</div>
+    <div class="reading-title">Tarot Reading</div>
+    <div class="reading-description">
+      Choose your cards and receive a personalized tarot reading.
+    </div>
+  </div>
+
+  <div class="reading-type" onclick="selectReading('katina', this)">
+    <div class="reading-icon">🧿</div>
+    <div class="reading-title">Katina Reading</div>
+    <div class="reading-description">
+      A mysterious relationship-focused reading using the Katina deck.
+    </div>
+  </div>
+
+  <div class="reading-type" onclick="selectReading('coffee', this)">
+    <div class="reading-icon">☕</div>
+    <div class="reading-title">Coffee Reading</div>
+    <div class="reading-description">
+      Upload your cup photos and receive a personalized coffee reading.
+    </div>
+  </div>
+
+</div>
+
+<!-- TAROT OPTIONS -->
+
+<div id="tarotOptions" class="options">
+
+  <h2>🔮 Choose Your Tarot Reading</h2>
+
+  <div class="option-buttons">
+
+    <button class="option-button"
+      onclick="startCards('tarot', 3, this)">
+      3 Card Reading
+    </button>
+
+    <button class="option-button"
+      onclick="startCards('tarot', 5, this)">
+      5 Card Reading
+    </button>
+
+    <button class="option-button"
+      onclick="startCards('tarot', 3, this, 'Love & Relationship')">
+      Love & Relationship
+    </button>
+
+    <button class="option-button"
+      onclick="startCards('tarot', 3, this, 'Career & Money')">
+      Career & Money
+    </button>
+
+  </div>
+
+</div>
+
+<!-- KATINA OPTIONS -->
+
+<div id="katinaOptions" class="options">
+
+  <h2>🧿 Choose Your Katina Reading</h2>
+
+  <div class="option-buttons">
+
+    <button class="option-button"
+      onclick="startCards('katina', 1, this)">
+      1 Card
+    </button>
+
+    <button class="option-button"
+      onclick="startCards('katina', 3, this)">
+      3 Card
+    </button>
+
+    <button class="option-button"
+      onclick="startCards('katina', 3, this, 'Love & Relationship')">
+      Love Reading
+    </button>
+
+    <button class="option-button"
+      onclick="startCards('katina', 3, this, 'Feelings')">
+      Feelings
+    </button>
+
+    <button class="option-button"
+      onclick="startCards('katina', 3, this, 'Career')">
+      Career
+    </button>
+
+    <button class="option-button"
+      onclick="startCards('katina', 5, this, 'Emperor Reading')">
+      5 Card Emperor
+    </button>
+
+  </div>
+
+</div>
+
+<!-- CARD AREA -->
+
+<div id="cardArea" class="hidden">
+
+  <p id="instruction" class="instruction">
+    <strong>Choose your cards</strong>
+  </p>
+
+  <div id="cards" class="cards"></div>
+
+</div>
+
+<!-- COFFEE -->
+
+<div id="coffeeSection" class="coffee-section">
+
+  <h2>☕ Your Coffee Reading</h2>
+
+  <p>
+    Upload clear photos of your coffee cup and saucer.
+    Up to 3 photos can be uploaded.
+  </p>
+
+  <div class="upload-box">
+
+    <input
+      type="file"
+      id="coffeePhotos"
+      name="Coffee Photos"
+      accept="image/*"
+      multiple
+    >
+
+    <div id="preview" class="preview"></div>
+
+  </div>
+
+  <form
+    id="coffeeForm"
+    action="https://formspree.io/f/xwlkenzl"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+
+    <input type="hidden"
+      name="Reading Type"
+      value="Coffee Reading">
+
+    <label>Your Name</label>
+
+    <input
+      name="Name"
+      type="text"
+      placeholder="Your name"
+      required
+    >
+
+    <label>Your Email</label>
+
+    <input
+      name="_replyto"
+      type="email"
+      placeholder="Your email address"
+      required
+    >
+
+    <label>Your Question</label>
+
+    <textarea
+      name="Question"
+      placeholder="Example: What is coming into my love life?"
+      required
+    ></textarea>
+
+    <label>Photos</label>
+
+    <input
+      type="file"
+      name="Coffee Photos"
+      id="coffeePhotosForm"
+      accept="image/*"
+      multiple
+      required
+    >
+
+    <button type="submit" class="submit">
+      Submit My Coffee Reading
+    </button>
+
+    <p class="note">
+      Coffee readings are intended for entertainment and personal reflection.
+    </p>
+
+  </form>
+
+</div>
+
+<!-- TAROT / KATINA FORM -->
 
 <form
-  id="form"
+  id="cardForm"
   action="https://formspree.io/f/xwlkenzl"
   method="POST"
 >
 
-<h2>✨ Your Reading ✨</h2>
+  <h2>✨ Your Reading ✨</h2>
 
-<p id="chosenCards"></p>
+  <p id="chosenCards"></p>
 
-<input
-  type="hidden"
-  id="cardsInput"
-  name="Selected Cards"
->
+  <input
+    type="hidden"
+    id="readingTypeInput"
+    name="Reading Type"
+  >
 
-<label>Your Name</label>
+  <input
+    type="hidden"
+    id="readingStyleInput"
+    name="Reading Style"
+  >
 
-<input
-  name="Name"
-  type="text"
-  placeholder="Your name"
-  required
->
+  <input
+    type="hidden"
+    id="cardsInput"
+    name="Selected Cards"
+  >
 
-<label>Your Email</label>
+  <label>Your Name</label>
 
-<input
-  name="_replyto"
-  type="email"
-  placeholder="Your email address"
-  required
->
+  <input
+    name="Name"
+    type="text"
+    placeholder="Your name"
+    required
+  >
 
-<label>Your Question</label>
+  <label>Your Email</label>
 
-<textarea
-  name="Question"
-  placeholder="Example: What are his true feelings about me?"
-  required
-></textarea>
+  <input
+    name="_replyto"
+    type="email"
+    placeholder="Your email address"
+    required
+  >
 
-<button type="submit" class="submit">
-Submit My Reading
-</button>
+  <label>Your Question</label>
+
+  <textarea
+    name="Question"
+    placeholder="Example: What are his true feelings about me?"
+    required
+  ></textarea>
+
+  <button type="submit" class="submit">
+    Submit My Reading
+  </button>
+
+  <p class="note">
+    Readings are intended for entertainment and personal reflection.
+  </p>
 
 </form>
 
 <p class="note">
-Tarot readings are intended for entertainment and personal reflection.
+Tarot, Katina and coffee readings are intended for entertainment and personal reflection.
 </p>
 
 </div>
 
 <script>
+
+/* =========================
+   TAROT DECK
+========================= */
 
 const tarotCards = [
 
@@ -420,101 +781,412 @@ const tarotCards = [
 
 ];
 
-let shuffled = [...tarotCards]
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 24);
 
+/* =========================
+   KATINA DECK
+========================= */
+
+const katinaCards = [
+
+"Dastar",
+"Mida",
+"Selçuksassa",
+"Tattaret",
+
+"Gamhat",
+"Aral",
+"Saah",
+"Sunit",
+
+"Adhamdeva",
+"Parsadra",
+"Urmiaa",
+"Assyranta",
+
+"Dare",
+"Eprahhat",
+"Tagral",
+"Turan",
+
+"İshafan",
+"Bedes",
+"Ariman",
+"Selena",
+
+"Zara",
+"Hesse",
+"Kalif",
+"Munzur",
+
+"Attart",
+"Valide",
+"Çapa",
+"Tilki",
+"Çiçekler",
+"Yıldızlar",
+"Alyans",
+"Dağ",
+"Yatağan",
+"Mektup",
+"Ağaç",
+"Derviş",
+"Yol",
+"Güneş",
+"Deve",
+"Kalp",
+"Bahçeler",
+"Anahtar",
+"Kitap",
+"Baykuş",
+"Mezar",
+"Yelkenli",
+"Nil",
+"Afyon",
+"Kız Çocuğu",
+"Fareler",
+"Kapı",
+"Kale",
+"Samyeli",
+"Köpek",
+"Ev",
+"Haç",
+"Bulutlar",
+"Ay",
+"Yılan",
+"Süpürge",
+"Balık",
+"Deste"
+
+];
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let currentReading = "";
+let currentStyle = "";
+let cardCount = 3;
+
+let shuffled = [];
 let selected = [];
 
-const cardsContainer =
-  document.getElementById("cards");
 
-shuffled.forEach((cardName, index) => {
+/* =========================
+   SELECT READING TYPE
+========================= */
 
-  const button =
-    document.createElement("button");
+function selectReading(type, element) {
 
-  button.type = "button";
-  button.className = "card";
+  currentReading = type;
 
-  button.innerHTML =
-    '<div class="card-number">CARD ' +
-    (index + 1) +
-    '</div>';
+  document
+    .querySelectorAll(".reading-type")
+    .forEach(item => item.classList.remove("active"));
 
-  button.onclick = function() {
+  element.classList.add("active");
 
-    if (
-      button.classList.contains("selected")
-    ) {
-      return;
-    }
+  document.getElementById("tarotOptions")
+    .style.display = "none";
 
-    if (selected.length >= 3) {
-      return;
-    }
+  document.getElementById("katinaOptions")
+    .style.display = "none";
 
-    selected.push(cardName);
+  document.getElementById("cardArea")
+    .classList.add("hidden");
 
-    button.classList.add("selected");
+  document.getElementById("coffeeSection")
+    .style.display = "none";
 
-    if (selected.length === 3) {
+  document.getElementById("cardForm")
+    .style.display = "none";
 
-      document
-        .querySelectorAll(".card")
-        .forEach(card => {
-          card.disabled = true;
-        });
+  if (type === "tarot") {
 
-      setTimeout(() => {
+    document.getElementById("tarotOptions")
+      .style.display = "block";
+
+  }
+
+  if (type === "katina") {
+
+    document.getElementById("katinaOptions")
+      .style.display = "block";
+
+  }
+
+  if (type === "coffee") {
+
+    document.getElementById("coffeeSection")
+      .style.display = "block";
+
+    document.getElementById("coffeeForm")
+      .style.display = "block";
+
+    document.getElementById("coffeeSection")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
+  }
+
+}
+
+
+/* =========================
+   START CARD READING
+========================= */
+
+function startCards(type, count, button, style = "") {
+
+  currentReading = type;
+  currentStyle = style;
+  cardCount = count;
+
+  selected = [];
+
+  document
+    .querySelectorAll(".option-button")
+    .forEach(item => item.classList.remove("active"));
+
+  button.classList.add("active");
+
+  document.getElementById("tarotOptions")
+    .style.display =
+    type === "tarot" ? "block" : "none";
+
+  document.getElementById("katinaOptions")
+    .style.display =
+    type === "katina" ? "block" : "none";
+
+  document.getElementById("coffeeSection")
+    .style.display = "none";
+
+  document.getElementById("cardForm")
+    .style.display = "none";
+
+  document.getElementById("cardArea")
+    .classList.remove("hidden");
+
+  document.getElementById("instruction")
+    .innerHTML =
+    "<strong>Choose " +
+    count +
+    " card" +
+    (count > 1 ? "s" : "") +
+    " from the deck</strong>";
+
+  const deck =
+    type === "tarot"
+      ? tarotCards
+      : katinaCards;
+
+  shuffled = [...deck]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 24);
+
+  renderCards();
+
+  document.getElementById("cardArea")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+}
+
+
+/* =========================
+   RENDER CARDS
+========================= */
+
+function renderCards() {
+
+  const container =
+    document.getElementById("cards");
+
+  container.innerHTML = "";
+
+  shuffled.forEach((cardName, index) => {
+
+    const button =
+      document.createElement("button");
+
+    button.type = "button";
+    button.className = "card";
+
+    button.innerHTML =
+      '<div class="card-number">CARD ' +
+      (index + 1) +
+      '</div>';
+
+    button.onclick = function() {
+
+      if (
+        button.classList.contains("selected")
+      ) {
+        return;
+      }
+
+      if (selected.length >= cardCount) {
+        return;
+      }
+
+      selected.push(cardName);
+
+      button.classList.add("selected");
+
+      if (selected.length === cardCount) {
 
         document
-          .querySelectorAll(".card")
-          .forEach((card, i) => {
-
-            if (
-              selected.includes(shuffled[i])
-            ) {
-
-              card.classList.add("revealed");
-
-              card.innerHTML =
-                '<div class="card-name">' +
-                shuffled[i] +
-                '</div>';
-
-            }
-
+          .querySelectorAll("#cards .card")
+          .forEach(card => {
+            card.disabled = true;
           });
 
-        document.getElementById(
-          "chosenCards"
-        ).innerHTML =
-          "<strong>Your cards:</strong><br>" +
-          selected.join("<br>");
+        setTimeout(revealCards, 600);
+      }
 
-        document.getElementById(
-          "cardsInput"
-        ).value =
-          selected.join(", ");
+    };
 
-        document.getElementById(
-          "form"
-        ).style.display = "block";
+    container.appendChild(button);
 
-        document.getElementById(
-          "form"
-        ).scrollIntoView({
-          behavior: "smooth"
-        });
+  });
 
-      }, 600);
-    }
-  };
+}
 
-  cardsContainer.appendChild(button);
+
+/* =========================
+   REVEAL
+========================= */
+
+function revealCards() {
+
+  document
+    .querySelectorAll("#cards .card")
+    .forEach((card, index) => {
+
+      if (
+        selected.includes(shuffled[index])
+      ) {
+
+        card.classList.add("revealed");
+
+        card.innerHTML =
+          '<div class="card-name">' +
+          shuffled[index] +
+          '</div>';
+
+      }
+
+    });
+
+  document.getElementById("chosenCards")
+    .innerHTML =
+    "<strong>" +
+    (currentReading === "tarot"
+      ? "Your Tarot cards:"
+      : "Your Katina cards:") +
+    "</strong><br>" +
+    selected.join("<br>");
+
+  document.getElementById("cardsInput")
+    .value =
+    selected.join(", ");
+
+  document.getElementById("readingTypeInput")
+    .value =
+    currentReading === "tarot"
+      ? "Tarot Reading"
+      : "Katina Reading";
+
+  document.getElementById("readingStyleInput")
+    .value =
+    currentStyle || "General Reading";
+
+  document.getElementById("cardForm")
+    .style.display = "block";
+
+  document.getElementById("cardForm")
+    .scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+/* =========================
+   COFFEE PHOTO PREVIEW
+========================= */
+
+const coffeePhotos =
+  document.getElementById("coffeePhotos");
+
+const coffeePhotosForm =
+  document.getElementById("coffeePhotosForm");
+
+const preview =
+  document.getElementById("preview");
+
+
+coffeePhotos.addEventListener("change", function() {
+
+  preview.innerHTML = "";
+
+  const files =
+    Array.from(this.files).slice(0, 3);
+
+  if (this.files.length > 3) {
+
+    alert("Please upload a maximum of 3 photos.");
+
+  }
+
+  const dataTransfer =
+    new DataTransfer();
+
+  files.forEach(file => {
+
+    dataTransfer.items.add(file);
+
+    const reader =
+      new FileReader();
+
+    reader.onload = function(event) {
+
+      const img =
+        document.createElement("img");
+
+      img.src = event.target.result;
+
+      preview.appendChild(img);
+
+    };
+
+    reader.readAsDataURL(file);
+
+  });
+
+  coffeePhotosForm.files =
+    dataTransfer.files;
 
 });
+
+
+/* =========================
+   FORM SAFETY
+========================= */
+
+document.getElementById("coffeeForm")
+  .addEventListener("submit", function(e) {
+
+    if (!coffeePhotosForm.files.length) {
+
+      e.preventDefault();
+
+      alert("Please upload at least one coffee cup photo.");
+
+    }
+
+  });
 
 </script>
 
