@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot by Ilayda</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #f5eef5;
+  color: #302236;
+  text-align: center;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 30px 18px;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #6d5a6e;
+  margin-bottom: 25px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  max-width: 550px;
+  margin: 25px auto;
+}
+
+.card {
+  height: 150px;
+  border: none;
+  border-radius: 14px;
+  background: #392441;
+  color: white;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  transition: 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card.selected {
+  outline: 4px solid #c69abb;
+}
+
+.card.revealed {
+  background: #fff;
+  color: #302236;
+  border: 1px solid #d8c8d8;
+}
+
+.symbol {
+  font-size: 38px;
+  margin-bottom: 8px;
+}
+
+.card-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+form {
+  display: none;
+  background: white;
+  padding: 22px;
+  border-radius: 16px;
+  margin-top: 25px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #d8c8d8;
+  border-radius: 9px;
+  font-family: inherit;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+.submit {
+  margin-top: 18px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 9px;
+  background: #392441;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.note {
+  font-size: 13px;
+  color: #766878;
+  margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .card {
+    height: 125px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🔮 Tarot by Ilayda</h1>
+
+<p class="subtitle">
+Take a deep breath, think about your question,
+and choose the three cards you feel drawn to.
+</p>
+
+<p>
+<strong>Choose 3 cards</strong>
+</p>
+
+<div id="cards" class="cards"></div>
+
+<form id="form">
+
+<h2>Your Reading</h2>
+
+<p id="chosenCards"></p>
+
+<label>Your Name</label>
+<input id="name" type="text" placeholder="Your name">
+
+<label>Your Question</label>
+<textarea id="question"
+placeholder="Example: What are his true feelings about me?"></textarea>
+
+<button type="button" class="submit" onclick="submitReading()">
+Submit My Reading
+</button>
+
+<p id="message" class="note"></p>
+
+</form>
+
+<p class="note">
+Tarot readings are intended for entertainment and personal reflection.
+</p>
+
+</div>
+
+<script>
+
+const tarotCards = [
+
+"The Fool",
+"The Magician",
+"The High Priestess",
+"The Empress",
+"The Emperor",
+"The Hierophant",
+"The Lovers",
+"The Chariot",
+"Strength",
+"The Hermit",
+"Wheel of Fortune",
+"Justice",
+"The Hanged Man",
+"Death",
+"Temperance",
+"The Devil",
+"The Tower",
+"The Star",
+"The Moon",
+"The Sun",
+"Judgement",
+"The World",
+
+"Ace of Wands",
+"Two of Wands",
+"Three of Wands",
+"Four of Wands",
+"Five of Wands",
+"Six of Wands",
+"Seven of Wands",
+"Eight of Wands",
+"Nine of Wands",
+"Ten of Wands",
+"Page of Wands",
+"Knight of Wands",
+"Queen of Wands",
+"King of Wands",
+
+"Ace of Cups",
+"Two of Cups",
+"Three of Cups",
+"Four of Cups",
+"Five of Cups",
+"Six of Cups",
+"Seven of Cups",
+"Eight of Cups",
+"Nine of Cups",
+"Ten of Cups",
+"Page of Cups",
+"Knight of Cups",
+"Queen of Cups",
+"King of Cups",
+
+"Ace of Swords",
+"Two of Swords",
+"Three of Swords",
+"Four of Swords",
+"Five of Swords",
+"Six of Swords",
+"Seven of Swords",
+"Eight of Swords",
+"Nine of Swords",
+"Ten of Swords",
+"Page of Swords",
+"Knight of Swords",
+"Queen of Swords",
+"King of Swords",
+
+"Ace of Pentacles",
+"Two of Pentacles",
+"Three of Pentacles",
+"Four of Pentacles",
+"Five of Pentacles",
+"Six of Pentacles",
+"Seven of Pentacles",
+"Eight of Pentacles",
+"Nine of Pentacles",
+"Ten of Pentacles",
+"Page of Pentacles",
+"Knight of Pentacles",
+"Queen of Pentacles",
+"King of Pentacles"
+
+];
+
+let shuffled = [...tarotCards]
+.sort(() => Math.random() - 0.5)
+.slice(0, 12);
+
+let selected = [];
+
+const cardsContainer = document.getElementById("cards");
+
+shuffled.forEach((cardName, index) => {
+
+const button = document.createElement("button");
+
+button.className = "card";
+
+button.innerHTML =
+'<div class="symbol">✦</div>' +
+'<div>Card ' + (index + 1) + '</div>';
+
+button.onclick = function() {
+
+if (button.classList.contains("selected")) {
+return;
+}
+
+if (selected.length >= 3) {
+return;
+}
+
+selected.push(cardName);
+
+button.classList.add("selected");
+
+if (selected.length === 3) {
+
+document.querySelectorAll(".card").forEach(card => {
+card.disabled = true;
+});
+
+setTimeout(() => {
+
+document.querySelectorAll(".card").forEach((card, i) => {
+
+if (selected.includes(shuffled[i])) {
+
+card.classList.add("revealed");
+
+card.innerHTML =
+'<div class="symbol">🔮</div>' +
+'<div class="card-name">' +
+shuffled[i] +
+'</div>';
+
+}
+
+});
+
+document.getElementById("chosenCards").innerHTML =
+"<strong>Your cards:</strong><br>" +
+selected.join("<br>");
+
+document.getElementById("form").style.display = "block";
+
+document.getElementById("form").scrollIntoView({
+behavior: "smooth"
+});
+
+}, 500);
+
+}
+
+};
+
+cardsContainer.appendChild(button);
+
+});
+
+function submitReading() {
+
+const name =
+document.getElementById("name").value.trim();
+
+const question =
+document.getElementById("question").value.trim();
+
+if (!name || !question) {
+
+alert("Please enter your name and question.");
+
+return;
+
+}
+
+const result =
+"Name: " + name +
+"\nQuestion: " + question +
+"\nCards: " + selected.join(", ");
+
+document.getElementById("message").innerText =
+"Your reading request is ready. Please save this information and send it with your Etsy order.";
+
+console.log(result);
+
+}
+
+</script>
+
+</body>
+</html>
