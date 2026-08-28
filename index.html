@@ -1,2089 +1,956 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>
-Ilayda Mystic | Tarot • Katina • Turkish Coffee Readings
-</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ilayda Mystic | Tarot • Katina • Turkish Coffee Reading</title>
 
 <style>
+*{box-sizing:border-box;margin:0;padding:0}
 
-* {
-  box-sizing: border-box;
+:root{
+  --bg:#08050d;
+  --panel:rgba(25,14,35,.78);
+  --gold:#d8b46a;
+  --gold2:#f2d99a;
+  --purple:#9d6bc4;
+  --text:#f7edff;
+  --muted:#b9a6c6;
 }
 
-body {
-
-  margin: 0;
-
-  font-family: Georgia, serif;
-
+body{
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--text);
+  min-height:100vh;
   background:
-    radial-gradient(
-      circle at 50% 10%,
-      #51345f 0%,
-      #24152e 45%,
-      #100b16 100%
-    );
-
-  color: #f8edf8;
-
-  text-align: center;
-
-  min-height: 100vh;
+    radial-gradient(circle at 50% -10%,#4a2860 0%,transparent 35%),
+    radial-gradient(circle at 15% 45%,rgba(104,55,137,.16),transparent 28%),
+    radial-gradient(circle at 90% 65%,rgba(95,48,127,.13),transparent 30%),
+    #08050d;
+  overflow-x:hidden;
 }
 
-.container {
-
-  max-width: 950px;
-
-  margin: auto;
-
-  padding: 35px 16px 60px;
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.35;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.8) 0 1px,transparent 1.5px);
+  background-size:95px 95px;
+  mask-image:linear-gradient(to bottom,black,transparent 85%);
 }
 
-
-/* BRAND */
-
-h1 {
-
-  font-size: 38px;
-
-  margin: 5px 0 8px;
-
-  letter-spacing: 1px;
+.container{
+  width:92%;
+  max-width:1150px;
+  margin:auto;
 }
 
-.brand-line {
-
-  color: #d9c5dc;
-
-  font-size: 14px;
-
-  letter-spacing: 2px;
-
-  margin:
-    0 auto 18px;
+header{
+  text-align:center;
+  padding:55px 20px 30px;
 }
 
-.subtitle {
-
-  color: #d9c5dc;
-
-  max-width: 680px;
-
-  margin:
-    0 auto 30px;
-
-  line-height: 1.6;
+.moon{
+  font-size:43px;
+  filter:drop-shadow(0 0 18px rgba(240,210,255,.45));
+  animation:float 4s ease-in-out infinite;
 }
 
-
-/* MAIN READING TYPES */
-
-.reading-types {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3, 1fr);
-
-  gap: 18px;
-
-  max-width: 850px;
-
-  margin: 30px auto;
+@keyframes float{
+  50%{transform:translateY(-7px)}
 }
 
-.reading-type {
+.brand{
+  margin-top:8px;
+  font-size:43px;
+  letter-spacing:5px;
+  color:#ead5ff;
+  text-shadow:0 0 30px rgba(211,165,255,.4);
+}
 
-  border:
-    1px solid
-    #b99a62;
+.subtitle{
+  margin-top:10px;
+  color:#c8b3d6;
+  letter-spacing:2px;
+  font-size:14px;
+}
 
-  border-radius: 18px;
+.intro{
+  max-width:720px;
+  margin:15px auto 40px;
+  text-align:center;
+  color:#d3c3dd;
+  line-height:1.8;
+  font-size:15px;
+}
 
-  padding: 27px 15px;
+.section-title{
+  text-align:center;
+  margin:42px 0 22px;
+  color:#efd9ff;
+  font-size:27px;
+  letter-spacing:.5px;
+}
 
+.methods{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.method{
+  position:relative;
+  overflow:hidden;
+  padding:28px 20px;
+  min-height:190px;
+  text-align:center;
+  cursor:pointer;
+  border:1px solid rgba(218,180,255,.18);
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.025));
+  backdrop-filter:blur(14px);
+  transition:.35s;
+}
+
+.method:before{
+  content:"";
+  position:absolute;
+  inset:-80%;
+  background:radial-gradient(circle,rgba(218,177,255,.13),transparent 55%);
+  transition:.5s;
+}
+
+.method:hover{
+  transform:translateY(-7px);
+  border-color:rgba(229,190,255,.55);
+  box-shadow:0 15px 45px rgba(0,0,0,.4);
+}
+
+.method:hover:before{transform:translate(15%,15%)}
+
+.method.active{
+  border-color:var(--gold);
+  box-shadow:0 0 35px rgba(216,180,106,.14),inset 0 0 25px rgba(216,180,106,.05);
+}
+
+.method-icon{
+  position:relative;
+  font-size:42px;
+  margin-bottom:14px;
+}
+
+.method h3{
+  position:relative;
+  font-size:22px;
+  margin-bottom:8px;
+}
+
+.method p{
+  position:relative;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+}
+
+.options{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.option{
+  padding:20px;
+  text-align:center;
+  cursor:pointer;
+  border:1px solid rgba(216,180,106,.2);
+  border-radius:17px;
+  background:rgba(255,255,255,.035);
+  transition:.3s;
+}
+
+.option strong{
+  font-size:19px;
+  color:#f5e5ff;
+}
+
+.option small{
+  display:block;
+  margin-top:7px;
+  color:#a995b4;
+}
+
+.option:hover,
+.option.active{
+  transform:translateY(-3px);
+  border-color:var(--gold);
+  background:rgba(216,180,106,.09);
+  box-shadow:0 8px 28px rgba(0,0,0,.3);
+}
+
+.reading-types{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.reading-type{
+  padding:17px 10px;
+  text-align:center;
+  cursor:pointer;
+  border-radius:14px;
+  border:1px solid rgba(230,190,255,.14);
+  background:rgba(255,255,255,.035);
+  transition:.25s;
+}
+
+.reading-type:hover,
+.reading-type.active{
+  border-color:var(--gold);
+  background:rgba(216,180,106,.08);
+  color:#f4dfaa;
+}
+
+#deckArea{
+  margin:42px auto;
+  padding:35px 20px;
+  border:1px solid rgba(216,180,106,.17);
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(32,18,43,.82),rgba(10,7,15,.72));
+  box-shadow:0 20px 60px rgba(0,0,0,.28);
+}
+
+.deck-heading{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.deck-heading h3{
+  font-size:25px;
+  color:#f0d89b;
+}
+
+.deck-heading p{
+  margin-top:8px;
+  color:#a997b4;
+  font-size:14px;
+}
+
+.deck{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:12px;
+  min-height:230px;
+  padding:25px 5px;
+}
+
+.card{
+  width:86px;
+  height:150px;
+  perspective:1000px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-15px) scale(1.06);
+  z-index:5;
+}
+
+.card-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  transition:transform .75s cubic-bezier(.2,.7,.2,1);
+  transform-style:preserve-3d;
+}
+
+.card.flipped .card-inner{
+  transform:rotateY(180deg);
+}
+
+.card-face{
+  position:absolute;
+  inset:0;
+  border-radius:10px;
+  backface-visibility:hidden;
+  overflow:hidden;
+}
+
+.card-back{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:2px solid #b58b43;
   background:
-    linear-gradient(
-      145deg,
-      #21142b,
-      #452552 50%,
-      #17101e
-    );
-
-  color: #f6e7bd;
-
-  cursor: pointer;
-
-  transition: .25s;
-
-  box-shadow:
-    0 10px 25px
-    rgba(0,0,0,.35);
+    radial-gradient(circle at center,rgba(255,220,150,.12),transparent 40%),
+    repeating-linear-gradient(45deg,transparent 0 7px,rgba(216,180,106,.06) 8px 9px),
+    #160d20;
+  box-shadow:0 5px 18px rgba(0,0,0,.45);
 }
 
-.reading-type:hover {
-
-  transform:
-    translateY(-6px);
-
-  box-shadow:
-    0 15px 30px
-    rgba(0,0,0,.5);
+.card-back:before{
+  content:"✦";
+  width:62px;
+  height:105px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(216,180,106,.7);
+  color:#e4c578;
+  font-size:27px;
+  box-shadow:inset 0 0 15px rgba(216,180,106,.08);
 }
 
-.reading-type.active {
-
-  outline:
-    3px solid
-    #e4c77e;
-
-  transform:
-    translateY(-5px);
+.card-front{
+  transform:rotateY(180deg);
+  border:2px solid #cba85c;
+  background:#120b17;
+  box-shadow:0 8px 25px rgba(0,0,0,.5);
 }
 
-.reading-icon {
-
-  font-size: 42px;
-
-  margin-bottom: 10px;
+.card-front img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
-.reading-title {
-
-  font-size: 21px;
-
-  font-weight: bold;
+.card-name{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:18px 4px 7px;
+  text-align:center;
+  font-size:10px;
+  color:white;
+  background:linear-gradient(transparent,rgba(0,0,0,.9));
 }
 
-.reading-description {
-
-  font-size: 13px;
-
-  color: #d9c5dc;
-
-  margin-top: 8px;
-
-  line-height: 1.5;
+.selected-area{
+  margin-top:15px;
 }
 
-
-/* OPTIONS */
-
-.options {
-
-  display: none;
-
-  background:
-    rgba(255,255,255,.08);
-
-  border:
-    1px solid
-    rgba(203,170,105,.4);
-
-  border-radius: 15px;
-
-  padding: 22px;
-
-  max-width: 760px;
-
-  margin: 25px auto;
+.selected-title{
+  text-align:center;
+  color:#d8b46a;
+  margin-bottom:18px;
 }
 
-.options h2 {
-
-  margin-top: 0;
-
-  color: #f6e7bd;
+.selected-cards{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
 }
 
-.option-buttons {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  justify-content: center;
-
-  gap: 10px;
+.selected-slot{
+  text-align:center;
 }
 
-.option-button {
-
-  padding:
-    12px 17px;
-
-  border-radius: 10px;
-
-  border:
-    1px solid
-    #b99a62;
-
-  background: #2c1b38;
-
-  color: #f6e7bd;
-
-  font-family: Georgia, serif;
-
-  cursor: pointer;
-
-  transition: .2s;
+.selected-slot span{
+  display:block;
+  margin-bottom:9px;
+  color:#bca8c9;
+  font-size:12px;
+  letter-spacing:1px;
 }
 
-.option-button:hover,
-.option-button.active {
-
-  background: #51345f;
-
-  outline:
-    2px solid
-    #e4c77e;
+.selected-card{
+  width:115px;
+  height:195px;
+  border-radius:12px;
+  border:1px solid rgba(216,180,106,.5);
+  overflow:hidden;
+  background:#130b19;
+  box-shadow:0 10px 35px rgba(0,0,0,.45);
 }
 
-
-/* CARD AREA */
-
-#cardArea {
-
-  margin-top: 30px;
+.selected-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-.instruction {
-
-  color: #ead9eb;
-
-  font-size: 17px;
-
-  margin-bottom: 25px;
+.position-list{
+  display:grid;
+  gap:10px;
+  margin-top:25px;
 }
 
-.cards {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  gap: 15px;
-
-  max-width: 760px;
-
-  margin: 0 auto;
+.position{
+  padding:13px 15px;
+  border-radius:12px;
+  background:rgba(255,255,255,.035);
+  color:#d6c4df;
+  font-size:14px;
+  border-left:2px solid var(--gold);
 }
 
-.card {
-
-  position: relative;
-
-  height: 170px;
-
-  border:
-    2px solid
-    #b99a62;
-
-  border-radius: 13px;
-
-  cursor: pointer;
-
-  overflow: hidden;
-
-  color: #f6e7bd;
-
-  background:
-
-    radial-gradient(
-      circle at center,
-      rgba(190,154,98,.25)
-      0 2px,
-      transparent 3px
-    ),
-
-    radial-gradient(
-      circle at 20% 25%,
-      rgba(255,255,255,.15)
-      0 1px,
-      transparent 2px
-    ),
-
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(255,255,255,.15)
-      0 1px,
-      transparent 2px
-    ),
-
-    linear-gradient(
-      145deg,
-      #21142b,
-      #452552 50%,
-      #17101e
-    );
-
-  box-shadow:
-
-    0 9px 22px
-    rgba(0,0,0,.45),
-
-    inset 0 0 0 3px
-    rgba(185,154,98,.12);
-
-  transition:
-    transform .25s,
-    box-shadow .25s;
+.form-box{
+  max-width:820px;
+  margin:35px auto 65px;
+  padding:32px;
+  border-radius:24px;
+  border:1px solid rgba(230,190,255,.16);
+  background:rgba(255,255,255,.045);
+  backdrop-filter:blur(15px);
 }
 
-.card::before {
-
-  content: "✦";
-
-  position: absolute;
-
-  inset: 9px;
-
-  border:
-    1px solid
-    rgba(203,170,105,.65);
-
-  border-radius: 9px;
-
-  font-size: 54px;
-
-  line-height: 145px;
-
-  color: #c8a96a;
-
-  text-shadow:
-    0 0 12px
-    rgba(218,185,105,.5);
-}
-
-.card::after {
-
-  content:
-    "☾  ✧  ☽";
-
-  position: absolute;
-
-  left: 0;
-
-  right: 0;
-
-  bottom: 15px;
-
-  font-size: 14px;
-
-  letter-spacing: 5px;
-
-  color: #d2b676;
-}
-
-.card:hover {
-
-  transform:
-    translateY(-7px)
-    scale(1.025);
-
-  box-shadow:
-
-    0 15px 30px
-    rgba(0,0,0,.55),
-
-    0 0 20px
-    rgba(193,156,91,.22);
-}
-
-.card.selected {
-
-  outline:
-    3px solid
-    #e4c77e;
-
-  transform:
-    translateY(-7px);
-}
-
-.card.revealed {
-
-  background:
-    linear-gradient(
-      145deg,
-      #fffdf7,
-      #eee3ef
-    );
-
-  color: #302236;
-
-  border-color:
-    #c6a86a;
-}
-
-.card.revealed::before,
-.card.revealed::after {
-
-  display: none;
-}
-
-.card-number {
-
-  position: relative;
-
-  z-index: 2;
-
-  font-size: 14px;
-
-  margin-top: 65px;
-
-  opacity: .9;
-}
-
-.card-name {
-
-  position: relative;
-
-  z-index: 2;
-
-  font-size: 15px;
-
-  font-weight: bold;
-
-  margin-top: 60px;
-
-  padding: 8px;
-}
-
-
-/* FORM */
-
-form {
-
-  display: none;
-
-  background: #fff;
-
-  color: #302236;
-
-  padding: 25px;
-
-  border-radius: 18px;
-
-  margin: 35px auto 0;
-
-  max-width: 680px;
-
-  text-align: left;
-
-  box-shadow:
-    0 15px 40px
-    rgba(0,0,0,.35);
-}
-
-form h2 {
-
-  margin-top: 0;
-
-  text-align: center;
-}
-
-#chosenCards {
-
-  background: #f4ebf4;
-
-  padding: 15px;
-
-  border-radius: 10px;
-
-  line-height: 1.7;
-}
-
-label {
-
-  display: block;
-
-  margin-top: 15px;
-
-  margin-bottom: 6px;
-
-  font-weight: bold;
+label{
+  display:block;
+  margin-bottom:8px;
+  color:#e6d3ef;
+  font-size:14px;
 }
 
 input,
-textarea {
-
-  width: 100%;
-
-  padding: 13px;
-
-  border:
-    1px solid
-    #d2c2d4;
-
-  border-radius: 9px;
-
-  font-family: inherit;
-
-  font-size: 15px;
+textarea{
+  width:100%;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:12px;
+  border:1px solid rgba(230,190,255,.17);
+  background:rgba(0,0,0,.3);
+  color:white;
+  outline:none;
+  font-family:inherit;
+  font-size:15px;
 }
 
-textarea {
-
-  min-height: 110px;
-
-  resize: vertical;
+input:focus,
+textarea:focus{
+  border-color:#d8b46a;
+  box-shadow:0 0 0 3px rgba(216,180,106,.07);
 }
 
-.submit {
-
-  margin-top: 20px;
-
-  width: 100%;
-
-  padding: 15px;
-
-  border: none;
-
-  border-radius: 10px;
-
-  background: #392441;
-
-  color: white;
-
-  font-size: 17px;
-
-  font-family: Georgia, serif;
-
-  cursor: pointer;
+textarea{
+  min-height:130px;
+  resize:vertical;
 }
 
-.submit:hover {
-
-  background: #51345f;
+.upload{
+  margin-bottom:20px;
+  padding:25px;
+  text-align:center;
+  border:1px dashed #b18b55;
+  border-radius:16px;
+  color:#cdbbd7;
 }
 
-
-/* COFFEE */
-
-.coffee-section {
-
-  display: none;
-
-  background:
-    rgba(255,255,255,.07);
-
-  border:
-    1px solid
-    rgba(203,170,105,.45);
-
-  padding: 25px;
-
-  border-radius: 18px;
-
-  max-width: 680px;
-
-  margin: 30px auto;
+.upload input{
+  margin-top:15px;
+  margin-bottom:0;
 }
 
-.coffee-section h2 {
-
-  color: #f6e7bd;
+.submit{
+  width:100%;
+  padding:18px;
+  border:1px solid rgba(245,220,157,.4);
+  border-radius:14px;
+  cursor:pointer;
+  color:#17100a;
+  font-family:inherit;
+  font-size:17px;
+  font-weight:bold;
+  background:linear-gradient(135deg,#f0d58e,#a97938);
+  transition:.3s;
 }
 
-.coffee-description {
-
-  color: #d9c5dc;
-
-  line-height: 1.6;
+.submit:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 35px rgba(216,180,106,.2);
 }
 
-.upload-box {
-
-  margin-top: 20px;
-
-  background:
-    rgba(255,255,255,.08);
-
-  border:
-    2px dashed
-    #b99a62;
-
-  padding: 25px;
-
-  border-radius: 15px;
+.notice{
+  margin-top:15px;
+  text-align:center;
+  color:#8f7c99;
+  font-size:12px;
+  line-height:1.5;
 }
 
-.preview {
-
-  display: flex;
-
-  flex-wrap: wrap;
-
-  justify-content: center;
-
-  gap: 10px;
-
-  margin-top: 15px;
+footer{
+  text-align:center;
+  padding:30px 15px 50px;
+  color:#897691;
+  font-size:13px;
 }
 
-.preview img {
+.hidden{display:none!important}
 
-  width: 100px;
-
-  height: 100px;
-
-  object-fit: cover;
-
-  border-radius: 10px;
-
-  border:
-    2px solid
-    #b99a62;
+@media(max-width:800px){
+  .methods{grid-template-columns:1fr}
+  .reading-types{grid-template-columns:repeat(2,1fr)}
+  .options{grid-template-columns:1fr}
+  .brand{font-size:32px}
 }
 
-
-/* HIDDEN */
-
-.hidden {
-
-  display: none !important;
+@media(max-width:600px){
+  header{padding-top:35px}
+  .form-box{padding:20px}
+  .deck{gap:8px}
+  .card{width:67px;height:118px}
+  .card-back:before{width:48px;height:82px}
+  .selected-card{width:100px;height:170px}
 }
-
-.note {
-
-  font-size: 13px;
-
-  color: #cdbbd0;
-
-  margin-top: 25px;
-
-  line-height: 1.5;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 700px) {
-
-  .reading-types {
-
-    grid-template-columns: 1fr;
-
-    max-width: 400px;
-  }
-
-  .cards {
-
-    grid-template-columns:
-      repeat(3, 1fr);
-
-    gap: 9px;
-  }
-
-  .card {
-
-    height: 135px;
-  }
-
-  .card::before {
-
-    inset: 6px;
-
-    font-size: 40px;
-
-    line-height: 112px;
-  }
-
-  .card::after {
-
-    bottom: 10px;
-
-    font-size: 10px;
-
-    letter-spacing: 3px;
-  }
-
-  .card-number {
-
-    margin-top: 52px;
-
-    font-size: 11px;
-  }
-
-  .card-name {
-
-    font-size: 12px;
-
-    margin-top: 45px;
-  }
-
-  h1 {
-
-    font-size: 29px;
-  }
-
-  form {
-
-    padding:
-      20px 15px;
-  }
-
-}
-
 </style>
-
 </head>
-
 
 <body>
 
+<header>
+  <div class="moon">☾</div>
+  <h1 class="brand">ILAYDA MYSTIC</h1>
+  <p class="subtitle">TAROT • KATINA • TURKISH COFFEE READING</p>
+</header>
 
-<div class="container">
+<main class="container">
 
-
-<!-- BRAND -->
-
-<h1>
-✨ Ilayda Mystic
-</h1>
-
-<p class="brand-line">
-Tarot • Katina • Turkish Coffee Readings
+<p class="intro">
+  Kartların ve sembollerin rehberliğinde, soruna özel sezgisel bir açılım seç.
+  Aşk, ilişkiler, duygular, kariyer, evlilik, kararlar ve dileklerin için
+  kendi enerjine uygun bir açılım oluştur.
 </p>
 
-<p class="subtitle">
+<h2 class="section-title">🔮 Fal Türünü Seç</h2>
 
-Choose the reading that speaks to you.
-Focus on your question and let your
-intuition guide you.
+<div class="methods">
 
-</p>
+  <div class="method active" onclick="selectMethod('tarot',this)">
+    <div class="method-icon">🔮</div>
+    <h3>Tarot</h3>
+    <p>78 kartlık klasik Tarot destesiyle sezgisel açılım.</p>
+  </div>
 
+  <div class="method" onclick="selectMethod('katina',this)">
+    <div class="method-icon">🧿</div>
+    <h3>Katina</h3>
+    <p>65 kartlık Katina destesiyle ilişki ve kader açılımı.</p>
+  </div>
 
-<!-- =====================
-     MAIN SERVICES
-===================== -->
+  <div class="method" onclick="selectMethod('coffee',this)">
+    <div class="method-icon">☕</div>
+    <h3>Turkish Coffee Reading</h3>
+    <p>Kahve fincanındaki semboller üzerinden kişisel yorum.</p>
+  </div>
+
+</div>
+
+<div id="cardSection">
+
+<h2 class="section-title">🃏 Kart Sayısını Seç</h2>
+
+<div class="options">
+
+  <div class="option active" onclick="selectCards(1,this)">
+    <strong>1 Kart</strong>
+    <small>Tek ve net mesaj</small>
+  </div>
+
+  <div class="option" onclick="selectCards(3,this)">
+    <strong>3 Kart</strong>
+    <small>Geçmiş • Şimdi • Gelecek</small>
+  </div>
+
+  <div class="option" onclick="selectCards(5,this)">
+    <strong>5 Kart</strong>
+    <small>Detaylı açılım</small>
+  </div>
+
+</div>
+
+</div>
+
+<h2 class="section-title">✨ Açılım Konusu</h2>
 
 <div class="reading-types">
 
-
-<div
-class="reading-type"
-onclick="selectReading('tarot', this)"
->
-
-<div class="reading-icon">
-🔮
-</div>
-
-<div class="reading-title">
-Tarot Reading
-</div>
-
-<div class="reading-description">
-
-Personalized tarot readings
-for love, relationships,
-career and more.
+  <div class="reading-type active" onclick="selectReading(this)">❤️ Love & Relationship</div>
+  <div class="reading-type" onclick="selectReading(this)">💭 Feelings & Intentions</div>
+  <div class="reading-type" onclick="selectReading(this)">❓ Yes / No</div>
+  <div class="reading-type" onclick="selectReading(this)">💼 Career</div>
+  <div class="reading-type" onclick="selectReading(this)">💍 Marriage</div>
+  <div class="reading-type" onclick="selectReading(this)">⚖️ Decision</div>
+  <div class="reading-type" onclick="selectReading(this)">🌙 Dilek</div>
 
 </div>
 
-</div>
+<div id="deckArea">
 
+  <div class="deck-heading">
+    <h3>Desteni Seç</h3>
+    <p>İçinden gelen karta dokun. Kartın mesajı sana açılacak.</p>
+  </div>
 
+  <div class="deck" id="deck"></div>
 
-<div
-class="reading-type"
-onclick="selectReading('katina', this)"
->
-
-<div class="reading-icon">
-🧿
-</div>
-
-<div class="reading-title">
-Katina Reading
-</div>
-
-<div class="reading-description">
-
-Explore love, feelings,
-relationships and life
-through the Katina deck.
+  <div class="selected-area">
+    <h3 class="selected-title">✦ Seçtiğin Kartlar ✦</h3>
+    <div class="selected-cards" id="selectedCards"></div>
+  </div>
 
 </div>
 
-</div>
+<h2 class="section-title">📝 Bilgilerini Gir</h2>
 
+<div class="form-box">
 
+<label for="name">İsim</label>
+<input id="name" type="text" placeholder="Adınız">
 
-<div
-class="reading-type"
-onclick="selectReading('coffee', this)"
->
+<label for="email">E-posta</label>
+<input id="email" type="email" placeholder="ornek@email.com">
 
-<div class="reading-icon">
-☕
-</div>
+<label for="question">Sorun</label>
+<textarea id="question" placeholder="Falınızda cevaplanmasını istediğiniz soruyu yazın..."></textarea>
 
-<div class="reading-title">
-Turkish Coffee Reading
-</div>
+<div id="positionsBox">
 
-<div class="reading-description">
+<label>🃏 Kart Pozisyonları</label>
 
-Upload photos of your cup
-and receive a personalized
-coffee reading.
+<div class="position-list" id="positions"></div>
 
 </div>
 
-</div>
+<div id="coffeeUpload" class="upload hidden">
 
+<strong>☕ Kahve Fotoğraflarını Yükle</strong>
 
-</div>
-
-
-<!-- =====================
-     TAROT OPTIONS
-===================== -->
-
-<div
-id="tarotOptions"
-class="options"
->
-
-<h2>
-🔮 Choose Your Tarot Reading
-</h2>
-
-
-<div class="option-buttons">
-
-
-<button
-class="option-button"
-onclick="startCards(
-'tarot',
-3,
-this,
-'3-Card Tarot Reading'
-)"
->
-
-3-Card Tarot Reading
-
-</button>
-
-
-<button
-class="option-button"
-onclick="startCards(
-'tarot',
-5,
-this,
-'5-Card Tarot Reading'
-)"
->
-
-5-Card Tarot Reading
-
-</button>
-
-
-<button
-class="option-button"
-onclick="startCards(
-'tarot',
-3,
-this,
-'Love & Relationship Tarot'
-)"
->
-
-Love & Relationship Tarot
-
-</button>
-
-
-<button
-class="option-button"
-onclick="startCards(
-'tarot',
-3,
-this,
-'Career & Money Tarot'
-)"
->
-
-Career & Money Tarot
-
-</button>
-
-
-</div>
-
-</div>
-
-
-<!-- =====================
-     KATINA OPTIONS
-===================== -->
-
-<div
-id="katinaOptions"
-class="options"
->
-
-<h2>
-🧿 Choose Your Katina Reading
-</h2>
-
-
-<div class="option-buttons">
-
-
-<button
-class="option-button"
-onclick="startCards(
-'katina',
-1,
-this,
-'1-Card Katina Reading'
-)"
->
-
-1-Card Katina Reading
-
-</button>
-
-
-<button
-class="option-button"
-onclick="startCards(
-'katina',
-3,
-this,
-'3-Card Katina Reading'
-)"
->
-
-3-Card Katina Reading
-
-</button>
-
-
-<button
-class="option-button"
-onclick="startCards(
-'katina',
-3,
-this,
-'Love & Relationship Katina'
-)"
->
-
-Love & Relationship Katina
-
-</button>
-
-
-<button
-class="option-button"
-onclick="startCards(
-'katina',
-3,
-this,
-'Feelings & Intentions Katina'
-)"
->
-
-Feelings & Intentions Katina
-
-</button>
-
-
-<button
-class="option-button"
-onclick="startCards(
-'katina',
-3,
-this,
-'Career & Money Katina'
-)"
->
-
-Career & Money Katina
-
-</button>
-
-
-<button
-class="option-button"
-onclick="startCards(
-'katina',
-5,
-this,
-'5-Card Detailed Katina Reading'
-)"
->
-
-5-Card Detailed Katina Reading
-
-</button>
-
-
-</div>
-
-</div>
-
-
-<!-- =====================
-     CARD AREA
-===================== -->
-
-<div
-id="cardArea"
-class="hidden"
->
-
-<p
-id="instruction"
-class="instruction"
->
-
-<strong>
-Choose your cards
-</strong>
-
+<p style="margin-top:8px;">
+Fincanının içini ve mümkünse tabağını net şekilde gösteren fotoğrafları yükleyebilirsin.
 </p>
 
-
-<div
-id="cards"
-class="cards"
-></div>
+<input type="file" id="coffeePhotos" accept="image/*" multiple>
 
 </div>
 
-
-<!-- =====================
-     COFFEE
-===================== -->
-
-<div
-id="coffeeSection"
-class="coffee-section"
->
-
-<h2>
-☕ Turkish Coffee Reading
-</h2>
-
-<p class="coffee-description">
-
-Upload clear photos of your
-coffee cup and saucer.
-
-For the best reading, upload
-2–3 clear photos from different
-angles.
-
-</p>
-
-
-<form
-id="coffeeForm"
-
-action="https://formspree.io/f/xwlkenzl"
-
-method="POST"
-
-enctype="multipart/form-data"
->
-
-
-<input
-type="hidden"
-name="Reading Type"
-value="Turkish Coffee Reading"
->
-
-
-<label>
-Your Name
-</label>
-
-<input
-name="Name"
-type="text"
-placeholder="Your name"
-required
->
-
-
-<label>
-Your Email
-</label>
-
-<input
-name="_replyto"
-type="email"
-placeholder="Your email address"
-required
->
-
-
-<label>
-Your Question
-</label>
-
-<textarea
-name="Question"
-placeholder="Example: What is coming into my love life?"
-required
-></textarea>
-
-
-<label>
-Coffee Cup Photos
-</label>
-
-<input
-type="file"
-name="Coffee Photos"
-id="coffeePhotos"
-accept="image/*"
-multiple
-required
->
-
-
-<div
-id="preview"
-class="preview"
-></div>
-
-
-<button
-type="submit"
-class="submit"
->
-
-Submit My Coffee Reading
-
+<button class="submit" onclick="submitReading()">
+🔮 Falımı Gönder
 </button>
 
-
-<p class="note">
-
-Readings are intended for entertainment
-and personal reflection.
-
+<p class="notice">
+Gönder butonuna bastığında seçtiğin fal türü, açılım konusu,
+kartların ve yazdığın bilgiler gönderim için hazırlanır.
 </p>
-
-</form>
 
 </div>
 
+</main>
 
-<!-- =====================
-     CARD FORM
-===================== -->
-
-<form
-id="cardForm"
-
-action="https://formspree.io/f/xwlkenzl"
-
-method="POST"
->
-
-
-<h2>
-✨ Your Reading
-</h2>
-
-
-<p id="chosenCards"></p>
-
-
-<input
-type="hidden"
-id="readingTypeInput"
-name="Reading Type"
->
-
-
-<input
-type="hidden"
-id="readingStyleInput"
-name="Reading Style"
->
-
-
-<input
-type="hidden"
-id="cardsInput"
-name="Selected Cards"
->
-
-
-<input
-type="hidden"
-id="positionsInput"
-name="Card Positions"
->
-
-
-<label>
-Your Name
-</label>
-
-<input
-name="Name"
-type="text"
-placeholder="Your name"
-required
->
-
-
-<label>
-Your Email
-</label>
-
-<input
-name="_replyto"
-type="email"
-placeholder="Your email address"
-required
->
-
-
-<label>
-Your Question
-</label>
-
-<textarea
-name="Question"
-placeholder="Example: What are his true feelings about me?"
-required
-></textarea>
-
-
-<button
-type="submit"
-class="submit"
->
-
-Submit My Reading
-
-</button>
-
-
-<p class="note">
-
-Readings are intended for entertainment
-and personal reflection.
-
-</p>
-
-</form>
-
-
-<p class="note">
-
-Tarot, Katina and Turkish Coffee Readings
-are intended for entertainment and
-personal reflection.
-
-</p>
-
-
-</div>
-
+<footer>
+✦ ILAYDA MYSTIC ✦<br>
+Tarot • Katina • Turkish Coffee Reading
+</footer>
 
 <script>
 
+let selectedMethod="tarot";
+let selectedCards=1;
+let selectedReading="❤️ Love & Relationship";
+let pickedCards=[];
 
-/* =====================
-   TAROT DECK
-===================== */
-
-const tarotCards = [
-
-"The Fool",
-"The Magician",
-"The High Priestess",
-"The Empress",
-"The Emperor",
-"The Hierophant",
-"The Lovers",
-"The Chariot",
-"Strength",
-"The Hermit",
-"Wheel of Fortune",
-"Justice",
-"The Hanged Man",
-"Death",
-"Temperance",
-"The Devil",
-"The Tower",
-"The Star",
-"The Moon",
-"The Sun",
-"Judgement",
-"The World",
-
-"Ace of Wands",
-"Two of Wands",
-"Three of Wands",
-"Four of Wands",
-"Five of Wands",
-"Six of Wands",
-"Seven of Wands",
-"Eight of Wands",
-"Nine of Wands",
-"Ten of Wands",
-"Page of Wands",
-"Knight of Wands",
-"Queen of Wands",
-"King of Wands",
-
-"Ace of Cups",
-"Two of Cups",
-"Three of Cups",
-"Four of Cups",
-"Five of Cups",
-"Six of Cups",
-"Seven of Cups",
-"Eight of Cups",
-"Nine of Cups",
-"Ten of Cups",
-"Page of Cups",
-"Knight of Cups",
-"Queen of Cups",
-"King of Cups",
-
-"Ace of Swords",
-"Two of Swords",
-"Three of Swords",
-"Four of Swords",
-"Five of Swords",
-"Six of Swords",
-"Seven of Swords",
-"Eight of Swords",
-"Nine of Swords",
-"Ten of Swords",
-"Page of Swords",
-"Knight of Swords",
-"Queen of Swords",
-"King of Swords",
-
-"Ace of Pentacles",
-"Two of Pentacles",
-"Three of Pentacles",
-"Four of Pentacles",
-"Five of Pentacles",
-"Six of Pentacles",
-"Seven of Pentacles",
-"Eight of Pentacles",
-"Nine of Pentacles",
-"Ten of Pentacles",
-"Page of Pentacles",
-"Knight of Pentacles",
-"Queen of Pentacles",
-"King of Pentacles"
-
+const tarotCards=[
+"the-fool","the-magician","the-high-priestess","the-empress",
+"the-emperor","the-hierophant","the-lovers","the-chariot",
+"strength","the-hermit","wheel-of-fortune","justice",
+"the-hanged-man","death","temperance","the-devil",
+"the-tower","the-star","the-moon","the-sun",
+"judgement","the-world"
 ];
 
-
-/* =====================
-   KATINA DECK
-===================== */
-
-const katinaCards = [
-
-"Dastar",
-"Mida",
-"Selçuksassa",
-"Tattaret",
-"Gamhat",
-"Aral",
-"Saah",
-"Sunit",
-"Adhamdeva",
-"Parsadra",
-"Urmiaa",
-"Assyranta",
-"Dare",
-"Eprahhat",
-"Tagral",
-"Turan",
-"İshafan",
-"Bedes",
-"Ariman",
-"Selena",
-"Zara",
-"Hesse",
-"Kalif",
-"Munzur",
-"Attart",
-"Valide",
-"Çapa",
-"Tilki",
-"Çiçekler",
-"Yıldızlar",
-"Alyans",
-"Dağ",
-"Yatağan",
-"Mektup",
-"Ağaç",
-"Derviş",
-"Yol",
-"Güneş",
-"Deve",
-"Kalp",
-"Bahçeler",
-"Anahtar",
-"Kitap",
-"Baykuş",
-"Mezar",
-"Yelkenli",
-"Nil",
-"Afyon",
-"Kız Çocuğu",
-"Fareler",
-"Kapı",
-"Kale",
-"Samyeli",
-"Köpek",
-"Ev",
-"Haç",
-"Bulutlar",
-"Ay",
-"Yılan",
-"Süpürge",
-"Balık",
-"Deste"
-
+const tarotNames=[
+"The Fool","The Magician","The High Priestess","The Empress",
+"The Emperor","The Hierophant","The Lovers","The Chariot",
+"Strength","The Hermit","Wheel of Fortune","Justice",
+"The Hanged Man","Death","Temperance","The Devil",
+"The Tower","The Star","The Moon","The Sun",
+"Judgement","The World"
 ];
 
+const minor=[
+"Ace of Wands","Two of Wands","Three of Wands","Four of Wands",
+"Five of Wands","Six of Wands","Seven of Wands","Eight of Wands",
+"Nine of Wands","Ten of Wands","Page of Wands","Knight of Wands",
+"Queen of Wands","King of Wands",
 
-/* =====================
-   VARIABLES
-===================== */
+"Ace of Cups","Two of Cups","Three of Cups","Four of Cups",
+"Five of Cups","Six of Cups","Seven of Cups","Eight of Cups",
+"Nine of Cups","Ten of Cups","Page of Cups","Knight of Cups",
+"Queen of Cups","King of Cups",
 
-let currentReading = "";
+"Ace of Swords","Two of Swords","Three of Swords","Four of Swords",
+"Five of Swords","Six of Swords","Seven of Swords","Eight of Swords",
+"Nine of Swords","Ten of Swords","Page of Swords","Knight of Swords",
+"Queen of Swords","King of Swords",
 
-let currentStyle = "";
+"Ace of Pentacles","Two of Pentacles","Three of Pentacles","Four of Pentacles",
+"Five of Pentacles","Six of Pentacles","Seven of Pentacles","Eight of Pentacles",
+"Nine of Pentacles","Ten of Pentacles","Page of Pentacles","Knight of Pentacles",
+"Queen of Pentacles","King of Pentacles"
+];
 
-let cardCount = 3;
+const positionsMap={
+1:["1. Kart — Sorunun ana enerjisi"],
+3:["1. Kart — Geçmiş","2. Kart — Şu an","3. Kart — Gelecek"],
+5:[
+"1. Kart — Geçmiş / Kök enerji",
+"2. Kart — Şu anki durum",
+"3. Kart — Karşı tarafın enerjisi",
+"4. Kart — Önündeki engel / Gizli etki",
+"5. Kart — Olası sonuç"
+]};
 
-let shuffled = [];
+function selectMethod(method,element){
 
-let selected = [];
+selectedMethod=method;
 
+document.querySelectorAll(".method").forEach(x=>x.classList.remove("active"));
+element.classList.add("active");
 
-/* =====================
-   READING SELECTION
-===================== */
+if(method==="coffee"){
 
-function selectReading(
-type,
-element
-) {
+document.getElementById("cardSection").classList.add("hidden");
+document.getElementById("deckArea").classList.add("hidden");
+document.getElementById("positionsBox").classList.add("hidden");
+document.getElementById("coffeeUpload").classList.remove("hidden");
 
-currentReading = type;
+}else{
 
+document.getElementById("cardSection").classList.remove("hidden");
+document.getElementById("deckArea").classList.remove("hidden");
+document.getElementById("positionsBox").classList.remove("hidden");
+document.getElementById("coffeeUpload").classList.add("hidden");
 
-document
-.querySelectorAll(".reading-type")
-.forEach(item => {
+createDeck();
+updatePositions();
 
-item.classList.remove(
-"active"
-);
+}
 
+}
+
+function selectCards(number,element){
+
+selectedCards=number;
+pickedCards=[];
+
+document.querySelectorAll(".option").forEach(x=>x.classList.remove("active"));
+element.classList.add("active");
+
+createDeck();
+updatePositions();
+}
+
+function createDeck(){
+
+const deck=document.getElementById("deck");
+deck.innerHTML="";
+pickedCards=[];
+
+let cards=[];
+
+if(selectedMethod==="tarot"){
+
+tarotNames.forEach((name,i)=>{
+cards.push({
+name:name,
+image:"images/tarot/"+tarotCards[i]+".jpg"
+});
 });
 
-
-element.classList.add(
-"active"
-);
-
-
-document
-.getElementById("tarotOptions")
-.style.display = "none";
-
-
-document
-.getElementById("katinaOptions")
-.style.display = "none";
-
-
-document
-.getElementById("coffeeSection")
-.style.display = "none";
-
-
-document
-.getElementById("cardForm")
-.style.display = "none";
-
-
-document
-.getElementById("cardArea")
-.classList.add("hidden");
-
-
-if (type === "tarot") {
-
-document
-.getElementById("tarotOptions")
-.style.display = "block";
-
-}
-
-
-if (type === "katina") {
-
-document
-.getElementById("katinaOptions")
-.style.display = "block";
-
-}
-
-
-if (type === "coffee") {
-
-document
-.getElementById("coffeeSection")
-.style.display = "block";
-
-document
-.getElementById("coffeeForm")
-.style.display = "block";
-
-document
-.getElementById("coffeeSection")
-.scrollIntoView({
-behavior: "smooth"
+minor.forEach(name=>{
+cards.push({
+name:name,
+image:"images/tarot/minor/"+slug(name)+".jpg"
+});
 });
 
-}
+}else{
 
-}
-
-
-/* =====================
-   START CARDS
-===================== */
-
-function startCards(
-type,
-count,
-button,
-style
-) {
-
-currentReading = type;
-
-currentStyle = style;
-
-cardCount = count;
-
-selected = [];
-
-
-document
-.querySelectorAll(".option-button")
-.forEach(item => {
-
-item.classList.remove(
-"active"
-);
-
+for(let i=1;i<=65;i++){
+cards.push({
+name:"Katina "+i,
+image:"images/katina/katina-"+i+".jpg"
 });
+}
 
+}
 
-button.classList.add(
-"active"
-);
+cards.sort(()=>Math.random()-.5);
 
+cards.forEach((card,index)=>{
 
-document
-.getElementById("coffeeSection")
-.style.display = "none";
+const wrapper=document.createElement("div");
+wrapper.className="card";
+wrapper.dataset.name=card.name;
+wrapper.dataset.image=card.image;
 
+wrapper.innerHTML=`
+<div class="card-inner">
+<div class="card-face card-back"></div>
+<div class="card-face card-front">
+<img src="${card.image}" alt="${card.name}" onerror="this.style.display='none'">
+<div class="card-name">${card.name}</div>
+</div>
+</div>`;
 
-document
-.getElementById("cardForm")
-.style.display = "none";
+wrapper.onclick=()=>pickCard(wrapper);
 
+deck.appendChild(wrapper);
 
-document
-.getElementById("cardArea")
-.classList.remove("hidden");
-
-
-document
-.getElementById("instruction")
-.innerHTML =
-
-"<strong>Choose " +
-count +
-" card" +
-(count > 1 ? "s" : "") +
-" from the deck</strong>";
-
-
-const deck =
-type === "tarot"
-? tarotCards
-: katinaCards;
-
-
-shuffled =
-[...deck]
-.sort(
-() => Math.random() - 0.5
-)
-.slice(0, 24);
-
-
-renderCards();
-
-
-document
-.getElementById("cardArea")
-.scrollIntoView({
-behavior: "smooth"
 });
 
 }
 
+function pickCard(card){
 
-/* =====================
-   RENDER
-===================== */
+if(card.classList.contains("flipped")) return;
+if(pickedCards.length>=selectedCards) return;
 
-function renderCards() {
+card.classList.add("flipped");
 
-const container =
-document.getElementById("cards");
+pickedCards.push({
+name:card.dataset.name,
+image:card.dataset.image
+});
 
+setTimeout(()=>{
+renderSelected();
+},500);
 
-container.innerHTML = "";
+}
 
+function renderSelected(){
 
-shuffled.forEach(
-(cardName, index) => {
+const area=document.getElementById("selectedCards");
+area.innerHTML="";
 
-const button =
-document.createElement(
-"button"
-);
+pickedCards.forEach((card,i)=>{
 
+const box=document.createElement("div");
+box.className="selected-slot";
 
-button.type = "button";
+box.innerHTML=`
+<span>${positionsMap[selectedCards][i]}</span>
+<div class="selected-card">
+<img src="${card.image}" alt="${card.name}">
+</div>
+`;
 
-button.className = "card";
+area.appendChild(box);
 
+});
 
-button.innerHTML =
+}
 
-'<div class="card-number">' +
-"CARD " +
-(index + 1) +
-"</div>";
+function updatePositions(){
 
+const positions=document.getElementById("positions");
+positions.innerHTML="";
 
-button.onclick =
-function() {
+positionsMap[selectedCards].forEach(text=>{
 
-if (
-button.classList.contains(
-"selected"
-)
-) {
+const div=document.createElement("div");
+div.className="position";
+div.textContent=text;
+positions.appendChild(div);
 
+});
+
+}
+
+function selectReading(element){
+
+document.querySelectorAll(".reading-type")
+.forEach(x=>x.classList.remove("active"));
+
+element.classList.add("active");
+selectedReading=element.innerText.trim();
+
+}
+
+function slug(text){
+
+return text
+.toLowerCase()
+.replaceAll(" ","-")
+.replaceAll("of-","")
+.replaceAll("ace-","ace-")
+.replaceAll("ı","i")
+.replaceAll("ş","s")
+.replaceAll("ç","c")
+.replaceAll("ğ","g")
+.replaceAll("ü","u")
+.replaceAll("ö","o");
+
+}
+
+function submitReading(){
+
+const name=document.getElementById("name").value.trim();
+const email=document.getElementById("email").value.trim();
+const question=document.getElementById("question").value.trim();
+
+if(!name||!email||!question){
+
+alert("Lütfen isim, e-posta ve sorunuzu doldurun.");
 return;
 
 }
 
+if(selectedMethod!=="coffee" && pickedCards.length!==selectedCards){
 
-if (
-selected.length >=
-cardCount
-) {
-
+alert("Lütfen seçtiğin kart sayısı kadar kart seç.");
 return;
 
 }
 
+if(selectedMethod==="coffee"){
 
-selected.push(
-cardName
-);
+const photos=document.getElementById("coffeePhotos").files;
 
+if(!photos.length){
 
-button.classList.add(
-"selected"
-);
+alert("Lütfen kahve fotoğrafınızı yükleyin.");
+return;
 
+}
 
-if (
-selected.length ===
-cardCount
-) {
+}
 
-document
-.querySelectorAll(
-"#cards .card"
-)
-.forEach(card => {
+let cardsText="";
 
-card.disabled = true;
-
+pickedCards.forEach((card,i)=>{
+cardsText+=`\n${i+1}. ${card.name}`;
 });
-
-
-setTimeout(
-revealCards,
-600
-);
-
-}
-
-};
-
-
-container.appendChild(
-button
-);
-
-}
-);
-
-}
-
-
-/* =====================
-   POSITIONS
-===================== */
-
-function getPositions() {
-
-if (currentStyle.includes(
-"Love"
-)) {
-
-if (cardCount === 3) {
-
-return [
-"Your Energy",
-"Their Energy",
-"The Connection"
-];
-
-}
-
-}
-
-if (currentStyle.includes(
-"Feelings"
-)) {
-
-return [
-"Their Feelings",
-"Their Thoughts",
-"Their Intentions"
-];
-
-}
-
-if (currentStyle.includes(
-"Career"
-)) {
-
-return [
-"Current Situation",
-"Challenge",
-"Guidance"
-];
-
-}
-
-if (cardCount === 1) {
-
-return [
-"Your Message"
-];
-
-}
-
-if (cardCount === 3) {
-
-return [
-"Past",
-"Present",
-"Future"
-];
-
-}
-
-if (cardCount === 5) {
-
-return [
-"Current Energy",
-"Past Influence",
-"Present Situation",
-"Challenge",
-"Guidance"
-];
-
-}
-
-return [];
-
-}
-
-
-/* =====================
-   REVEAL
-===================== */
-
-function revealCards() {
-
-const positions =
-getPositions();
-
-
-document
-.querySelectorAll(
-"#cards .card"
-)
-.forEach(
-(card, index) => {
-
-if (
-selected.includes(
-shuffled[index]
-)
-) {
-
-const selectedIndex =
-selected.indexOf(
-shuffled[index]
-);
-
-
-card.classList.add(
-"revealed"
-);
-
-
-card.innerHTML =
-
-'<div class="card-name">' +
-
-positions[
-selectedIndex
-] +
-
-"<br><br>" +
-
-shuffled[index] +
-
-"</div>";
-
-}
-
-}
-);
-
-
-let result = "";
-
-selected.forEach(
-(card, index) => {
-
-result +=
-
-"<strong>" +
-
-positions[index] +
-
-"</strong>: " +
-
-card +
-
-"<br>";
-
-}
-);
-
-
-document
-.getElementById(
-"chosenCards"
-)
-.innerHTML = result;
-
-
-document
-.getElementById(
-"cardsInput"
-)
-.value =
-selected.join(", ");
-
-
-document
-.getElementById(
-"positionsInput"
-)
-.value =
-positions.join(" | ");
-
-
-document
-.getElementById(
-"readingTypeInput"
-)
-.value =
-
-currentReading === "tarot"
-? "Tarot Reading"
-: "Katina Reading";
-
-
-document
-.getElementById(
-"readingStyleInput"
-)
-.value =
-currentStyle;
-
-
-document
-.getElementById(
-"cardForm"
-)
-.style.display =
-"block";
-
-
-document
-.getElementById(
-"cardForm"
-)
-.scrollIntoView({
-behavior: "smooth"
-});
-
-}
-
-
-/* =====================
-   COFFEE PREVIEW
-===================== */
-
-const coffeePhotos =
-document.getElementById(
-"coffeePhotos"
-);
-
-
-const preview =
-document.getElementById(
-"preview"
-);
-
-
-coffeePhotos.addEventListener(
-"change",
-function() {
-
-preview.innerHTML = "";
-
-
-const files =
-Array.from(
-this.files
-).slice(0, 3);
-
-
-if (
-this.files.length > 3
-) {
 
 alert(
-"Please upload a maximum of 3 photos."
+"🔮 Falın hazırlandı!\n\n"+
+"Fal: "+getMethodName()+"\n"+
+"Açılım: "+selectedReading+
+"\nKartlar:"+cardsText+
+"\n\nTeşekkürler "+name+" ✨"
 );
 
 }
 
+function getMethodName(){
 
-const dataTransfer =
-new DataTransfer();
-
-
-files.forEach(
-file => {
-
-dataTransfer.items.add(
-file
-);
-
-
-const reader =
-new FileReader();
-
-
-reader.onload =
-function(event) {
-
-const img =
-document.createElement(
-"img"
-);
-
-
-img.src =
-event.target.result;
-
-
-preview.appendChild(
-img
-);
-
-};
-
-
-reader.readAsDataURL(
-file
-);
+if(selectedMethod==="tarot") return "Tarot";
+if(selectedMethod==="katina") return "Katina — 65 Kart";
+return "Turkish Coffee Reading";
 
 }
-);
 
-
-this.files =
-dataTransfer.files;
-
-}
-);
+createDeck();
+updatePositions();
 
 </script>
 
 </body>
-
 </html>
