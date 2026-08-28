@@ -514,6 +514,7 @@ Kahve fincanındaki semboller üzerinden kişisel yorum.
 
 </div>
 
+
 <div id="cardSection">
 
 <h2 class="section-title">
@@ -559,6 +560,7 @@ Detaylı açılım
 
 </div>
 
+
 <h2 class="section-title">
 ✨ Açılım Konusu
 </h2>
@@ -602,6 +604,7 @@ onclick="selectReading(this)">
 
 </div>
 
+
 <div id="cardSelection">
 
 <h2 class="section-title">
@@ -612,15 +615,23 @@ onclick="selectReading(this)">
 1 kart seçmelisin.
 </p>
 
-<div class="card-table" id="cardTable"></div>
+<div
+class="card-table"
+id="cardTable">
+</div>
 
-<div class="selected-summary" id="selectedSummary"></div>
+<div
+class="selected-summary"
+id="selectedSummary">
+</div>
 
 </div>
+
 
 <h2 class="section-title">
 📝 Bilgilerini Gir
 </h2>
+
 
 <div class="form-box">
 
@@ -631,13 +642,30 @@ method="POST"
 enctype="multipart/form-data"
 >
 
-<input type="hidden" name="fal_turu" id="formMethod">
+<input
+type="hidden"
+name="fal_turu"
+id="formMethod"
+>
 
-<input type="hidden" name="kart_sayisi" id="formCardCount">
+<input
+type="hidden"
+name="kart_sayisi"
+id="formCardCount"
+>
 
-<input type="hidden" name="acilim_konusu" id="formReading">
+<input
+type="hidden"
+name="acilim_konusu"
+id="formReading"
+>
 
-<input type="hidden" name="secilen_kartlar" id="formCards">
+<input
+type="hidden"
+name="secilen_kartlar"
+id="formCards"
+>
+
 
 <label>
 İsim
@@ -651,6 +679,7 @@ placeholder="Adınız"
 required
 >
 
+
 <label>
 E-posta
 </label>
@@ -663,6 +692,7 @@ placeholder="ornek@email.com"
 required
 >
 
+
 <label>
 Sorun
 </label>
@@ -673,6 +703,7 @@ id="question"
 placeholder="Falınızda cevaplanmasını istediğiniz soruyu yazın..."
 required
 ></textarea>
+
 
 <div id="positionsBox">
 
@@ -686,6 +717,7 @@ id="positions">
 </div>
 
 </div>
+
 
 <div
 id="coffeeUpload"
@@ -711,6 +743,7 @@ multiple
 
 </div>
 
+
 <button
 type="submit"
 class="submit"
@@ -720,16 +753,16 @@ class="submit"
 
 </form>
 
-<p class="notice">
 
+<p class="notice">
 Gönderdiğin bilgiler seçtiğin fal hizmetini hazırlamak
 amacıyla kullanılacaktır.
-
 </p>
 
 </div>
 
 </main>
+
 
 <footer>
 
@@ -759,18 +792,16 @@ let selectedCardNames = [];
 
 
 /* =========================
-   GITHUB
+   GITHUB RAW
 ========================= */
 
-const GITHUB =
-"https://github.com/ilaydamystic/ilayda-mystic/blob/main/";
+const RAW =
+"https://raw.githubusercontent.com/ilaydamystic/ilayda-mystic/main/";
 
 
-/*
-   DİKKAT:
-   Buradaki dosya isimleri GitHub'daki
-   gerçek isimlerle birebir kullanılıyor.
-*/
+/* =========================
+   22 MAJOR ARCANA
+========================= */
 
 const tarotCards = [
 
@@ -792,7 +823,7 @@ const tarotCards = [
 
 ["Strength","    strength.JPG"],
 
-["The Hermit"," the-hermit.JPG"],
+["The Hermit","the-hermit.JPG"],
 
 ["Wheel of Fortune","    wheel-of-fortune.JPG"],
 
@@ -822,12 +853,12 @@ const tarotCards = [
 
 
 /* =========================
-   KARIŞTIRMA
+   KARIŞTIR
 ========================= */
 
 function shuffleCards(cards){
 
-const array = [...cards];
+let array = [...cards];
 
 for(
 let i = array.length - 1;
@@ -835,16 +866,14 @@ i > 0;
 i--
 ){
 
-const randomIndex =
+let randomIndex =
 Math.floor(Math.random() * (i + 1));
 
-[
-array[i],
-array[randomIndex]
-] = [
-array[randomIndex],
-array[i]
-];
+let temp = array[i];
+
+array[i] = array[randomIndex];
+
+array[randomIndex] = temp;
 
 }
 
@@ -854,21 +883,25 @@ return array;
 
 
 /* =========================
-   GÖRSEL URL
+   GÖRSEL ADRESİ
 ========================= */
 
-function getImageURL(filename){
+function imageURL(filename){
 
 /*
-   GitHub dosya adını olduğu gibi
-   URL'ye çeviriyoruz.
+   Magician dahil olmak üzere
+   dosya adının başındaki boşlukları
+   özellikle temizliyoruz.
 
-   Baştaki boşluklar da korunuyor.
+   Çünkü GitHub dosyayı sayfada
+   the-magician.JPG olarak tanıyor.
 */
 
-return GITHUB +
-encodeURIComponent(filename) +
-"?raw=true";
+let cleanName =
+filename.trim();
+
+return RAW +
+encodeURIComponent(cleanName);
 
 }
 
@@ -943,6 +976,8 @@ function selectCards(number,element){
 
 selectedCards = number;
 
+selectedCardNames = [];
+
 document
 .querySelectorAll(".option")
 .forEach(
@@ -984,10 +1019,10 @@ element.innerText.trim();
 
 function updatePositions(){
 
-const positions =
+let positions =
 document.getElementById("positions");
 
-const positionData = {
+let positionData = {
 
 1:[
 "1. Kart — Sorunun ana enerjisi"
@@ -1014,12 +1049,14 @@ positions.innerHTML = "";
 positionData[selectedCards]
 .forEach(text=>{
 
-const div =
+let div =
 document.createElement("div");
 
-div.className = "position";
+div.className =
+"position";
 
-div.textContent = text;
+div.textContent =
+text;
 
 positions.appendChild(div);
 
@@ -1029,103 +1066,101 @@ positions.appendChild(div);
 
 
 /* =========================
-   KARTLARI OLUŞTUR
+   KARTLARI GÖSTER
 ========================= */
 
 function renderCards(){
 
-const table =
+let table =
 document.getElementById("cardTable");
 
 table.innerHTML = "";
 
 selectedCardNames = [];
 
-document
-.getElementById("selectedSummary")
-.classList.remove("show");
+let summary =
+document.getElementById("selectedSummary");
 
-document
-.getElementById("selectedSummary")
-.innerHTML = "";
+summary.innerHTML = "";
+
+summary.classList.remove("show");
+
 
 document
 .getElementById("cardInstruction")
 .textContent =
-selectedCards + " kart seçmelisin.";
+selectedCards +
+" kart seçmelisin.";
 
 
 /*
-   HER SEFERİNDE 22 KART
-   YENİDEN KARIŞTIRILIYOR.
+   HER RENDER'DA YENİ
+   KARIŞIK SIRA
 */
 
-const shuffled =
+let shuffled =
 shuffleCards(tarotCards);
 
 
 shuffled.forEach(card=>{
 
-const wrapper =
+let wrapper =
 document.createElement("div");
 
 wrapper.className =
 "tarot-card";
 
 
-const inner =
+let inner =
 document.createElement("div");
 
 inner.className =
 "card-inner";
 
 
-/* ARKA */
-
-const back =
+let back =
 document.createElement("div");
 
 back.className =
 "card-face card-back";
 
 
-/* ÖN */
-
-const front =
+let front =
 document.createElement("div");
 
 front.className =
 "card-face card-front";
 
 
-const image =
+let image =
 document.createElement("img");
 
 image.alt =
-"Tarot Card";
+card[0];
 
 image.src =
-getImageURL(card[1]);
+imageURL(card[1]);
 
 
 /*
-   Eğer GitHub raw=true adresi
-   yüklenmezse alternatif olarak
-   raw.githubusercontent adresini
-   deniyoruz.
+   Raw GitHub yüklenemezse
+   GitHub'ın raw=true sayfasını
+   ikinci seçenek olarak deniyoruz.
 */
 
 image.onerror = function(){
 
-const filename =
-card[1];
-
 image.onerror = null;
 
+let cleanName =
+card[1].trim();
+
 image.src =
-"https://raw.githubusercontent.com/" +
-"ilaydamystic/ilayda-mystic/main/" +
-encodeURIComponent(filename);
+"https://github.com/" +
+"ilaydamystic/ilayda-mystic/" +
+"blob/main/" +
+encodeURIComponent(cleanName) +
+"?raw=true";
 
 };
 
@@ -1140,7 +1175,7 @@ wrapper.appendChild(inner);
 
 
 /*
-   KARTA BASILDIĞINDA
+   KARTA BAS
 */
 
 wrapper.addEventListener(
@@ -1148,8 +1183,8 @@ wrapper.addEventListener(
 function(){
 
 /*
-   AÇILMIŞ KART TEKRAR
-   KAPANMAYACAK.
+   Kart daha önce açıldıysa
+   tekrar kapanmaz.
 */
 
 if(
@@ -1162,7 +1197,7 @@ return;
 
 
 /*
-   MAKSİMUM KART
+   Maksimum kart
 */
 
 if(
@@ -1190,7 +1225,7 @@ wrapper.classList.add("flipped");
 
 
 /*
-   SEÇİLEN KARTI KAYDET
+   KARTI KAYDET
 */
 
 selectedCardNames.push(
@@ -1216,7 +1251,7 @@ table.appendChild(wrapper);
 
 function updateSummary(){
 
-const box =
+let box =
 document.getElementById(
 "selectedSummary"
 );
