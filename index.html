@@ -66,7 +66,6 @@ margin:42px 0 20px;
 color:#efd5ff;
 }
 
-
 /* FAL TÜRLERİ */
 
 .methods{
@@ -111,7 +110,6 @@ font-size:14px;
 line-height:1.5;
 }
 
-
 /* KART SAYISI */
 
 .options{
@@ -141,7 +139,6 @@ margin-top:6px;
 color:#bdaac8;
 }
 
-
 /* AÇILIM KONUSU */
 
 .reading-types{
@@ -164,7 +161,6 @@ cursor:pointer;
 border-color:#d7a7ff;
 background:rgba(166,94,220,.18);
 }
-
 
 /* TAROT */
 
@@ -276,11 +272,10 @@ object-fit:cover;
 display:block;
 }
 
+/* KART İSMİ YOK */
+
 .card-name{
-text-align:center;
-margin-top:8px;
-color:#e4c68e;
-font-size:12px;
+display:none;
 }
 
 .tarot-card.selected{
@@ -310,7 +305,6 @@ display:block;
 .selected-card-name{
 color:#e6c58a;
 }
-
 
 /* FORM */
 
@@ -441,7 +435,6 @@ padding:20px;
 </style>
 </head>
 
-
 <body>
 
 <header>
@@ -458,9 +451,7 @@ Tarot • Katina • Turkish Coffee Reading
 
 </header>
 
-
 <main class="container">
-
 
 <p class="intro">
 
@@ -472,16 +463,13 @@ evlilik, kararlar ve dileklerin için sana özel yorumlama.
 
 </p>
 
-
 <!-- FAL TÜRÜ -->
 
 <h2 class="section-title">
 🔮 Fal Türünü Seç
 </h2>
 
-
 <div class="methods">
-
 
 <div class="method active"
 onclick="selectMethod('tarot',this)">
@@ -496,7 +484,6 @@ Tarot kartlarıyla sana özel sezgisel açılım.
 
 </div>
 
-
 <div class="method"
 onclick="selectMethod('katina',this)">
 
@@ -509,7 +496,6 @@ onclick="selectMethod('katina',this)">
 </p>
 
 </div>
-
 
 <div class="method"
 onclick="selectMethod('coffee',this)">
@@ -524,9 +510,7 @@ Kahve fincanındaki semboller üzerinden kişisel yorum.
 
 </div>
 
-
 </div>
-
 
 <!-- KART SAYISI -->
 
@@ -536,9 +520,7 @@ Kahve fincanındaki semboller üzerinden kişisel yorum.
 🃏 Kart Sayısını Seç
 </h2>
 
-
 <div class="options">
-
 
 <div class="option active"
 onclick="selectCards(1,this)">
@@ -551,7 +533,6 @@ Tek ve net mesaj
 
 </div>
 
-
 <div class="option"
 onclick="selectCards(3,this)">
 
@@ -562,7 +543,6 @@ Geçmiş • Şimdi • Gelecek
 </small>
 
 </div>
-
 
 <div class="option"
 onclick="selectCards(5,this)">
@@ -575,11 +555,9 @@ Detaylı açılım
 
 </div>
 
-
 </div>
 
 </div>
-
 
 <!-- KONU -->
 
@@ -587,54 +565,44 @@ Detaylı açılım
 ✨ Açılım Konusu
 </h2>
 
-
 <div class="reading-types">
-
 
 <div class="reading-type active"
 onclick="selectReading(this)">
 ❤️ Love & Relationship
 </div>
 
-
 <div class="reading-type"
 onclick="selectReading(this)">
 💭 Feelings & Intentions
 </div>
-
 
 <div class="reading-type"
 onclick="selectReading(this)">
 ❓ Yes / No
 </div>
 
-
 <div class="reading-type"
 onclick="selectReading(this)">
 💼 Career
 </div>
-
 
 <div class="reading-type"
 onclick="selectReading(this)">
 💍 Marriage
 </div>
 
-
 <div class="reading-type"
 onclick="selectReading(this)">
 ⚖️ Decision
 </div>
-
 
 <div class="reading-type"
 onclick="selectReading(this)">
 🌙 Dilek
 </div>
 
-
 </div>
-
 
 <!-- KARTLAR -->
 
@@ -644,27 +612,22 @@ onclick="selectReading(this)">
 🎴 Kartlarını Seç
 </h2>
 
-
 <p class="card-instruction"
 id="cardInstruction">
 1 kart seçmelisin.
 </p>
-
 
 <div
 class="card-table"
 id="cardTable">
 </div>
 
-
 <div
 class="selected-summary"
 id="selectedSummary">
 </div>
 
-
 </div>
-
 
 <!-- FORM -->
 
@@ -672,9 +635,7 @@ id="selectedSummary">
 📝 Bilgilerini Gir
 </h2>
 
-
 <div class="form-box">
-
 
 <form
 id="readingForm"
@@ -683,13 +644,11 @@ method="POST"
 enctype="multipart/form-data"
 >
 
-
 <input
 type="hidden"
 name="fal_turu"
 id="formMethod"
 >
-
 
 <input
 type="hidden"
@@ -697,20 +656,17 @@ name="kart_sayisi"
 id="formCardCount"
 >
 
-
 <input
 type="hidden"
 name="acilim_konusu"
 id="formReading"
 >
 
-
 <input
 type="hidden"
 name="secilen_kartlar"
 id="formCards"
 >
-
 
 <label>
 İsim
@@ -724,7 +680,6 @@ placeholder="Adınız"
 required
 >
 
-
 <label>
 E-posta
 </label>
@@ -737,7 +692,6 @@ placeholder="ornek@email.com"
 required
 >
 
-
 <label>
 Sorun
 </label>
@@ -748,7 +702,6 @@ id="question"
 placeholder="Falınızda cevaplanmasını istediğiniz soruyu yazın..."
 required
 ></textarea>
-
 
 <!-- POZİSYONLAR -->
 
@@ -764,7 +717,6 @@ id="positions">
 </div>
 
 </div>
-
 
 <!-- KAHVE -->
 
@@ -782,7 +734,6 @@ Fincanının içini ve mümkünse tabağını
 net şekilde gösteren fotoğrafları yükleyebilirsin.
 </p>
 
-
 <input
 type="file"
 id="coffeePhotos"
@@ -793,7 +744,6 @@ multiple
 
 </div>
 
-
 <button
 type="submit"
 class="submit"
@@ -801,9 +751,7 @@ class="submit"
 🔮 Falımı Gönder
 </button>
 
-
 </form>
-
 
 <p class="notice">
 
@@ -812,12 +760,9 @@ amacıyla kullanılacaktır.
 
 </p>
 
-
 </div>
 
-
 </main>
-
 
 <footer>
 
@@ -829,9 +774,7 @@ Tarot • Katina • Turkish Coffee Reading
 
 </footer>
 
-
 <script>
-
 
 /* =========================
    AYARLAR
@@ -848,60 +791,60 @@ let selectedCardNames=[];
 
 
 /* =========================
-   22 GERÇEK KART DOSYASI
+   22 MAJOR ARCANA
 ========================= */
 
 const tarotCards=[
 
-["The Fool","the-fool.JPG"],
+["The Fool","./the-fool.JPG"],
 
-["The Magician","the-magician.JPG"],
+["The Magician","./the-magician.JPG"],
 
-["The High Priestess","the-high-priestess.JPG"],
+["The High Priestess","./the-high-priestess.JPG"],
 
-["The Empress","the-empress.JPG"],
+["The Empress","./the-empress.JPG"],
 
-["The Emperor","the-emperor.JPG"],
+["The Emperor","./the-emperor.JPG"],
 
-["The Hierophant","the-hierophant.JPG"],
+["The Hierophant","./the-hierophant.JPG"],
 
-["The Lovers","the-lovers.JPG"],
+["The Lovers","./the-lovers.JPG"],
 
-["The Chariot","the-chariot.JPG"],
+["The Chariot","./the-chariot.JPG"],
 
-["Strength","strength.JPG"],
+["Strength","./strength.JPG"],
 
-["The Hermit","the-hermit.JPG"],
+["The Hermit","./the-hermit.JPG"],
 
-["Wheel of Fortune","wheel-of-fortune.JPG"],
+["Wheel of Fortune","./wheel-of-fortune.JPG"],
 
-["Justice","justice.JPG"],
+["Justice","./justice.JPG"],
 
-["The Hanged Man","the-hanged-man.JPG"],
+["The Hanged Man","./the-hanged-man.JPG"],
 
-["Death","death.JPG"],
+["Death","./death.JPG"],
 
-["Temperance","temperance.JPG"],
+["Temperance","./temperance.JPG"],
 
-["The Devil","the-devil.JPG"],
+["The Devil","./the-devil.JPG"],
 
-["The Tower","the-tower.JPG"],
+["The Tower","./the-tower.JPG"],
 
-["The Star","the-star.JPG"],
+["The Star","./the-star.JPG"],
 
-["The Moon","the-moon.JPG"],
+["The Moon","./the-moon.JPG"],
 
-["The Sun","the-sun.JPG"],
+["The Sun","./the-sun.JPG"],
 
-["Judgement","judgement.JPG"],
+["Judgement","./judgement.JPG"],
 
-["The World","the-world.JPG"]
+["The World","./the-world.JPG"]
 
 ];
 
 
 /* =========================
-   GERÇEKTEN KARIŞTIRMA
+   KARIŞTIRMA
 ========================= */
 
 function shuffleCards(cards){
@@ -913,11 +856,8 @@ for(let i=array.length-1;i>0;i--){
 let randomIndex=
 Math.floor(Math.random()*(i+1));
 
-let temp=array[i];
-
-array[i]=array[randomIndex];
-
-array[randomIndex]=temp;
+[array[i],array[randomIndex]]=
+[array[randomIndex],array[i]];
 
 }
 
@@ -1064,9 +1004,7 @@ let positionData={
 
 };
 
-
 positions.innerHTML="";
-
 
 positionData[selectedCards]
 .forEach(text=>{
@@ -1086,7 +1024,7 @@ positions.appendChild(div);
 
 
 /* =========================
-   KARTLARI GÖSTER
+   KARTLARI OLUŞTUR
 ========================= */
 
 function renderCards(){
@@ -1102,6 +1040,9 @@ document
 .getElementById("selectedSummary")
 .classList.remove("show");
 
+document
+.getElementById("selectedSummary")
+.innerHTML="";
 
 document
 .getElementById("cardInstruction")
@@ -1111,42 +1052,44 @@ selectedCards+
 
 
 /*
-   HER RENDER'DA
-   22 KART KARIŞIYOR
+   22 KARTI HER SEFERİNDE
+   YENİDEN KARIŞTIR
 */
 
-let shuffled=
+const shuffledCards=
 shuffleCards(tarotCards);
 
 
-shuffled.forEach(card=>{
+shuffledCards.forEach(card=>{
 
-let wrapper=
+const wrapper=
 document.createElement("div");
 
 wrapper.className="tarot-card";
 
 
+/*
+   SADECE KARTI OLUŞTUR.
+   KART İSMİ SAYFAYA YAZILMIYOR.
+*/
+
 wrapper.innerHTML=`
 
 <div class="card-inner">
 
-<div class="card-face card-back">
-</div>
+<div class="card-face card-back"></div>
 
 <div class="card-face card-front">
 
 <img
 src="${card[1]}"
-alt="${card[0]}"
+alt="Tarot Card"
+loading="lazy"
+onerror="this.style.display='none';"
 >
 
 </div>
 
-</div>
-
-<div class="card-name">
-${card[0]}
 </div>
 
 `;
@@ -1155,7 +1098,8 @@ ${card[0]}
 wrapper.addEventListener("click",function(){
 
 /*
-   SEÇİLİYSE GERİ AL
+   ZATEN SEÇİLDİYSE
+   SEÇİMİ GERİ AL
 */
 
 if(
@@ -1179,7 +1123,7 @@ return;
 
 
 /*
-   MAKSİMUM SAYI
+   MAKSİMUM KART SAYISI
 */
 
 if(
@@ -1220,7 +1164,7 @@ table.appendChild(wrapper);
 
 
 /* =========================
-   SEÇİLENLER
+   SEÇİLEN KARTLAR
 ========================= */
 
 function updateSummary(){
@@ -1268,7 +1212,6 @@ document
 .addEventListener(
 "submit",
 function(e){
-
 
 if(selectedMethod!=="coffee"){
 
