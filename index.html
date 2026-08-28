@@ -7,7 +7,6 @@
 <title>ILAYDA MYSTIC | Tarot • Katina • Coffee</title>
 
 <style>
-
 *{
 box-sizing:border-box;
 margin:0;
@@ -139,7 +138,7 @@ margin-top:6px;
 color:#bdaac8;
 }
 
-/* AÇILIM KONUSU */
+/* KONU */
 
 .reading-types{
 display:grid;
@@ -185,9 +184,9 @@ padding:10px 0 30px;
 .tarot-card{
 width:125px;
 height:215px;
-perspective:1000px;
 cursor:pointer;
 transition:.3s;
+-webkit-tap-highlight-color:transparent;
 }
 
 .tarot-card:hover{
@@ -198,24 +197,20 @@ transform:translateY(-7px);
 width:100%;
 height:100%;
 position:relative;
-transition:transform .7s;
-transform-style:preserve-3d;
-}
-
-.tarot-card.flipped .card-inner{
-transform:rotateY(180deg);
 }
 
 .card-face{
 position:absolute;
 inset:0;
-backface-visibility:hidden;
--webkit-backface-visibility:hidden;
+width:100%;
+height:100%;
 border-radius:13px;
 overflow:hidden;
 }
 
 .card-back{
+display:block;
+
 background:
 radial-gradient(circle,rgba(210,160,255,.25),transparent 45%),
 repeating-linear-gradient(
@@ -238,11 +233,9 @@ position:absolute;
 inset:15px;
 border:1px solid rgba(224,180,110,.65);
 border-radius:8px;
-
 display:flex;
 align-items:center;
 justify-content:center;
-
 font-size:50px;
 color:#d9ad67;
 }
@@ -260,9 +253,17 @@ color:#d9ad67;
 }
 
 .card-front{
-transform:rotateY(180deg);
+display:none;
 background:#0c0710;
 border:2px solid #c99a5b;
+}
+
+.tarot-card.flipped .card-back{
+display:none;
+}
+
+.tarot-card.flipped .card-front{
+display:block;
 }
 
 .card-front img{
@@ -271,8 +272,6 @@ height:100%;
 object-fit:cover;
 display:block;
 }
-
-/* KART İSMİ TAMAMEN GİZLİ */
 
 .card-name{
 display:none !important;
@@ -285,6 +284,8 @@ transform:translateY(-12px) scale(1.04);
 .tarot-card.selected .card-front{
 box-shadow:0 0 22px rgba(218,170,255,.55);
 }
+
+/* SEÇİLENLER */
 
 .selected-summary{
 display:none;
@@ -431,7 +432,6 @@ padding:20px;
 }
 
 }
-
 </style>
 </head>
 
@@ -454,13 +454,11 @@ Tarot • Katina • Turkish Coffee Reading
 <main class="container">
 
 <p class="intro">
-
 Kartların ve sembollerin rehberliğinde kendi soruna özel,
 sezgisel bir açılım seç.
 
 Aşk, ilişkiler, duygular, kariyer,
 evlilik, kararlar ve dileklerin için sana özel yorumlama.
-
 </p>
 
 <h2 class="section-title">
@@ -589,20 +587,13 @@ onclick="selectReading(this)">
 🎴 Kartlarını Seç
 </h2>
 
-<p class="card-instruction"
-id="cardInstruction">
+<p class="card-instruction" id="cardInstruction">
 1 kart seçmelisin.
 </p>
 
-<div
-class="card-table"
-id="cardTable">
-</div>
+<div class="card-table" id="cardTable"></div>
 
-<div
-class="selected-summary"
-id="selectedSummary">
-</div>
+<div class="selected-summary" id="selectedSummary"></div>
 
 </div>
 
@@ -657,17 +648,11 @@ required
 
 <label>🃏 Kart Pozisyonları</label>
 
-<div
-class="positions"
-id="positions">
-</div>
+<div class="positions" id="positions"></div>
 
 </div>
 
-<div
-id="coffeeUpload"
-class="upload hidden"
->
+<div id="coffeeUpload" class="upload hidden">
 
 <strong>
 ☕ Kahve Fotoğraflarını Yükle
@@ -688,10 +673,7 @@ multiple
 
 </div>
 
-<button
-type="submit"
-class="submit"
->
+<button type="submit" class="submit">
 🔮 Falımı Gönder
 </button>
 
@@ -722,123 +704,90 @@ Tarot • Katina • Turkish Coffee Reading
    AYARLAR
 ========================= */
 
-let selectedMethod="tarot";
-
-let selectedCards=1;
-
-let selectedReading="❤️ Love & Relationship";
-
-let selectedCardNames=[];
+let selectedMethod = "tarot";
+let selectedCards = 1;
+let selectedReading = "❤️ Love & Relationship";
+let selectedCardNames = [];
 
 
 /* =========================
-   22 MAJOR ARCANA
+   GITHUB
 ========================= */
 
-/*
-   ÖNEMLİ:
-   GitHub dosyalarının bazı isimlerinde
-   başta boşluk olduğu için raw URL kullanıyoruz.
-*/
-
-const GITHUB_RAW=
+const GITHUB_RAW =
 "https://raw.githubusercontent.com/ilaydamystic/ilayda-mystic/main/";
 
 
-const tarotCards=[
+/*
+   GitHub'daki dosya isimleri.
+
+   Bazı dosyalarda başta boşluk olduğu için
+   raw URL oluştururken otomatik olarak
+   boşlukları temizlemeyi deniyoruz.
+*/
+
+const tarotCards = [
 
 ["The Fool","the-fool.JPG"],
-
 ["The Magician","the-magician.JPG"],
-
 ["The High Priestess","the-high-priestess.JPG"],
-
 ["The Empress","the-empress.JPG"],
-
 ["The Emperor","the-emperor.JPG"],
-
 ["The Hierophant","the-hierophant.JPG"],
-
 ["The Lovers","the-lovers.JPG"],
-
 ["The Chariot","the-chariot.JPG"],
-
 ["Strength","strength.JPG"],
-
 ["The Hermit","the-hermit.JPG"],
-
 ["Wheel of Fortune","wheel-of-fortune.JPG"],
-
 ["Justice","justice.JPG"],
-
 ["The Hanged Man","the-hanged-man.JPG"],
-
 ["Death","death.JPG"],
-
 ["Temperance","temperance.JPG"],
-
 ["The Devil","the-devil.JPG"],
-
 ["The Tower","the-tower.JPG"],
-
 ["The Star","the-star.JPG"],
-
 ["The Moon","the-moon.JPG"],
-
 ["The Sun","the-sun.JPG"],
-
 ["Judgement","judgement.JPG"],
-
 ["The World","the-world.JPG"]
 
 ];
 
 
 /* =========================
-   GERÇEK FISHER-YATES
    KARIŞTIRMA
 ========================= */
 
 function shuffleCards(cards){
 
-const array=[...cards];
+const array = [...cards];
 
 for(let i=array.length-1;i>0;i--){
 
-const randomIndex=
+const randomIndex =
 Math.floor(Math.random()*(i+1));
 
-const temp=array[i];
-
-array[i]=array[randomIndex];
-
-array[randomIndex]=temp;
+[array[i],array[randomIndex]] =
+[array[randomIndex],array[i]];
 
 }
 
 return array;
-
 }
 
 
 /* =========================
-   YENİ DESTE OLUŞTUR
+   GÖRSEL URL'Sİ
 ========================= */
 
-function createFreshDeck(){
+function getImageURL(filename){
 
 /*
-   Önce deste tamamen sıfırlanıyor.
+   Önce normal dosya adını kullanıyoruz.
 */
 
-selectedCardNames=[];
-
-/*
-   Sonra 22 kart tamamen rastgele
-   yeniden sıralanıyor.
-*/
-
-return shuffleCards(tarotCards);
+return GITHUB_RAW +
+encodeURIComponent(filename.trim());
 
 }
 
@@ -849,7 +798,7 @@ return shuffleCards(tarotCards);
 
 function selectMethod(method,element){
 
-selectedMethod=method;
+selectedMethod = method;
 
 document
 .querySelectorAll(".method")
@@ -857,7 +806,7 @@ document
 
 element.classList.add("active");
 
-if(method==="coffee"){
+if(method === "coffee"){
 
 document
 .getElementById("cardSection")
@@ -893,11 +842,6 @@ document
 .getElementById("coffeeUpload")
 .classList.add("hidden");
 
-/*
-   Tarot/Katina'ya geçince
-   yeni deste karıştırılıyor.
-*/
-
 renderCards();
 
 }
@@ -911,7 +855,7 @@ renderCards();
 
 function selectCards(number,element){
 
-selectedCards=number;
+selectedCards = number;
 
 document
 .querySelectorAll(".option")
@@ -920,11 +864,6 @@ document
 element.classList.add("active");
 
 updatePositions();
-
-/*
-   Kart sayısı değişince
-   yeni deste oluşturuluyor.
-*/
 
 renderCards();
 
@@ -943,7 +882,7 @@ document
 
 element.classList.add("active");
 
-selectedReading=
+selectedReading =
 element.innerText.trim();
 
 }
@@ -955,10 +894,10 @@ element.innerText.trim();
 
 function updatePositions(){
 
-const positions=
+const positions =
 document.getElementById("positions");
 
-const positionData={
+const positionData = {
 
 1:[
 "1. Kart — Sorunun ana enerjisi"
@@ -980,16 +919,17 @@ const positionData={
 
 };
 
-positions.innerHTML="";
+positions.innerHTML = "";
 
 positionData[selectedCards]
 .forEach(text=>{
 
-const div=document.createElement("div");
+const div =
+document.createElement("div");
 
-div.className="position";
+div.className = "position";
 
-div.textContent=text;
+div.textContent = text;
 
 positions.appendChild(div);
 
@@ -999,87 +939,126 @@ positions.appendChild(div);
 
 
 /* =========================
-   KARTLARI GÖSTER
+   KARTLARI OLUŞTUR
 ========================= */
 
 function renderCards(){
 
-const table=
+const table =
 document.getElementById("cardTable");
 
-table.innerHTML="";
+table.innerHTML = "";
 
-selectedCardNames=[];
+selectedCardNames = [];
 
-document
-.getElementById("selectedSummary")
-.classList.remove("show");
+const summary =
+document.getElementById("selectedSummary");
 
-document
-.getElementById("selectedSummary")
-.innerHTML="";
+summary.innerHTML = "";
+
+summary.classList.remove("show");
 
 document
 .getElementById("cardInstruction")
-.textContent=
-selectedCards+" kart seçmelisin.";
+.textContent =
+selectedCards + " kart seçmelisin.";
 
 
 /*
-   HER RENDER'DA YENİ
-   VE RASTGELE DESTE
+   HER SEFERİNDE GERÇEKTEN
+   YENİDEN KARIŞTIR
 */
 
-const shuffled=
-createFreshDeck();
+const shuffled =
+shuffleCards(tarotCards);
 
+
+/*
+   22 kartı ekrana koy
+*/
 
 shuffled.forEach(card=>{
 
-const wrapper=
+const wrapper =
 document.createElement("div");
 
-wrapper.className="tarot-card";
+wrapper.className = "tarot-card";
+
+
+const inner =
+document.createElement("div");
+
+inner.className = "card-inner";
+
+
+/* ARKA */
+
+const back =
+document.createElement("div");
+
+back.className =
+"card-face card-back";
+
+
+/* ÖN */
+
+const front =
+document.createElement("div");
+
+front.className =
+"card-face card-front";
+
+
+const image =
+document.createElement("img");
+
+image.alt = "Tarot Card";
+
+image.loading = "eager";
+
+image.src =
+getImageURL(card[1]);
 
 
 /*
-   KART İSMİ HTML'E
-   HİÇ EKLENMİYOR.
+   Görsel yüklenemezse
+   alternatif olarak GitHub blob adresini
+   kullanmayı deniyoruz.
 */
 
-wrapper.innerHTML=`
+image.onerror = function(){
 
-<div class="card-inner">
+const cleanName =
+card[1].trim();
 
-<div class="card-face card-back"></div>
+image.src =
+"https://github.com/ilaydamystic/ilayda-mystic/blob/main/" +
+encodeURIComponent(cleanName) +
+"?raw=true";
 
-<div class="card-face card-front">
+};
 
-<img
-src="${GITHUB_RAW + card[1]}"
-alt="Tarot Card"
-loading="lazy"
->
 
-</div>
+front.appendChild(image);
 
-</div>
+inner.appendChild(back);
 
-`;
+inner.appendChild(front);
+
+wrapper.appendChild(inner);
 
 
 /*
-   KART TIKLAMA
+   KARTA BASILDIĞINDA
 */
 
 wrapper.addEventListener("click",function(){
 
 /*
-   EĞER KART ZATEN AÇILDIYSA
+   AÇILMIŞ KARTA TEKRAR BASILIRSA
    HİÇBİR ŞEY YAPMA.
 
-   Böylece tekrar basınca
-   kapanmayacak.
+   Böylece kart kapanmaz.
 */
 
 if(wrapper.classList.contains("flipped")){
@@ -1090,14 +1069,14 @@ return;
 
 
 /*
-   MAKSİMUM KART SAYISI
+   Maksimum seçim kontrolü
 */
 
-if(selectedCardNames.length>=selectedCards){
+if(selectedCardNames.length >= selectedCards){
 
 alert(
-"Bu açılım için yalnızca "+
-selectedCards+
+"Bu açılım için yalnızca " +
+selectedCards +
 " kart seçebilirsin."
 );
 
@@ -1114,10 +1093,9 @@ wrapper.classList.add("selected");
 
 wrapper.classList.add("flipped");
 
+
 /*
-   Kart artık seçildi.
-   Bir daha tıklansa bile
-   kapanmayacak.
+   SEÇİLEN KARTI KAYDET
 */
 
 selectedCardNames.push(card[0]);
@@ -1135,33 +1113,32 @@ table.appendChild(wrapper);
 
 
 /* =========================
-   SEÇİLENLER
+   SEÇİLEN KARTLAR
 ========================= */
 
 function updateSummary(){
 
-const box=
+const box =
 document.getElementById("selectedSummary");
 
-
-if(selectedCardNames.length===0){
+if(selectedCardNames.length === 0){
 
 box.classList.remove("show");
 
-box.innerHTML="";
+box.innerHTML = "";
 
 return;
 
 }
 
-
 box.classList.add("show");
 
-box.innerHTML=
-"✨ Seçtiğin kartlar: "+
+box.innerHTML =
+"✨ Seçtiğin kartlar: " +
+
 selectedCardNames
 .map(
-x=>
+x =>
 `<span class="selected-card-name">${x}</span>`
 )
 .join(" • ");
@@ -1179,15 +1156,15 @@ document
 "submit",
 function(e){
 
-if(selectedMethod!=="coffee"){
+if(selectedMethod !== "coffee"){
 
-if(selectedCardNames.length!==selectedCards){
+if(selectedCardNames.length !== selectedCards){
 
 e.preventDefault();
 
 alert(
-"Lütfen önce "+
-selectedCards+
+"Lütfen önce " +
+selectedCards +
 " kart seç."
 );
 
@@ -1199,42 +1176,41 @@ return;
 
 document
 .getElementById("formMethod")
-.value=
+.value =
 
-selectedMethod==="tarot"
-?"Tarot"
+selectedMethod === "tarot"
+? "Tarot"
 
-:selectedMethod==="katina"
-?"Katina — 65 Kart"
+: selectedMethod === "katina"
+? "Katina — 65 Kart"
 
-:"Turkish Coffee Reading";
+: "Turkish Coffee Reading";
 
 
 document
 .getElementById("formCardCount")
-.value=
+.value =
 
-selectedMethod==="coffee"
-?"Kahve Falı"
+selectedMethod === "coffee"
+? "Kahve Falı"
 
-:selectedCards+
-" Kart";
+: selectedCards + " Kart";
 
 
 document
 .getElementById("formReading")
-.value=
+.value =
 selectedReading;
 
 
 document
 .getElementById("formCards")
-.value=
+.value =
 
-selectedMethod==="coffee"
-?"Kahve fotoğrafları yüklendi."
+selectedMethod === "coffee"
+? "Kahve fotoğrafları yüklendi."
 
-:selectedCardNames.join(", ");
+: selectedCardNames.join(", ");
 
 });
 
@@ -1244,11 +1220,6 @@ selectedMethod==="coffee"
 ========================= */
 
 updatePositions();
-
-/*
-   Sayfa açıldığı anda
-   22 kart rastgele karıştırılır.
-*/
 
 renderCards();
 
