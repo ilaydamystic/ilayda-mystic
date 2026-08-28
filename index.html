@@ -288,7 +288,7 @@ transform:translateY(-12px) scale(1.04);
 box-shadow:0 0 22px rgba(218,170,255,.55);
 }
 
-/* SEÇİLENLER */
+/* SEÇİLEN KARTLAR */
 
 .selected-summary{
 display:none;
@@ -439,6 +439,7 @@ padding:20px;
 </style>
 </head>
 
+
 <body>
 
 <header>
@@ -455,7 +456,9 @@ Tarot • Katina • Turkish Coffee Reading
 
 </header>
 
+
 <main class="container">
+
 
 <p class="intro">
 
@@ -467,11 +470,14 @@ evlilik, kararlar ve dileklerin için sana özel yorumlama.
 
 </p>
 
+
 <h2 class="section-title">
 🔮 Fal Türünü Seç
 </h2>
 
+
 <div class="methods">
+
 
 <div class="method active"
 onclick="selectMethod('tarot',this)">
@@ -486,6 +492,7 @@ Tarot kartlarıyla sana özel sezgisel açılım.
 
 </div>
 
+
 <div class="method"
 onclick="selectMethod('katina',this)">
 
@@ -498,6 +505,7 @@ onclick="selectMethod('katina',this)">
 </p>
 
 </div>
+
 
 <div class="method"
 onclick="selectMethod('coffee',this)">
@@ -512,6 +520,7 @@ Kahve fincanındaki semboller üzerinden kişisel yorum.
 
 </div>
 
+
 </div>
 
 
@@ -521,7 +530,9 @@ Kahve fincanındaki semboller üzerinden kişisel yorum.
 🃏 Kart Sayısını Seç
 </h2>
 
+
 <div class="options">
+
 
 <div class="option active"
 onclick="selectCards(1,this)">
@@ -534,6 +545,7 @@ Tek ve net mesaj
 
 </div>
 
+
 <div class="option"
 onclick="selectCards(3,this)">
 
@@ -544,6 +556,7 @@ Geçmiş • Şimdi • Gelecek
 </small>
 
 </div>
+
 
 <div class="option"
 onclick="selectCards(5,this)">
@@ -556,6 +569,7 @@ Detaylı açılım
 
 </div>
 
+
 </div>
 
 </div>
@@ -565,42 +579,51 @@ Detaylı açılım
 ✨ Açılım Konusu
 </h2>
 
+
 <div class="reading-types">
+
 
 <div class="reading-type active"
 onclick="selectReading(this)">
 ❤️ Love & Relationship
 </div>
 
+
 <div class="reading-type"
 onclick="selectReading(this)">
 💭 Feelings & Intentions
 </div>
+
 
 <div class="reading-type"
 onclick="selectReading(this)">
 ❓ Yes / No
 </div>
 
+
 <div class="reading-type"
 onclick="selectReading(this)">
 💼 Career
 </div>
+
 
 <div class="reading-type"
 onclick="selectReading(this)">
 💍 Marriage
 </div>
 
+
 <div class="reading-type"
 onclick="selectReading(this)">
 ⚖️ Decision
 </div>
 
+
 <div class="reading-type"
 onclick="selectReading(this)">
 🌙 Dilek
 </div>
+
 
 </div>
 
@@ -611,19 +634,25 @@ onclick="selectReading(this)">
 🎴 Kartlarını Seç
 </h2>
 
-<p class="card-instruction" id="cardInstruction">
+
+<p
+class="card-instruction"
+id="cardInstruction">
 1 kart seçmelisin.
 </p>
+
 
 <div
 class="card-table"
 id="cardTable">
 </div>
 
+
 <div
 class="selected-summary"
 id="selectedSummary">
 </div>
+
 
 </div>
 
@@ -635,6 +664,7 @@ id="selectedSummary">
 
 <div class="form-box">
 
+
 <form
 id="readingForm"
 action="https://formspree.io/f/xwlkenzl"
@@ -642,11 +672,13 @@ method="POST"
 enctype="multipart/form-data"
 >
 
+
 <input
 type="hidden"
 name="fal_turu"
 id="formMethod"
 >
+
 
 <input
 type="hidden"
@@ -654,11 +686,13 @@ name="kart_sayisi"
 id="formCardCount"
 >
 
+
 <input
 type="hidden"
 name="acilim_konusu"
 id="formReading"
 >
+
 
 <input
 type="hidden"
@@ -733,6 +767,7 @@ Fincanının içini ve mümkünse tabağını
 net şekilde gösteren fotoğrafları yükleyebilirsin.
 </p>
 
+
 <input
 type="file"
 id="coffeePhotos"
@@ -751,15 +786,20 @@ class="submit"
 🔮 Falımı Gönder
 </button>
 
+
 </form>
 
 
 <p class="notice">
+
 Gönderdiğin bilgiler seçtiğin fal hizmetini hazırlamak
 amacıyla kullanılacaktır.
+
 </p>
 
+
 </div>
+
 
 </main>
 
@@ -792,22 +832,15 @@ let selectedCardNames = [];
 
 
 /* =========================
-   GITHUB RAW
-========================= */
-
-const RAW =
-"https://raw.githubusercontent.com/ilaydamystic/ilayda-mystic/main/";
-
-
-/* =========================
-   22 MAJOR ARCANA
+   22 KART
+   DOSYA İSİMLERİ AYNEN
 ========================= */
 
 const tarotCards = [
 
 ["The Fool","the-fool.JPG"],
 
-["The Magician","the-magician.JPG"],
+["The Magician","    the-magician.JPG"],
 
 ["The High Priestess","the-high-priestess.JPG"],
 
@@ -823,7 +856,7 @@ const tarotCards = [
 
 ["Strength","    strength.JPG"],
 
-["The Hermit","the-hermit.JPG"],
+["The Hermit"," the-hermit.JPG"],
 
 ["Wheel of Fortune","    wheel-of-fortune.JPG"],
 
@@ -853,7 +886,7 @@ const tarotCards = [
 
 
 /* =========================
-   KARIŞTIR
+   KARIŞTIRMA
 ========================= */
 
 function shuffleCards(cards){
@@ -867,13 +900,17 @@ i--
 ){
 
 let randomIndex =
-Math.floor(Math.random() * (i + 1));
+Math.floor(
+Math.random() * (i + 1)
+);
 
 let temp = array[i];
 
-array[i] = array[randomIndex];
+array[i] =
+array[randomIndex];
 
-array[randomIndex] = temp;
+array[randomIndex] =
+temp;
 
 }
 
@@ -883,25 +920,21 @@ return array;
 
 
 /* =========================
-   GÖRSEL ADRESİ
+   GÖRSEL URL
 ========================= */
 
-function imageURL(filename){
+function getImageURL(filename){
 
 /*
-   Magician dahil olmak üzere
-   dosya adının başındaki boşlukları
-   özellikle temizliyoruz.
-
-   Çünkü GitHub dosyayı sayfada
-   the-magician.JPG olarak tanıyor.
+   Dosya adındaki boşlukları
+   KORUYORUZ.
 */
 
-let cleanName =
-filename.trim();
-
-return RAW +
-encodeURIComponent(cleanName);
+return (
+"https://raw.githubusercontent.com/" +
+"ilaydamystic/ilayda-mystic/main/" +
+encodeURIComponent(filename)
+);
 
 }
 
@@ -975,8 +1008,6 @@ renderCards();
 function selectCards(number,element){
 
 selectedCards = number;
-
-selectedCardNames = [];
 
 document
 .querySelectorAll(".option")
@@ -1066,7 +1097,7 @@ positions.appendChild(div);
 
 
 /* =========================
-   KARTLARI GÖSTER
+   KARTLARI OLUŞTUR
 ========================= */
 
 function renderCards(){
@@ -1078,8 +1109,11 @@ table.innerHTML = "";
 
 selectedCardNames = [];
 
+
 let summary =
-document.getElementById("selectedSummary");
+document.getElementById(
+"selectedSummary"
+);
 
 summary.innerHTML = "";
 
@@ -1094,8 +1128,8 @@ selectedCards +
 
 
 /*
-   HER RENDER'DA YENİ
-   KARIŞIK SIRA
+   HER RENDER'DA
+   22 KART YENİDEN KARIŞIR
 */
 
 let shuffled =
@@ -1139,27 +1173,24 @@ image.alt =
 card[0];
 
 image.src =
-imageURL(card[1]);
+getImageURL(card[1]);
 
 
 /*
-   Raw GitHub yüklenemezse
-   GitHub'ın raw=true sayfasını
-   ikinci seçenek olarak deniyoruz.
+   Görsel yüklenmezse
+   alternatif raw URL.
 */
 
-image.onerror = function(){
+image.onerror =
+function(){
 
 image.onerror = null;
-
-let cleanName =
-card[1].trim();
 
 image.src =
 "https://github.com/" +
 "ilaydamystic/ilayda-mystic/" +
 "blob/main/" +
-encodeURIComponent(cleanName) +
+encodeURIComponent(card[1]) +
 "?raw=true";
 
 };
@@ -1175,7 +1206,7 @@ wrapper.appendChild(inner);
 
 
 /*
-   KARTA BAS
+   KARTA BASINCA
 */
 
 wrapper.addEventListener(
@@ -1183,8 +1214,8 @@ wrapper.addEventListener(
 function(){
 
 /*
-   Kart daha önce açıldıysa
-   tekrar kapanmaz.
+   AÇILMIŞ KART
+   BİR DAHA KAPANMAZ.
 */
 
 if(
@@ -1197,11 +1228,12 @@ return;
 
 
 /*
-   Maksimum kart
+   MAKSİMUM KART
 */
 
 if(
-selectedCardNames.length >= selectedCards
+selectedCardNames.length >=
+selectedCards
 ){
 
 alert(
@@ -1225,7 +1257,7 @@ wrapper.classList.add("flipped");
 
 
 /*
-   KARTI KAYDET
+   SEÇİLEN KARTI KAYDET
 */
 
 selectedCardNames.push(
@@ -1256,6 +1288,7 @@ document.getElementById(
 "selectedSummary"
 );
 
+
 if(
 selectedCardNames.length === 0
 ){
@@ -1268,7 +1301,9 @@ return;
 
 }
 
+
 box.classList.add("show");
+
 
 box.innerHTML =
 "✨ Seçtiğin kartlar: " +
@@ -1339,7 +1374,8 @@ document
 selectedMethod === "coffee"
 ? "Kahve Falı"
 
-: selectedCards + " Kart";
+: selectedCards +
+" Kart";
 
 
 document
