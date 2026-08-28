@@ -4,463 +4,440 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ilayda Mystic | Tarot • Katina • Turkish Coffee Reading</title>
+<title>ILAYDA MYSTIC | Tarot • Katina • Coffee</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 body{
-  font-family:Georgia,"Times New Roman",serif;
-  color:#f8efff;
-  min-height:100vh;
-  background:
-    radial-gradient(circle at top,#43245d 0%,#21102f 38%,#0b0711 75%,#050309 100%);
+font-family:Georgia,"Times New Roman",serif;
+color:#f8efff;
+min-height:100vh;
+background:
+radial-gradient(circle at top,#45245e 0%,#21102f 40%,#0b0711 78%,#050309 100%);
 }
 
 .container{
-  width:92%;
-  max-width:1100px;
-  margin:auto;
+width:92%;
+max-width:1100px;
+margin:auto;
 }
 
 header{
-  text-align:center;
-  padding:55px 20px 35px;
+text-align:center;
+padding:50px 20px 35px;
 }
 
 .moon{
-  font-size:43px;
-  margin-bottom:10px;
+font-size:44px;
+margin-bottom:10px;
 }
 
 .brand{
-  font-size:43px;
-  letter-spacing:4px;
-  color:#efd2ff;
-  text-shadow:0 0 28px rgba(220,160,255,.4);
+font-size:42px;
+letter-spacing:4px;
+color:#efd2ff;
+text-shadow:0 0 28px rgba(220,160,255,.4);
 }
 
 .subtitle{
-  margin-top:12px;
-  color:#cbb7d7;
-  letter-spacing:1px;
+margin-top:12px;
+color:#cbb7d7;
+letter-spacing:1px;
 }
 
 .intro{
-  text-align:center;
-  max-width:720px;
-  margin:10px auto 35px;
-  color:#d8c8e1;
-  line-height:1.8;
+text-align:center;
+max-width:720px;
+margin:10px auto 35px;
+color:#d8c8e1;
+line-height:1.8;
 }
 
 .section-title{
-  text-align:center;
-  font-size:27px;
-  margin:45px 0 20px;
-  color:#efd5ff;
+text-align:center;
+font-size:27px;
+margin:42px 0 20px;
+color:#efd5ff;
 }
 
+
+/* FAL TÜRLERİ */
+
 .methods{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:18px;
 }
 
 .method{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(230,190,255,.18);
-  border-radius:20px;
-  padding:27px;
-  text-align:center;
-  cursor:pointer;
-  transition:.25s;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(230,190,255,.18);
+border-radius:20px;
+padding:27px;
+text-align:center;
+cursor:pointer;
+transition:.25s;
 }
 
 .method:hover{
-  transform:translateY(-5px);
+transform:translateY(-5px);
 }
 
 .method.active{
-  border-color:#d7a7ff;
-  background:rgba(166,94,220,.18);
-  box-shadow:0 0 25px rgba(200,140,255,.15);
+border-color:#d7a7ff;
+background:rgba(166,94,220,.18);
+box-shadow:0 0 25px rgba(200,140,255,.15);
 }
 
 .method-icon{
-  font-size:40px;
-  margin-bottom:12px;
+font-size:40px;
+margin-bottom:12px;
 }
 
 .method h3{
-  font-size:21px;
-  margin-bottom:8px;
+font-size:21px;
+margin-bottom:8px;
 }
 
 .method p{
-  color:#cdbbd8;
-  font-size:14px;
-  line-height:1.5;
+color:#cdbbd8;
+font-size:14px;
+line-height:1.5;
 }
 
+
+/* KART SAYISI */
+
 .options{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:13px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:13px;
 }
 
 .option{
-  padding:18px;
-  border-radius:15px;
-  text-align:center;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(230,190,255,.18);
-  cursor:pointer;
-  transition:.2s;
+padding:18px;
+border-radius:15px;
+text-align:center;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(230,190,255,.18);
+cursor:pointer;
 }
 
-.option:hover,
-.option.active{
-  border-color:#d7a7ff;
-  background:rgba(166,94,220,.18);
+.option.active,
+.option:hover{
+border-color:#d7a7ff;
+background:rgba(166,94,220,.18);
 }
 
 .option small{
-  display:block;
-  margin-top:5px;
-  color:#bdaac8;
+display:block;
+margin-top:6px;
+color:#bdaac8;
 }
 
+
+/* AÇILIM KONUSU */
+
 .reading-types{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:12px;
 }
 
 .reading-type{
-  padding:18px 12px;
-  border-radius:14px;
-  text-align:center;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(230,190,255,.15);
-  cursor:pointer;
-  transition:.2s;
+padding:18px 12px;
+border-radius:14px;
+text-align:center;
+background:rgba(255,255,255,.045);
+border:1px solid rgba(230,190,255,.15);
+cursor:pointer;
 }
 
-.reading-type:hover,
-.reading-type.active{
-  border-color:#d7a7ff;
-  background:rgba(166,94,220,.18);
+.reading-type.active,
+.reading-type:hover{
+border-color:#d7a7ff;
+background:rgba(166,94,220,.18);
 }
 
 
-/* =========================
-   TAROT KARTLARI
-========================= */
+/* TAROT */
 
 #cardSelection{
-  margin-top:25px;
+margin-top:30px;
 }
 
 .card-instruction{
-  text-align:center;
-  color:#c7b4d1;
-  margin-bottom:25px;
+text-align:center;
+color:#c7b4d1;
+margin-bottom:25px;
 }
 
 .card-table{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:18px;
-  padding:10px 0 35px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:17px;
+padding:10px 0 30px;
 }
 
 .tarot-card{
-  width:130px;
-  height:220px;
-  perspective:1000px;
-  cursor:pointer;
-  transition:.3s;
+width:125px;
+height:215px;
+perspective:1000px;
+cursor:pointer;
+transition:.3s;
 }
 
 .tarot-card:hover{
-  transform:translateY(-8px);
+transform:translateY(-7px);
 }
 
 .card-inner{
-  position:relative;
-  width:100%;
-  height:100%;
-  transition:transform .7s;
-  transform-style:preserve-3d;
+width:100%;
+height:100%;
+position:relative;
+transition:transform .7s;
+transform-style:preserve-3d;
 }
 
 .tarot-card.flipped .card-inner{
-  transform:rotateY(180deg);
+transform:rotateY(180deg);
 }
 
 .card-face{
-  position:absolute;
-  inset:0;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  border-radius:13px;
-  overflow:hidden;
+position:absolute;
+inset:0;
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+border-radius:13px;
+overflow:hidden;
 }
 
 .card-back{
-  background:
-    radial-gradient(circle,rgba(210,160,255,.22),transparent 45%),
-    repeating-linear-gradient(
-      45deg,
-      #160b24 0 5px,
-      #29123b 5px 10px
-    );
+background:
+radial-gradient(circle,rgba(210,160,255,.25),transparent 45%),
+repeating-linear-gradient(
+45deg,
+#160b24 0 5px,
+#29123b 5px 10px
+);
 
-  border:2px solid #c99a5b;
+border:2px solid #c99a5b;
 
-  box-shadow:
-    0 8px 30px rgba(0,0,0,.5),
-    inset 0 0 0 5px #12091c,
-    inset 0 0 0 7px #a87540;
+box-shadow:
+0 8px 30px rgba(0,0,0,.5),
+inset 0 0 0 5px #12091c,
+inset 0 0 0 7px #a87540;
 }
 
 .card-back::before{
-  content:"✦";
-  position:absolute;
-  inset:15px;
-  border:1px solid rgba(224,180,110,.65);
-  border-radius:8px;
+content:"✦";
+position:absolute;
+inset:15px;
+border:1px solid rgba(224,180,110,.65);
+border-radius:8px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+display:flex;
+align-items:center;
+justify-content:center;
 
-  font-size:50px;
-  color:#d9ad67;
+font-size:50px;
+color:#d9ad67;
 }
 
 .card-back::after{
-  content:"ILAYDA MYSTIC";
-  position:absolute;
-  bottom:28px;
-  left:0;
-  right:0;
-  text-align:center;
-
-  font-size:9px;
-  letter-spacing:2px;
-  color:#d9ad67;
+content:"ILAYDA MYSTIC";
+position:absolute;
+bottom:28px;
+left:0;
+right:0;
+text-align:center;
+font-size:9px;
+letter-spacing:2px;
+color:#d9ad67;
 }
 
 .card-front{
-  transform:rotateY(180deg);
-  background:#0c0710;
-  border:2px solid #c99a5b;
+transform:rotateY(180deg);
+background:#0c0710;
+border:2px solid #c99a5b;
 }
 
 .card-front img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-.tarot-card.selected{
-  transform:translateY(-12px) scale(1.04);
-}
-
-.tarot-card.selected .card-front{
-  box-shadow:
-    0 0 20px rgba(218,170,255,.5);
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
 }
 
 .card-name{
-  text-align:center;
-  margin-top:9px;
-  color:#e4c68e;
-  font-size:12px;
+text-align:center;
+margin-top:8px;
+color:#e4c68e;
+font-size:12px;
+}
+
+.tarot-card.selected{
+transform:translateY(-12px) scale(1.04);
+}
+
+.tarot-card.selected .card-front{
+box-shadow:0 0 22px rgba(218,170,255,.55);
 }
 
 .selected-summary{
-  display:none;
-
-  max-width:800px;
-  margin:0 auto 25px;
-  padding:18px;
-
-  border-radius:15px;
-
-  text-align:center;
-
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(215,167,255,.2);
-
-  color:#d9c7e4;
+display:none;
+max-width:800px;
+margin:0 auto 25px;
+padding:18px;
+border-radius:15px;
+text-align:center;
+background:rgba(255,255,255,.045);
+border:1px solid rgba(215,167,255,.2);
+color:#d9c7e4;
 }
 
 .selected-summary.show{
-  display:block;
+display:block;
 }
 
 .selected-card-name{
-  color:#e6c58a;
+color:#e6c58a;
 }
 
 
-/* =========================
-   FORM
-========================= */
+/* FORM */
 
 .form-box{
-  margin:35px auto 60px;
-  max-width:820px;
-  padding:32px;
-
-  border-radius:24px;
-
-  background:rgba(255,255,255,.055);
-  border:1px solid rgba(230,190,255,.18);
+margin:35px auto 60px;
+max-width:820px;
+padding:32px;
+border-radius:24px;
+background:rgba(255,255,255,.055);
+border:1px solid rgba(230,190,255,.18);
 }
 
 label{
-  display:block;
-  margin-bottom:8px;
-  color:#e5d5ed;
-  font-size:14px;
+display:block;
+margin-bottom:8px;
+color:#e5d5ed;
+font-size:14px;
 }
 
 input,
 textarea{
-  width:100%;
-  padding:15px;
-  margin-bottom:20px;
-
-  border-radius:12px;
-  border:1px solid rgba(230,190,255,.18);
-
-  background:rgba(0,0,0,.3);
-  color:white;
-
-  font-family:inherit;
-  font-size:15px;
-  outline:none;
-}
-
-input:focus,
-textarea:focus{
-  border-color:#c995ed;
+width:100%;
+padding:15px;
+margin-bottom:20px;
+border-radius:12px;
+border:1px solid rgba(230,190,255,.18);
+background:rgba(0,0,0,.3);
+color:white;
+font-family:inherit;
+font-size:15px;
+outline:none;
 }
 
 textarea{
-  min-height:130px;
-  resize:vertical;
+min-height:130px;
+resize:vertical;
 }
 
 .positions{
-  display:grid;
-  gap:10px;
-  margin:15px 0 25px;
+display:grid;
+gap:10px;
+margin:15px 0 25px;
 }
 
 .position{
-  padding:13px;
-  border-radius:10px;
-
-  background:rgba(255,255,255,.04);
-
-  color:#d7c8df;
-  font-size:14px;
-
-  border-left:2px solid #a66ad0;
+padding:13px;
+border-radius:10px;
+background:rgba(255,255,255,.04);
+color:#d7c8df;
+font-size:14px;
+border-left:2px solid #a66ad0;
 }
 
 .upload{
-  border:1px dashed #a87ac7;
-  border-radius:15px;
-  padding:25px;
-
-  text-align:center;
-
-  margin-bottom:20px;
-
-  color:#cbb6d7;
+border:1px dashed #a87ac7;
+border-radius:15px;
+padding:25px;
+text-align:center;
+margin-bottom:20px;
+color:#cbb6d7;
 }
 
 .upload input{
-  margin-top:15px;
-  margin-bottom:0;
+margin-top:15px;
+margin-bottom:0;
 }
 
 .submit{
-  width:100%;
-  padding:18px;
-
-  border:none;
-  border-radius:14px;
-
-  background:linear-gradient(135deg,#b477dc,#704194);
-
-  color:white;
-
-  font-family:inherit;
-  font-size:17px;
-
-  cursor:pointer;
+width:100%;
+padding:18px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#b477dc,#704194);
+color:white;
+font-family:inherit;
+font-size:17px;
+cursor:pointer;
 }
 
 .submit:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 25px rgba(130,70,170,.3);
+transform:translateY(-2px);
 }
 
 .notice{
-  margin-top:15px;
-  font-size:12px;
-  line-height:1.6;
-  text-align:center;
-  color:#9e8da8;
+margin-top:15px;
+font-size:12px;
+line-height:1.6;
+text-align:center;
+color:#9e8da8;
 }
 
 footer{
-  text-align:center;
-  padding:30px 15px 45px;
-  color:#918097;
-  font-size:13px;
+text-align:center;
+padding:30px 15px 45px;
+color:#918097;
+font-size:13px;
 }
 
 .hidden{
-  display:none!important;
+display:none!important;
 }
 
 @media(max-width:700px){
 
-  .brand{
-    font-size:31px;
-  }
-
-  .options{
-    grid-template-columns:1fr;
-  }
-
-  .tarot-card{
-    width:105px;
-    height:180px;
-  }
-
-  .card-table{
-    gap:12px;
-  }
-
-  .form-box{
-    padding:20px;
-  }
+.brand{
+font-size:31px;
 }
+
+.options{
+grid-template-columns:1fr;
+}
+
+.tarot-card{
+width:102px;
+height:175px;
+}
+
+.card-table{
+gap:12px;
+}
+
+.form-box{
+padding:20px;
+}
+
+}
+
 </style>
 </head>
 
@@ -469,25 +446,30 @@ footer{
 
 <header>
 
-  <div class="moon">🌙</div>
+<div class="moon">🌙</div>
 
-  <h1 class="brand">
-    ILAYDA MYSTIC
-  </h1>
+<h1 class="brand">
+ILAYDA MYSTIC
+</h1>
 
-  <p class="subtitle">
-    Tarot • Katina • Turkish Coffee Reading
-  </p>
+<p class="subtitle">
+Tarot • Katina • Turkish Coffee Reading
+</p>
 
 </header>
 
 
 <main class="container">
 
+
 <p class="intro">
+
 Kartların ve sembollerin rehberliğinde kendi soruna özel,
-sezgisel bir açılım seç. Aşk, ilişkiler, duygular, kariyer,
-evlilik, kararlar ve dileklerin için sana özel bir yorumlama.
+sezgisel bir açılım seç.
+
+Aşk, ilişkiler, duygular, kariyer,
+evlilik, kararlar ve dileklerin için sana özel yorumlama.
+
 </p>
 
 
@@ -497,7 +479,9 @@ evlilik, kararlar ve dileklerin için sana özel bir yorumlama.
 🔮 Fal Türünü Seç
 </h2>
 
+
 <div class="methods">
+
 
 <div class="method active"
 onclick="selectMethod('tarot',this)">
@@ -540,6 +524,7 @@ Kahve fincanındaki semboller üzerinden kişisel yorum.
 
 </div>
 
+
 </div>
 
 
@@ -551,7 +536,9 @@ Kahve fincanındaki semboller üzerinden kişisel yorum.
 🃏 Kart Sayısını Seç
 </h2>
 
+
 <div class="options">
+
 
 <div class="option active"
 onclick="selectCards(1,this)">
@@ -588,6 +575,7 @@ Detaylı açılım
 
 </div>
 
+
 </div>
 
 </div>
@@ -599,47 +587,56 @@ Detaylı açılım
 ✨ Açılım Konusu
 </h2>
 
+
 <div class="reading-types">
+
 
 <div class="reading-type active"
 onclick="selectReading(this)">
 ❤️ Love & Relationship
 </div>
 
+
 <div class="reading-type"
 onclick="selectReading(this)">
 💭 Feelings & Intentions
 </div>
+
 
 <div class="reading-type"
 onclick="selectReading(this)">
 ❓ Yes / No
 </div>
 
+
 <div class="reading-type"
 onclick="selectReading(this)">
 💼 Career
 </div>
+
 
 <div class="reading-type"
 onclick="selectReading(this)">
 💍 Marriage
 </div>
 
+
 <div class="reading-type"
 onclick="selectReading(this)">
 ⚖️ Decision
 </div>
+
 
 <div class="reading-type"
 onclick="selectReading(this)">
 🌙 Dilek
 </div>
 
+
 </div>
 
 
-<!-- KART SEÇİMİ -->
+<!-- KARTLAR -->
 
 <div id="cardSelection">
 
@@ -647,18 +644,24 @@ onclick="selectReading(this)">
 🎴 Kartlarını Seç
 </h2>
 
+
 <p class="card-instruction"
 id="cardInstruction">
 1 kart seçmelisin.
 </p>
 
-<div class="card-table"
+
+<div
+class="card-table"
 id="cardTable">
 </div>
 
-<div class="selected-summary"
+
+<div
+class="selected-summary"
 id="selectedSummary">
 </div>
+
 
 </div>
 
@@ -669,7 +672,9 @@ id="selectedSummary">
 📝 Bilgilerini Gir
 </h2>
 
+
 <div class="form-box">
+
 
 <form
 id="readingForm"
@@ -678,11 +683,13 @@ method="POST"
 enctype="multipart/form-data"
 >
 
+
 <input
 type="hidden"
 name="fal_turu"
 id="formMethod"
 >
+
 
 <input
 type="hidden"
@@ -690,11 +697,13 @@ name="kart_sayisi"
 id="formCardCount"
 >
 
+
 <input
 type="hidden"
 name="acilim_konusu"
 id="formReading"
 >
+
 
 <input
 type="hidden"
@@ -703,7 +712,7 @@ id="formCards"
 >
 
 
-<label for="name">
+<label>
 İsim
 </label>
 
@@ -716,7 +725,7 @@ required
 >
 
 
-<label for="email">
+<label>
 E-posta
 </label>
 
@@ -729,7 +738,7 @@ required
 >
 
 
-<label for="question">
+<label>
 Sorun
 </label>
 
@@ -769,9 +778,10 @@ class="upload hidden"
 </strong>
 
 <p style="margin-top:8px;">
-Fincanının içini ve mümkünse tabağını net şekilde
-gösteren fotoğrafları yükleyebilirsin.
+Fincanının içini ve mümkünse tabağını
+net şekilde gösteren fotoğrafları yükleyebilirsin.
 </p>
+
 
 <input
 type="file"
@@ -791,15 +801,20 @@ class="submit"
 🔮 Falımı Gönder
 </button>
 
+
 </form>
 
 
 <p class="notice">
+
 Gönderdiğin bilgiler seçtiğin fal hizmetini hazırlamak
 amacıyla kullanılacaktır.
+
 </p>
 
+
 </div>
+
 
 </main>
 
@@ -807,7 +822,9 @@ amacıyla kullanılacaktır.
 <footer>
 
 ✦ ILAYDA MYSTIC ✦
+
 <br>
+
 Tarot • Katina • Turkish Coffee Reading
 
 </footer>
@@ -817,25 +834,24 @@ Tarot • Katina • Turkish Coffee Reading
 
 
 /* =========================
-   SİSTEM
+   AYARLAR
 ========================= */
 
-let selectedMethod = "tarot";
+let selectedMethod="tarot";
 
-let selectedCards = 1;
+let selectedCards=1;
 
-let selectedReading =
+let selectedReading=
 "❤️ Love & Relationship";
 
-let selectedCardNames = [];
+let selectedCardNames=[];
 
 
 /* =========================
-   22 MAJOR ARCANA
-   GERÇEK DOSYA İSİMLERİN
+   22 GERÇEK KART DOSYASI
 ========================= */
 
-const tarotCards = [
+const tarotCards=[
 
 ["The Fool","the-fool.JPG"],
 
@@ -885,42 +901,28 @@ const tarotCards = [
 
 
 /* =========================
-   GITHUB ADRESİ
+   GERÇEKTEN KARIŞTIRMA
 ========================= */
 
-const tarotBase =
-"https://ilaydamystic.github.io/ilayda-mystic/";
+function shuffleCards(cards){
 
+let array=[...cards];
 
-/* =========================
-   KARTLARI KARIŞTIR
-========================= */
+for(let i=array.length-1;i>0;i--){
 
-function shuffle(array){
+let randomIndex=
+Math.floor(Math.random()*(i+1));
 
-  let shuffled = [...array];
+let temp=array[i];
 
-  for(
-    let i = shuffled.length - 1;
-    i > 0;
-    i--
-  ){
+array[i]=array[randomIndex];
 
-    const j =
-      Math.floor(Math.random() * (i + 1));
+array[randomIndex]=temp;
 
-    [
-      shuffled[i],
-      shuffled[j]
-    ] =
-    [
-      shuffled[j],
-      shuffled[i]
-    ];
+}
 
-  }
+return array;
 
-  return shuffled;
 }
 
 
@@ -930,58 +932,58 @@ function shuffle(array){
 
 function selectMethod(method,element){
 
-  selectedMethod = method;
+selectedMethod=method;
 
-  document
-  .querySelectorAll(".method")
-  .forEach(item =>
-    item.classList.remove("active")
-  );
+document
+.querySelectorAll(".method")
+.forEach(x=>
+x.classList.remove("active")
+);
 
-  element.classList.add("active");
+element.classList.add("active");
 
 
-  if(method === "coffee"){
+if(method==="coffee"){
 
-    document
-    .getElementById("cardSection")
-    .classList.add("hidden");
+document
+.getElementById("cardSection")
+.classList.add("hidden");
 
-    document
-    .getElementById("cardSelection")
-    .classList.add("hidden");
+document
+.getElementById("cardSelection")
+.classList.add("hidden");
 
-    document
-    .getElementById("positionsBox")
-    .classList.add("hidden");
+document
+.getElementById("positionsBox")
+.classList.add("hidden");
 
-    document
-    .getElementById("coffeeUpload")
-    .classList.remove("hidden");
+document
+.getElementById("coffeeUpload")
+.classList.remove("hidden");
 
-  }
+}
 
-  else{
+else{
 
-    document
-    .getElementById("cardSection")
-    .classList.remove("hidden");
+document
+.getElementById("cardSection")
+.classList.remove("hidden");
 
-    document
-    .getElementById("cardSelection")
-    .classList.remove("hidden");
+document
+.getElementById("cardSelection")
+.classList.remove("hidden");
 
-    document
-    .getElementById("positionsBox")
-    .classList.remove("hidden");
+document
+.getElementById("positionsBox")
+.classList.remove("hidden");
 
-    document
-    .getElementById("coffeeUpload")
-    .classList.add("hidden");
+document
+.getElementById("coffeeUpload")
+.classList.add("hidden");
 
-    renderCards();
+renderCards();
 
-  }
+}
 
 }
 
@@ -992,21 +994,21 @@ function selectMethod(method,element){
 
 function selectCards(number,element){
 
-  selectedCards = number;
+selectedCards=number;
 
-  selectedCardNames = [];
+selectedCardNames=[];
 
-  document
-  .querySelectorAll(".option")
-  .forEach(item =>
-    item.classList.remove("active")
-  );
+document
+.querySelectorAll(".option")
+.forEach(x=>
+x.classList.remove("active")
+);
 
-  element.classList.add("active");
+element.classList.add("active");
 
-  updatePositions();
+updatePositions();
 
-  renderCards();
+renderCards();
 
 }
 
@@ -1017,16 +1019,16 @@ function selectCards(number,element){
 
 function selectReading(element){
 
-  document
-  .querySelectorAll(".reading-type")
-  .forEach(item =>
-    item.classList.remove("active")
-  );
+document
+.querySelectorAll(".reading-type")
+.forEach(x=>
+x.classList.remove("active")
+);
 
-  element.classList.add("active");
+element.classList.add("active");
 
-  selectedReading =
-    element.innerText.trim();
+selectedReading=
+element.innerText.trim();
 
 }
 
@@ -1037,226 +1039,222 @@ function selectReading(element){
 
 function updatePositions(){
 
-  const positions =
-    document.getElementById("positions");
+let positions=
+document.getElementById("positions");
 
-  const data = {
+let positionData={
 
-    1:[
-      "1. Kart — Sorunun ana enerjisi"
-    ],
+1:[
+"1. Kart — Sorunun ana enerjisi"
+],
 
-    3:[
-      "1. Kart — Geçmiş",
-      "2. Kart — Şu an",
-      "3. Kart — Gelecek"
-    ],
+3:[
+"1. Kart — Geçmiş",
+"2. Kart — Şu an",
+"3. Kart — Gelecek"
+],
 
-    5:[
-      "1. Kart — Geçmiş / Kök enerji",
-      "2. Kart — Şu anki durum",
-      "3. Kart — Karşı tarafın enerjisi",
-      "4. Kart — Önündeki engel / Gizli etki",
-      "5. Kart — Olası sonuç"
-    ]
+5:[
+"1. Kart — Geçmiş / Kök enerji",
+"2. Kart — Şu anki durum",
+"3. Kart — Karşı tarafın enerjisi",
+"4. Kart — Önündeki engel / Gizli etki",
+"5. Kart — Olası sonuç"
+]
 
-  };
-
-
-  positions.innerHTML = "";
+};
 
 
-  data[selectedCards].forEach(text => {
+positions.innerHTML="";
 
-    const div =
-      document.createElement("div");
 
-    div.className = "position";
+positionData[selectedCards]
+.forEach(text=>{
 
-    div.textContent = text;
+let div=
+document.createElement("div");
 
-    positions.appendChild(div);
+div.className="position";
 
-  });
+div.textContent=text;
+
+positions.appendChild(div);
+
+});
 
 }
 
 
 /* =========================
-   KARTLARI OLUŞTUR
+   KARTLARI GÖSTER
 ========================= */
 
 function renderCards(){
 
-  const table =
-    document.getElementById("cardTable");
+let table=
+document.getElementById("cardTable");
 
-  table.innerHTML = "";
+table.innerHTML="";
 
-  selectedCardNames = [];
+selectedCardNames=[];
 
-
-  document
-  .getElementById("selectedSummary")
-  .classList.remove("show");
-
-
-  document
-  .getElementById("cardInstruction")
-  .textContent =
-    selectedCards +
-    " kart seçmelisin.";
+document
+.getElementById("selectedSummary")
+.classList.remove("show");
 
 
-  /*
-     HER SEFERİNDE 22 KART
-     YENİDEN KARIŞTIRILIYOR
-  */
-
-  const shuffledCards =
-    shuffle(tarotCards);
+document
+.getElementById("cardInstruction")
+.textContent=
+selectedCards+
+" kart seçmelisin.";
 
 
-  shuffledCards.forEach((card,index) => {
+/*
+   HER RENDER'DA
+   22 KART KARIŞIYOR
+*/
 
-    const wrapper =
-      document.createElement("div");
-
-    wrapper.className =
-      "tarot-card";
-
-
-    wrapper.innerHTML = `
-
-      <div class="card-inner">
-
-        <div class="card-face card-back"></div>
-
-        <div class="card-face card-front">
-
-          <img
-            src="${tarotBase}${card[1]}"
-            alt="${card[0]}"
-          >
-
-        </div>
-
-      </div>
-
-      <div class="card-name">
-        ${card[0]}
-      </div>
-
-    `;
+let shuffled=
+shuffleCards(tarotCards);
 
 
-    wrapper.onclick = function(){
+shuffled.forEach(card=>{
 
-      /*
-        SEÇİLİ KARTSA GERİ AL
-      */
+let wrapper=
+document.createElement("div");
 
-      if(
-        wrapper.classList.contains("selected")
-      ){
-
-        wrapper.classList.remove("selected");
-
-        wrapper.classList.remove("flipped");
-
-        selectedCardNames =
-          selectedCardNames.filter(
-            name => name !== card[0]
-          );
-
-        updateSummary();
-
-        return;
-
-      }
+wrapper.className="tarot-card";
 
 
-      /*
-        MAKSİMUM KART SAYISI
-      */
+wrapper.innerHTML=`
 
-      if(
-        selectedCardNames.length >=
-        selectedCards
-      ){
+<div class="card-inner">
 
-        alert(
-          "Bu açılım için " +
-          selectedCards +
-          " kart seçebilirsin."
-        );
+<div class="card-face card-back">
+</div>
 
-        return;
+<div class="card-face card-front">
 
-      }
+<img
+src="${card[1]}"
+alt="${card[0]}"
+>
 
+</div>
 
-      /*
-        KARTI AÇ
-      */
+</div>
 
-      wrapper.classList.add("selected");
+<div class="card-name">
+${card[0]}
+</div>
 
-      wrapper.classList.add("flipped");
+`;
 
 
-      selectedCardNames.push(card[0]);
+wrapper.addEventListener("click",function(){
+
+/*
+   SEÇİLİYSE GERİ AL
+*/
+
+if(
+wrapper.classList.contains("selected")
+){
+
+wrapper.classList.remove("selected");
+
+wrapper.classList.remove("flipped");
+
+selectedCardNames=
+selectedCardNames.filter(
+x=>x!==card[0]
+);
+
+updateSummary();
+
+return;
+
+}
 
 
-      updateSummary();
+/*
+   MAKSİMUM SAYI
+*/
 
-    };
+if(
+selectedCardNames.length>=selectedCards
+){
+
+alert(
+"Bu açılım için yalnızca "+
+selectedCards+
+" kart seçebilirsin."
+);
+
+return;
+
+}
 
 
-    table.appendChild(wrapper);
+/*
+   KARTI AÇ
+*/
 
-  });
+wrapper.classList.add("selected");
+
+wrapper.classList.add("flipped");
+
+selectedCardNames.push(card[0]);
+
+updateSummary();
+
+});
+
+
+table.appendChild(wrapper);
+
+});
 
 }
 
 
 /* =========================
-   SEÇİLEN KARTLAR
+   SEÇİLENLER
 ========================= */
 
 function updateSummary(){
 
-  const box =
-    document.getElementById(
-      "selectedSummary"
-    );
+let box=
+document.getElementById(
+"selectedSummary"
+);
 
 
-  if(selectedCardNames.length === 0){
+if(selectedCardNames.length===0){
 
-    box.classList.remove("show");
+box.classList.remove("show");
 
-    box.innerHTML = "";
+box.innerHTML="";
 
-    return;
+return;
 
-  }
-
-
-  box.classList.add("show");
+}
 
 
-  box.innerHTML =
-    "✨ Seçtiğin kartlar: " +
+box.classList.add("show");
 
-    selectedCardNames
-    .map(
-      name =>
-      `<span class="selected-card-name">
-        ${name}
-      </span>`
-    )
-    .join(" • ");
+
+box.innerHTML=
+"✨ Seçtiğin kartlar: "+
+selectedCardNames
+.map(
+x=>
+`<span class="selected-card-name">
+${x}
+</span>`
+)
+.join(" • ");
 
 }
 
@@ -1268,80 +1266,71 @@ function updateSummary(){
 document
 .getElementById("readingForm")
 .addEventListener(
-  "submit",
-  function(e){
-
-    /*
-      KAHVE DEĞİLSE
-      KART SEÇİLMELİ
-    */
-
-    if(selectedMethod !== "coffee"){
-
-      if(
-        selectedCardNames.length !==
-        selectedCards
-      ){
-
-        e.preventDefault();
-
-        alert(
-          "Lütfen önce " +
-          selectedCards +
-          " kart seç."
-        );
-
-        return;
-
-      }
-
-    }
+"submit",
+function(e){
 
 
-    /*
-      FORM BİLGİLERİ
-    */
+if(selectedMethod!=="coffee"){
 
-    document
-    .getElementById("formMethod")
-    .value =
+if(
+selectedCardNames.length!==selectedCards
+){
 
-      selectedMethod === "tarot"
-      ? "Tarot"
+e.preventDefault();
 
-      : selectedMethod === "katina"
-      ? "Katina — 65 Kart"
-
-      : "Turkish Coffee Reading";
-
-
-    document
-    .getElementById("formCardCount")
-    .value =
-
-      selectedMethod === "coffee"
-      ? "Kahve Falı"
-
-      : selectedCards + " Kart";
-
-
-    document
-    .getElementById("formReading")
-    .value =
-      selectedReading;
-
-
-    document
-    .getElementById("formCards")
-    .value =
-
-      selectedMethod === "coffee"
-      ? "Kahve fotoğrafları yüklendi."
-
-      : selectedCardNames.join(", ");
-
-  }
+alert(
+"Lütfen önce "+
+selectedCards+
+" kart seç."
 );
+
+return;
+
+}
+
+}
+
+
+document
+.getElementById("formMethod")
+.value=
+
+selectedMethod==="tarot"
+?"Tarot"
+
+:selectedMethod==="katina"
+?"Katina — 65 Kart"
+
+:"Turkish Coffee Reading";
+
+
+document
+.getElementById("formCardCount")
+.value=
+
+selectedMethod==="coffee"
+?"Kahve Falı"
+
+:selectedCards+
+" Kart";
+
+
+document
+.getElementById("formReading")
+.value=
+selectedReading;
+
+
+document
+.getElementById("formCards")
+.value=
+
+selectedMethod==="coffee"
+?"Kahve fotoğrafları yüklendi."
+
+:selectedCardNames.join(", ");
+
+});
 
 
 /* =========================
