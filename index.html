@@ -1498,7 +1498,7 @@ const tarotCards = [
 
 ["The Devil","the-devil.JPG"],
 
-["The Tower","    the-tower.JPG"],
+["The Tower","the-tower.JPG"],
 
 ["The Star","    the-star.JPG"],
 
@@ -1509,6 +1509,145 @@ const tarotCards = [
 ["Judgement","    judgement.JPG"],
 
 ["The World","    the-world.JPG"]
+
+];
+
+
+/* =========================================================
+   65 KATINA CARDS
+========================================================= */
+
+const katinaCards = [
+
+["The Seer","images/katina/katina-01-the-seer.png"],
+
+["The Flame","images/katina/katina-02-the-flame.png"],
+
+["The Mirror","images/katina/katina-03-the-mirror.png"],
+
+["The Rose","images/katina/katina-04-the-rose.png"],
+
+["The Veil","images/katina/katina-05-the-veil.png"],
+
+["The Key","images/katina/katina-06-the-key.png"],
+
+["The Crown","images/katina/katina-07-the-crown.png"],
+
+["The Serpent","images/katina/katina-08-the-serpent.png"],
+
+["The Swan","images/katina/katina-09-the-swan.png"],
+
+["The Wolf","images/katina/katina-10-the-wolf.png"],
+
+["The Garden","images/katina/katina-11-the-garden.png"],
+
+["The Letter","images/katina/katina-12-the-letter.png"],
+
+["The Clock","images/katina/katina-13-the-clock.png"],
+
+["The Bridge","images/katina/katina-14-the-bridge.png"],
+
+["The Storm","images/katina/katina-15-the-storm.png"],
+
+["The Lighthouse","images/katina/katina-16-the-lighthouse.png"],
+
+["The Moonlit Rose","images/katina/katina-17-the-moonlit-rose.png"],
+
+["The Sun Gate","images/katina/katina-18-the-sun-gate.png"],
+
+["The Broken Ring","images/katina/katina-19-the-broken-ring.png"],
+
+["The Golden Ring","images/katina/katina-20-the-golden-ring.png"],
+
+["The Empty Chair","images/katina/katina-21-the-empty-chair.png"],
+
+["The Embrace","images/katina/katina-22-the-embrace.png"],
+
+["The Mask","images/katina/katina-23-the-mask.png"],
+
+["The Door","images/katina/katina-24-the-door.png"],
+
+["The Crossroads","images/katina/katina-25-the-crossroads.png"],
+
+["The Compass","images/katina/katina-26-the-compass.png"],
+
+["The Traveler","images/katina/katina-27-the-traveler.png"],
+
+["The Messenger","images/katina/katina-28-the-messenger.png"],
+
+["The Whisper","images/katina/katina-29-the-whisper.png"],
+
+["The Bell","images/katina/katina-30-the-bell.png"],
+
+["The Hourglass","images/katina/katina-31-the-hourglass.png"],
+
+["The Candle","images/katina/katina-32-the-candle.png"],
+
+["The Star Path","images/katina/katina-33-the-star-path.png"],
+
+["The Eclipse","images/katina/katina-34-the-eclipse.png"],
+
+["The Tide","images/katina/katina-35-the-tide.png"],
+
+["The Anchor","images/katina/katina-36-the-anchor.png"],
+
+["The Chains","images/katina/katina-37-the-chains.png"],
+
+["The Thorn","images/katina/katina-38-the-thorn.png"],
+
+["The Healing","images/katina/katina-39-the-healing.png"],
+
+["The Phoenix","images/katina/katina-40-the-phoenix.png"],
+
+["The Feather","images/katina/katina-41-the-feather.png"],
+
+["The Dove","images/katina/katina-42-the-dove.png"],
+
+["The Lion","images/katina/katina-43-the-lion.png"],
+
+["The Queen","images/katina/katina-44-the-queen.png"],
+
+["The King","images/katina/katina-45-the-king.png"],
+
+["The Shadow","images/katina/katina-46-the-shadow.png"],
+
+["The Secret","images/katina/katina-47-the-secret.png"],
+
+["The Choice","images/katina/katina-48-the-choice.png"],
+
+["The Promise","images/katina/katina-49-the-promise.png"],
+
+["The Betrayal","images/katina/katina-50-the-betrayal.png"],
+
+["The Reunion","images/katina/katina-51-the-reunion.png"],
+
+["The Farewell","images/katina/katina-52-the-farewell.png"],
+
+["The Letterbox","images/katina/katina-53-the-letterbox.png"],
+
+["The Heartbeat","images/katina/katina-54-the-heartbeat.png"],
+
+["The Ice","images/katina/katina-55-the-ice.png"],
+
+["The Firebird","images/katina/katina-56-the-firebird.png"],
+
+["The Rose Garden","images/katina/katina-57-the-rose-garden.png"],
+
+["The Stormy Sea","images/katina/katina-58-the-stormy-sea.png"],
+
+["The Golden Thread","images/katina/katina-59-the-golden-thread.png"],
+
+["The Open Window","images/katina/katina-60-the-open-window.png"],
+
+["The Locked Box","images/katina/katina-61-the-locked-box.png"],
+
+["The Rose Letter","images/katina/katina-62-the-rose-letter.png"],
+
+["The Final Chapter","images/katina/katina-63-the-final-chapter.png"],
+
+["The New Chapter","images/katina/katina-64-the-new-chapter.png"],
+
+["The Destiny","images/katina/katina-65-the-destiny.png"]
 
 ];
 
@@ -1549,15 +1688,21 @@ return array;
 
 /* =========================================================
    IMAGE URL
-   ÇALIŞAN SİSTEM AYNEN KORUNDU
+   TAROT + KATINA DOSYA YOLLARI DESTEKLENİYOR
 ========================================================= */
 
 function getImageURL(filename){
 
+let pathParts =
+filename
+.split("/")
+.map(part => encodeURIComponent(part))
+.join("/");
+
 return (
 "https://raw.githubusercontent.com/" +
 "ilaydamystic/ilayda-mystic/main/" +
-encodeURIComponent(filename)
+pathParts
 );
 
 }
@@ -1751,6 +1896,8 @@ positions.appendChild(div);
 
 /* =========================================================
    RENDER CARDS
+   TAROT = 22 KART
+   KATINA = 65 KART
 ========================================================= */
 
 function renderCards(){
@@ -1780,8 +1927,18 @@ selectedCards +
 " kart seçmelisin.";
 
 
+/*
+   Hangi deste seçildiyse onu kullan
+*/
+
+let currentDeck =
+selectedMethod === "katina"
+? katinaCards
+: tarotCards;
+
+
 let shuffled =
-shuffleCards(tarotCards);
+shuffleCards(currentDeck);
 
 
 shuffled.forEach(card=>{
@@ -1824,18 +1981,26 @@ image.src =
 getImageURL(card[1]);
 
 
-/* FALLBACK */
+/* =====================================================
+   FALLBACK
+===================================================== */
 
 image.onerror =
 function(){
 
 image.onerror = null;
 
+let fallbackPath =
+card[1]
+.split("/")
+.map(part => encodeURIComponent(part))
+.join("/");
+
 image.src =
 "https://github.com/" +
 "ilaydamystic/ilayda-mystic/" +
 "blob/main/" +
-encodeURIComponent(card[1]) +
+fallbackPath +
 "?raw=true";
 
 };
@@ -1850,7 +2015,9 @@ inner.appendChild(front);
 wrapper.appendChild(inner);
 
 
-/* CLICK */
+/* =====================================================
+   CLICK
+===================================================== */
 
 wrapper.addEventListener(
 "click",
