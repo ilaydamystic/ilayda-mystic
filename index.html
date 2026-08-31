@@ -99,6 +99,11 @@ button,input,textarea{
     color:#cdbbd8;
     font-size:13px;
     letter-spacing:1px;
+    transition:.25s;
+}
+
+.nav-links a:hover{
+    color:#f0d5ff;
 }
 
 .nav-button{
@@ -114,6 +119,7 @@ button,input,textarea{
     border:0;
     color:#efd2ff;
     font-size:25px;
+    cursor:pointer;
 }
 
 /* HERO */
@@ -127,12 +133,20 @@ button,input,textarea{
 .moon{
     font-size:55px;
     margin-bottom:18px;
+    filter:drop-shadow(0 0 20px rgba(215,167,255,.45));
+    animation:floatMoon 4s ease-in-out infinite;
+}
+
+@keyframes floatMoon{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-7px);}
 }
 
 .brand{
     font-size:48px;
     letter-spacing:6px;
     color:#efd2ff;
+    text-shadow:0 0 35px rgba(220,160,255,.4);
 }
 
 .hero-subtitle{
@@ -155,6 +169,13 @@ button,input,textarea{
     padding:16px 30px;
     border-radius:40px;
     background:linear-gradient(135deg,#b477dc,#704194);
+    box-shadow:0 10px 35px rgba(123,70,160,.25);
+    transition:.25s;
+}
+
+.hero-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 40px rgba(123,70,160,.4);
 }
 
 /* SECTIONS */
@@ -181,7 +202,7 @@ button,input,textarea{
     font-size:14px;
 }
 
-/* METHODS */
+/* SERVICES */
 
 .methods{
     display:grid;
@@ -203,11 +224,14 @@ button,input,textarea{
 
 .method:hover{
     transform:translateY(-7px);
+    border-color:rgba(215,167,255,.5);
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
 .method.active{
     border-color:#d7a7ff;
     background:rgba(166,94,220,.16);
+    box-shadow:0 0 30px rgba(200,140,255,.13);
 }
 
 .method-icon{
@@ -267,6 +291,10 @@ button,input,textarea{
 
 /* READING */
 
+.reading-panel{
+    margin-top:20px;
+}
+
 .options{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -280,6 +308,7 @@ button,input,textarea{
     background:rgba(255,255,255,.05);
     border:1px solid rgba(230,190,255,.18);
     cursor:pointer;
+    transition:.25s;
 }
 
 .option.active,
@@ -307,6 +336,7 @@ button,input,textarea{
     background:rgba(255,255,255,.045);
     border:1px solid rgba(230,190,255,.15);
     cursor:pointer;
+    transition:.25s;
 }
 
 .reading-type.active,
@@ -340,6 +370,7 @@ button,input,textarea{
     height:215px;
     cursor:pointer;
     transition:.3s;
+    -webkit-tap-highlight-color:transparent;
     perspective:1000px;
 }
 
@@ -415,6 +446,18 @@ button,input,textarea{
 
 .tarot-card.flipped .card-front{
     display:block;
+    animation:cardReveal .55s ease;
+}
+
+@keyframes cardReveal{
+    from{
+        opacity:0;
+        transform:rotateY(90deg) scale(.85);
+    }
+    to{
+        opacity:1;
+        transform:rotateY(0) scale(1);
+    }
 }
 
 .card-front img{
@@ -441,6 +484,7 @@ button,input,textarea{
     text-align:center;
     background:rgba(255,255,255,.045);
     border:1px solid rgba(215,167,255,.2);
+    color:#d9c7e4;
 }
 
 .selected-summary.show{
@@ -460,6 +504,7 @@ button,input,textarea{
     border-radius:24px;
     background:rgba(255,255,255,.055);
     border:1px solid rgba(230,190,255,.18);
+    box-shadow:0 20px 60px rgba(0,0,0,.18);
 }
 
 label{
@@ -480,6 +525,13 @@ textarea{
     color:white;
     font-size:15px;
     outline:none;
+    transition:.2s;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#b477dc;
+    box-shadow:0 0 0 3px rgba(180,119,220,.08);
 }
 
 textarea{
@@ -529,6 +581,7 @@ textarea{
     height:90px;
     object-fit:cover;
     border-radius:12px;
+    border:1px solid rgba(215,167,255,.3);
 }
 
 .submit{
@@ -540,6 +593,12 @@ textarea{
     color:white;
     font-size:17px;
     cursor:pointer;
+    transition:.25s;
+}
+
+.submit:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(112,65,148,.3);
 }
 
 .notice{
@@ -587,6 +646,19 @@ textarea{
     font-size:13px;
 }
 
+/* CONTACT */
+
+.contact-box{
+    max-width:650px;
+    margin:auto;
+    text-align:center;
+}
+
+.contact-box p{
+    color:#b7a6c1;
+    line-height:1.7;
+}
+
 /* FOOTER */
 
 footer{
@@ -603,6 +675,8 @@ footer{
     margin-bottom:10px;
 }
 
+/* UTILITIES */
+
 .hidden{
     display:none!important;
 }
@@ -611,7 +685,10 @@ footer{
 
 @media(max-width:850px){
 
-    .methods,
+    .methods{
+        grid-template-columns:1fr;
+    }
+
     .steps{
         grid-template-columns:1fr;
     }
@@ -632,6 +709,7 @@ footer{
         padding:20px;
         background:rgba(7,4,11,.96);
         flex-direction:column;
+        border-bottom:1px solid rgba(230,190,255,.12);
     }
 
     .nav-links.open{
@@ -651,7 +729,14 @@ footer{
         padding:70px 15px 55px;
     }
 
-    .options,
+    .hero-description{
+        font-size:14px;
+    }
+
+    .options{
+        grid-template-columns:1fr;
+    }
+
     .reading-types{
         grid-template-columns:1fr;
     }
@@ -667,6 +752,10 @@ footer{
 
     .form-box{
         padding:20px;
+    }
+
+    .section{
+        padding:50px 0;
     }
 }
 
@@ -696,7 +785,8 @@ ILAYDA MYSTIC
 
 <button
 class="menu-button"
-onclick="toggleMenu()">
+onclick="toggleMenu()"
+aria-label="Menüyü aç">
 ☰
 </button>
 
@@ -761,6 +851,7 @@ class="hero-button">
 Sana en uygun fal türünü seç ve kendi soruna özel
 bir açılım başlat.
 </p>
+
 
 <div class="methods">
 
@@ -829,32 +920,56 @@ kişisel olarak yorumla.
 Üç basit adımda kendi açılımını oluştur.
 </p>
 
+
 <div class="steps">
 
 <div class="step">
+
 <div class="step-number">1</div>
+
 <h3>Choose</h3>
-<p>Fal türünü ve sana uygun açılımı seç.</p>
+
+<p>
+Fal türünü ve sana uygun açılımı seç.
+</p>
+
 </div>
 
+
 <div class="step">
+
 <div class="step-number">2</div>
+
 <h3>Ask</h3>
-<p>Sorunu ve gerekli bilgilerini paylaş.</p>
+
+<p>
+Sorunu ve gerekli bilgilerini paylaş.
+</p>
+
 </div>
+
 
 <div class="step">
+
 <div class="step-number">3</div>
+
 <h3>Receive</h3>
-<p>Açılımın kişisel olarak hazırlanır.</p>
+
+<p>
+Açılımın kişisel olarak hazırlanır.
+</p>
+
 </div>
 
 </div>
+
 
 <div class="trust">
+
 <span>✦ Private</span>
 <span>✦ Personal</span>
 <span>✦ Intuitive</span>
+
 </div>
 
 </section>
@@ -873,27 +988,45 @@ kişisel olarak yorumla.
 Kaç kartlık bir açılım istediğini seç.
 </p>
 
+
 <div class="options">
 
 <div
 class="option active"
 onclick="selectCards(1,this)">
+
 <strong>1 Card</strong>
-<small>Tek ve net mesaj</small>
+
+<small>
+Tek ve net mesaj
+</small>
+
 </div>
+
 
 <div
 class="option"
 onclick="selectCards(3,this)">
+
 <strong>3 Cards</strong>
-<small>Geçmiş • Şimdi • Gelecek</small>
+
+<small>
+Geçmiş • Şimdi • Gelecek
+</small>
+
 </div>
+
 
 <div
 class="option"
 onclick="selectCards(5,this)">
+
 <strong>5 Cards</strong>
-<small>Detaylı açılım</small>
+
+<small>
+Detaylı açılım
+</small>
+
 </div>
 
 </div>
@@ -910,6 +1043,7 @@ onclick="selectCards(5,this)">
 <p class="section-description">
 Sorunun hangi alana odaklandığını seç.
 </p>
+
 
 <div class="reading-types">
 
@@ -1000,61 +1134,77 @@ Açılımını hazırlayabilmemiz için bilgilerini gir.
 id="readingForm"
 action="https://formspree.io/f/xwlkenzl"
 method="POST"
-enctype="multipart/form-data">
+enctype="multipart/form-data"
+>
 
 <input
 type="hidden"
 name="fal_turu"
-id="formMethod">
+id="formMethod"
+>
 
 <input
 type="hidden"
 name="kart_sayisi"
-id="formCardCount">
+id="formCardCount"
+>
 
 <input
 type="hidden"
 name="acilim_konusu"
-id="formReading">
+id="formReading"
+>
 
 <input
 type="hidden"
 name="secilen_kartlar"
-id="formCards">
+id="formCards"
+>
 
 
-<label>İsim</label>
+<label>
+İsim
+</label>
 
 <input
 type="text"
 name="isim"
 id="name"
 placeholder="Adınız"
-required>
+required
+>
 
 
-<label>E-posta</label>
+<label>
+E-posta
+</label>
 
 <input
 type="email"
 name="email"
 id="email"
 placeholder="ornek@email.com"
-required>
+required
+>
 
 
-<label>Sorun</label>
+<label>
+Sorun
+</label>
 
 <textarea
 name="soru"
 id="question"
 placeholder="Falınızda cevaplanmasını istediğiniz soruyu yazın..."
-required></textarea>
+required
+></textarea>
 
 
 <div id="positionsBox">
 
-<label>🃏 Card Positions</label>
+<label>
+🃏 Card Positions
+</label>
 
 <div
 class="positions"
@@ -1082,7 +1232,8 @@ type="file"
 id="coffeePhotos"
 name="kahve_fotograflari"
 accept="image/*"
-multiple>
+multiple
+>
 
 <div
 class="preview"
@@ -1099,6 +1250,7 @@ class="submit">
 </button>
 
 </form>
+
 
 <p class="notice">
 Gönderdiğin bilgiler seçtiğin fal hizmetini hazırlamak
@@ -1125,7 +1277,9 @@ için oluşturulmuş mistik bir reading deneyimidir.
 Her açılım, seçtiğin konu ve sorduğun soru
 üzerinden sana özel bir enerji alanı oluşturmayı
 amaçlar.
+
 <br><br>
+
 Kartlar kesin bir kader hükmü değil;
 kendini, duygularını ve içinde bulunduğun
 durumu farklı bir açıdan görmen için
@@ -1174,169 +1328,282 @@ Tarot • Katina • Turkish Coffee Reading
 
 <script>
 
-/* =====================================================
-   DEĞİŞKENLER
-===================================================== */
+/* =========================================================
+   VARIABLES
+========================================================= */
 
 let selectedMethod = "tarot";
+
 let selectedCards = 1;
-let selectedReading = "❤️ Love & Relationship";
+
+let selectedReading =
+"❤️ Love & Relationship";
+
 let selectedCardNames = [];
 
 
-/* =====================================================
-   TAROT — 22 KART
-===================================================== */
+/* =========================================================
+   22 TAROT
+   DOSYA ADLARI SENİN ÇALIŞAN KODUNDAKİ GİBİ
+========================================================= */
 
 const tarotCards = [
 
 ["The Fool","the-fool.JPG"],
-["The Magician","the-magician.JPG"],
+
+["The Magician","    the-magician.JPG"],
+
 ["The High Priestess","the-high-priestess.JPG"],
-["The Empress","the-empress.JPG"],
-["The Emperor","the-emperor.JPG"],
-["The Hierophant","the-hierophant.JPG"],
-["The Lovers","the-lovers.JPG"],
-["The Chariot","the-chariot.JPG"],
-["Strength","strength.JPG"],
-["The Hermit","the-hermit.JPG"],
-["Wheel of Fortune","wheel-of-fortune.JPG"],
+
+["The Empress","    the-empress.JPG"],
+
+["The Emperor","    the-emperor.JPG"],
+
+["The Hierophant","    the-hierophant.JPG"],
+
+["The Lovers","    the-lovers.JPG"],
+
+["The Chariot","    the-chariot.JPG"],
+
+["Strength","    strength.JPG"],
+
+["The Hermit"," the-hermit.JPG"],
+
+["Wheel of Fortune","    wheel-of-fortune.JPG"],
+
 ["Justice","justice.JPG"],
-["The Hanged Man","the-hanged-man.JPG"],
+
+["The Hanged Man","    the-hanged-man.JPG"],
+
 ["Death","death.JPG"],
-["Temperance","temperance.JPG"],
+
+["Temperance","    temperance.JPG"],
+
 ["The Devil","the-devil.JPG"],
-["The Tower","the-tower.JPG"],
-["The Star","the-star.JPG"],
-["The Moon","the-moon.JPG"],
-["The Sun","the-sun.JPG"],
+
+["The Tower","    the-tower.JPG"],
+
+["The Star","    the-star.JPG"],
+
+["The Moon","    the-moon.JPG"],
+
+["The Sun","    the-sun.JPG"],
+
 ["Judgement","judgement.JPG"],
-["The World","the-world.JPG"]
+
+["The World","    the-world.JPG"]
 
 ];
 
 
-/* =====================================================
-   KATINA — 65 KART
-   DOSYA KONUMU:
-   images/katina/
-===================================================== */
+/* =========================================================
+   65 KATINA
+   DOSYA ADLARI GITHUB'DAKİ GERÇEK HALLERİYLE
+========================================================= */
 
 const katinaCards = [
 
-["The Seer","katina-01-the-seer.png"],
-["The Flame","katina-02-the-flame.png"],
-["The Mirror","katina-03-the-mirror.png"],
-["The Rose","katina-04-the-rose.png"],
-["The Veil","katina-05-the-veil.png"],
-["The Key","katina-06-the-key.png"],
-["The Crown","katina-07-the-crown.png"],
-["The Serpent","katina-08-the-serpent.png"],
-["The Swan","katina-09-the-swan.png"],
-["The Wolf","katina-10-the-wolf.png"],
-["The Garden","katina-11-the-garden.png"],
-["The Letter","katina-12-the-letter.png"],
-["The Clock","katina-13-the-clock.png"],
-["The Bridge","katina-14-the-bridge.png"],
-["The Storm","katina-15-the-storm.png"],
-["The Lighthouse","katina-16-the-lighthouse.png"],
-["The Moonlit Rose","katina-17-the-moonlit-rose.png"],
-["The Sun Gate","katina-18-the-sun-gate.png"],
-["The Broken Ring","katina-19-the-broken-ring.png"],
-["The Golden Ring","katina-20-the-golden-ring.png"],
-["The Empty Chair","katina-21-the-empty-chair.png"],
-["The Embrace","katina-22-the-embrace.png"],
-["The Mask","katina-23-the-mask.png"],
-["The Door","katina-24-the-door.png"],
-["The Crossroads","katina-25-the-crossroads.png"],
-["The Compass","katina-26-the-compass.png"],
-["The Traveler","katina-27-the-traveler.png"],
-["The Messenger","katina-28-the-messenger.png"],
-["The Whisper","katina-29-the-whisper.png"],
-["The Bell","katina-30-the-bell.png"],
-["The Hourglass","katina-31-the-hourglass.png"],
-["The Candle","katina-32-the-candle.png"],
-["The Star Path","katina-33-the-star-path.png"],
-["The Eclipse","katina-34-the-eclipse.png"],
-["The Tide","katina-35-the-tide.png"],
-["The Anchor","katina-36-the-anchor.png"],
-["The Chains","katina-37-the-chains.png"],
-["The Thorn","katina-38-the-thorn.png"],
-["The Healing","katina-39-the-healing.png"],
-["The Phoenix","katina-40-the-phoenix.png"],
-["The Feather","katina-41-the-feather.png"],
-["The Dove","katina-42-the-dove.png"],
-["The Lion","katina-43-the-lion.png"],
-["The Queen","katina-44-the-queen.png"],
-["The King","katina-45-the-king.png"],
-["The Shadow","katina-46-the-shadow.png"],
-["The Secret","katina-47-the-secret.png"],
-["The Choice","katina-48-the-choice.png"],
-["The Promise","katina-49-the-promise.png"],
-["The Betrayal","katina-50-the-betrayal.png"],
-["The Reunion","katina-51-the-reunion.png"],
-["The Farewell","katina-52-the-farewell.png"],
-["The Letterbox","katina-53-the-letterbox.png"],
-["The Heartbeat","katina-54-the-heartbeat.png"],
-["The Ice","katina-55-the-ice.png"],
-["The Firebird","katina-56-the-firebird.png"],
-["The Rose Garden","katina-57-the-rose-garden.png"],
-["The Stormy Sea","katina-58-the-stormy-sea.png"],
-["The Golden Thread","katina-59-the-golden-thread.png"],
-["The Open Window","katina-60-the-open-window.png"],
-["The Locked Box","katina-61-the-locked-box.png"],
-["The Rose Letter","katina-62-the-rose-letter.png"],
-["The Final Chapter","katina-63-the-final-chapter.png"],
-["The New Chapter","katina-64-the-new-chapter.png"],
-["The Destiny","katina-65-the-destiny.png"]
+["The Seer","katina-01-the-seer.png.JPG"],
+
+["The Flame","katina-02-the-flame.png.JPG"],
+
+["The Mirror","katina-03-the-mirror.png.JPG"],
+
+["The Rose","katina-04-the-rose.png.JPG"],
+
+["The Veil","katina-05-the-veil.png.JPG"],
+
+["The Key","katina-06-the-key.png.JPG"],
+
+["The Crown","katina-07-the-crown.png.JPG"],
+
+["The Serpent","katina-08-the-serpent.png.JPG"],
+
+["The Swan","katina-09-the-swan.png.JPG"],
+
+["The Wolf","katina-10-the-wolf.png.JPG"],
+
+["The Garden","katina-11-the-garden.png.JPG"],
+
+["The Letter","katina-12-the-letter.png.JPG"],
+
+["The Clock","katina-13-the-clock.png.JPG"],
+
+["The Bridge","katina-14-the-bridge.png.JPG"],
+
+["The Storm","katina-15-the-storm.png.JPG"],
+
+["The Lighthouse","katina-16-the-lighthouse.png.JPG"],
+
+["The Moonlit Rose","katina-17-the-moonlit-rose.png.JPG"],
+
+["The Sun Gate","katina-18-the-sun-gate.png.JPG"],
+
+["The Broken Ring","katina-19-the-broken-ring.png.JPG"],
+
+["The Golden Ring","katina-20-altın-yüzük.png.JPG"],
+
+["The Empty Chair","katina-21-the-empty-chair.png.JPG"],
+
+["The Embrace","katina-22-the-emberace.png.JPG"],
+
+["The Mask","katina-23-the-mask.png.JPG"],
+
+["The Door","katina-24-the-door.png.JPG"],
+
+["The Crossroads","katina-25-the-crossroads.png.JPG"],
+
+["The Compass","katina-26-the-compass.png.JPG"],
+
+["The Traveler","katina-27-the-traveler.png.JPG"],
+
+["The Messenger","katina-28-the-messenger.png.JPG"],
+
+["The Whisper","katina-29-the-whisper.png.JPG"],
+
+["The Bell","katina-30-the-bell.png.JPG"],
+
+["The Hourglass","katina-31-the-hourglass.png.JPG"],
+
+["The Candle","katina-32-the-candle.png.JPG"],
+
+["The Star Path","katina-33-the-star-path.png.JPG"],
+
+["The Eclipse","katina-34-the-eclipse.png.JPG"],
+
+["The Tide","katina-35-the-tide.png.JPG"],
+
+["The Anchor","katina-36-the-anchor.png.JPG"],
+
+["The Chains","katina-37-the-chains.png.JPG"],
+
+["The Thorn","katina-38-the-thorn.png.JPG"],
+
+["The Healing","katina-39-the-healing.png.JPG"],
+
+["The Phoenix","katina-40-the-phoenix.png.JPG"],
+
+["The Feather","katina-41-the-feather.png.JPG"],
+
+["The Dove","katina-42-the-dove.png.JPG"],
+
+["The Lion","katina-43-the-lion.png.JPG"],
+
+["The Queen","katina-44-the-queen.png.JPG"],
+
+["The King","katina-45-the-king.png.JPG"],
+
+["The Shadow","katina-46-the-shadow.png.JPG"],
+
+["The Secret","katina-47-the-secret.png.JPG"],
+
+["The Choice","katina-48-the-choice.png.JPG"],
+
+["The Promise","katina-49-the-promise.png.JPG"],
+
+["The Betrayal","katina-50-ihanet.png.JPG"],
+
+["The Reunion","katina-51-the-reunion.png.JPG"],
+
+["The Farewell","katina-52-the-farewell.png.JPG"],
+
+["The Letterbox","katina-53-mektup kutusu.png.JPG"],
+
+["The Heartbeat","katina-54-kalp-atışı.png.JPG"],
+
+["The Ice","katina-55-the-ice.png.JPG"],
+
+["The Firebird","katina-56-the-firebird.png.JPG"],
+
+["The Rose Garden","katina-57-the-rose-garden.png.JPG"],
+
+["The Stormy Sea","katina-58-the-stormy-sea.png.JPG"],
+
+["The Golden Thread","katina-59-the-golden-thread.png.JPG"],
+
+["The Open Window","katina-60-the-open-window.png.JPG"],
+
+["The Locked Box","katina-61-the-locked-box.png.JPG"],
+
+["The Rose Letter","katina-62-the-rose-letter.png.JPG"],
+
+["The Final Chapter","katina-63-the-final-chapter.png.JPG"],
+
+["The New Chapter","katina-64-the-new-chapter.png.JPG"],
+
+["The Destiny","katina-65-the-destiny.png.JPG"]
 
 ];
 
 
-/* =====================================================
-   KARIŞTIR
-===================================================== */
+/* =========================================================
+   SHUFFLE
+========================================================= */
 
 function shuffleCards(cards){
 
     let array = [...cards];
 
-    for(let i=array.length-1;i>0;i--){
+    for(
+        let i = array.length - 1;
+        i > 0;
+        i--
+    ){
 
         let randomIndex =
-            Math.floor(Math.random()*(i+1));
+            Math.floor(
+                Math.random() * (i + 1)
+            );
 
-        [array[i],array[randomIndex]] =
-        [array[randomIndex],array[i]];
+        [
+            array[i],
+            array[randomIndex]
+        ] =
+        [
+            array[randomIndex],
+            array[i]
+        ];
     }
 
     return array;
 }
 
 
-/* =====================================================
-   GÖRSEL YOLLARI
-===================================================== */
+/* =========================================================
+   TAROT IMAGE
+   ANA KLASÖR
+========================================================= */
 
-function getTarotImageURL(filename){
+function getImageURL(filename){
 
-    return "https://raw.githubusercontent.com/" +
-           "ilaydamystic/ilayda-mystic/main/" +
-           encodeURIComponent(filename.trim());
+    return (
+        "https://raw.githubusercontent.com/" +
+        "ilaydamystic/ilayda-mystic/main/" +
+        encodeURIComponent(filename.trim())
+    );
+
 }
 
+
+/* =========================================================
+   KATINA IMAGE
+   images/katina KLASÖRÜ
+========================================================= */
 
 function getKatinaImageURL(filename){
 
-    return "https://raw.githubusercontent.com/" +
-           "ilaydamystic/ilayda-mystic/main/images/katina/" +
-           encodeURIComponent(filename.trim());
+    return (
+        "https://raw.githubusercontent.com/" +
+        "ilaydamystic/ilayda-mystic/main/images/katina/" +
+        encodeURIComponent(filename.trim())
+    );
+
 }
 
 
-/* =====================================================
-   MENU
-===================================================== */
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
 function toggleMenu(){
 
@@ -1356,9 +1623,9 @@ function closeMenu(){
 }
 
 
-/* =====================================================
-   FAL TÜRÜ SEÇ
-===================================================== */
+/* =========================================================
+   METHOD
+========================================================= */
 
 function selectMethod(method,element){
 
@@ -1366,8 +1633,8 @@ function selectMethod(method,element){
 
     document
     .querySelectorAll(".method")
-    .forEach(x =>
-        x.classList.remove("active")
+    .forEach(
+        x=>x.classList.remove("active")
     );
 
     element.classList.add("active");
@@ -1426,9 +1693,9 @@ function selectMethod(method,element){
 }
 
 
-/* =====================================================
-   KART SAYISI
-===================================================== */
+/* =========================================================
+   CARD COUNT
+========================================================= */
 
 function selectCards(number,element){
 
@@ -1436,8 +1703,8 @@ function selectCards(number,element){
 
     document
     .querySelectorAll(".option")
-    .forEach(x =>
-        x.classList.remove("active")
+    .forEach(
+        x=>x.classList.remove("active")
     );
 
     element.classList.add("active");
@@ -1449,16 +1716,16 @@ function selectCards(number,element){
 }
 
 
-/* =====================================================
-   KONU
-===================================================== */
+/* =========================================================
+   READING TOPIC
+========================================================= */
 
 function selectReading(element){
 
     document
     .querySelectorAll(".reading-type")
-    .forEach(x =>
-        x.classList.remove("active")
+    .forEach(
+        x=>x.classList.remove("active")
     );
 
     element.classList.add("active");
@@ -1469,9 +1736,9 @@ function selectReading(element){
 }
 
 
-/* =====================================================
-   POZİSYONLAR
-===================================================== */
+/* =========================================================
+   POSITIONS
+========================================================= */
 
 function updatePositions(){
 
@@ -1503,14 +1770,16 @@ function updatePositions(){
     positions.innerHTML = "";
 
     positionData[selectedCards]
-    .forEach(text => {
+    .forEach(text=>{
 
         let div =
             document.createElement("div");
 
-        div.className = "position";
+        div.className =
+            "position";
 
-        div.textContent = text;
+        div.textContent =
+            text;
 
         positions.appendChild(div);
 
@@ -1519,9 +1788,9 @@ function updatePositions(){
 }
 
 
-/* =====================================================
-   KARTLARI OLUŞTUR
-===================================================== */
+/* =========================================================
+   RENDER TAROT + KATINA
+========================================================= */
 
 function renderCards(){
 
@@ -1533,12 +1802,13 @@ function renderCards(){
     selectedCardNames = [];
 
     let summary =
-        document.getElementById("selectedSummary");
+        document.getElementById(
+            "selectedSummary"
+        );
 
     summary.innerHTML = "";
 
     summary.classList.remove("show");
-
 
     document
     .getElementById("cardInstruction")
@@ -1547,26 +1817,23 @@ function renderCards(){
         " kart seçmelisin.";
 
 
-    /* DESTENİN DOĞRU SEÇİLMESİ */
+    /*
+       BURADA DESTELER AYRILIYOR.
+       TAROT = tarotCards
+       KATINA = katinaCards
+    */
 
-    let currentDeck;
-
-    if(selectedMethod === "katina"){
-
-        currentDeck = katinaCards;
-
-    }else{
-
-        currentDeck = tarotCards;
-
-    }
+    let currentDeck =
+        selectedMethod === "katina"
+        ? katinaCards
+        : tarotCards;
 
 
     let shuffled =
         shuffleCards(currentDeck);
 
 
-    shuffled.forEach(card => {
+    shuffled.forEach(card=>{
 
         let wrapper =
             document.createElement("div");
@@ -1599,25 +1866,15 @@ function renderCards(){
         let image =
             document.createElement("img");
 
+
         image.alt =
             card[0];
 
 
-        /* =========================================
-           TAROT
-        ========================================= */
-
-        if(selectedMethod === "tarot"){
-
-            image.src =
-                getTarotImageURL(card[1]);
-
-        }
-
-
-        /* =========================================
-           KATINA
-        ========================================= */
+        /*
+          TAROT VE KATINA İÇİN
+          FARKLI KLASÖR YOLLARI
+        */
 
         if(selectedMethod === "katina"){
 
@@ -1626,14 +1883,24 @@ function renderCards(){
 
         }
 
+        else{
 
-        /* =========================================
-           GÖRSEL HATA KONTROLÜ
-        ========================================= */
+            image.src =
+                getImageURL(card[1]);
 
-        image.onerror = function(){
+        }
+
+
+        /*
+          GÖRSEL AÇILMAZSA
+          AYNI DOSYA YOLUNUN GITHUB RAW ALTERNATİFİ
+        */
+
+        image.onerror =
+        function(){
 
             image.onerror = null;
+
 
             if(selectedMethod === "katina"){
 
@@ -1645,7 +1912,9 @@ function renderCards(){
                         card[1].trim()
                     );
 
-            }else{
+            }
+
+            else{
 
                 image.src =
                     "https://github.com/" +
@@ -1669,9 +1938,9 @@ function renderCards(){
         wrapper.appendChild(inner);
 
 
-        /* =========================================
-           KART TIKLAMA
-        ========================================= */
+        /*
+          KART TIKLAMA
+        */
 
         wrapper.addEventListener(
             "click",
@@ -1722,9 +1991,9 @@ function renderCards(){
 }
 
 
-/* =====================================================
-   SEÇİLEN KARTLAR
-===================================================== */
+/* =========================================================
+   SUMMARY
+========================================================= */
 
 function updateSummary(){
 
@@ -1743,7 +2012,6 @@ function updateSummary(){
         box.innerHTML = "";
 
         return;
-
     }
 
 
@@ -1754,7 +2022,8 @@ function updateSummary(){
         "✨ Seçtiğin kartlar: " +
 
         selectedCardNames
-        .map(name =>
+        .map(
+            name =>
             `<span class="selected-card-name">
             ${name}
             </span>`
@@ -1764,9 +2033,9 @@ function updateSummary(){
 }
 
 
-/* =====================================================
-   KAHVE FOTOĞRAFI
-===================================================== */
+/* =========================================================
+   COFFEE PHOTO PREVIEW
+========================================================= */
 
 document
 .getElementById("coffeePhotos")
@@ -1779,13 +2048,15 @@ document
                 "photoPreview"
             );
 
+
         preview.innerHTML = "";
+
 
         let files =
             Array.from(this.files);
 
 
-        files.forEach(file => {
+        files.forEach(file=>{
 
             if(
                 !file.type.startsWith("image/")
@@ -1799,19 +2070,17 @@ document
 
 
             reader.onload =
-                function(e){
+            function(e){
 
-                    let img =
-                        document.createElement(
-                            "img"
-                        );
+                let img =
+                    document.createElement("img");
 
-                    img.src =
-                        e.target.result;
+                img.src =
+                    e.target.result;
 
-                    preview.appendChild(img);
+                preview.appendChild(img);
 
-                };
+            };
 
 
             reader.readAsDataURL(file);
@@ -1822,9 +2091,9 @@ document
 );
 
 
-/* =====================================================
-   FORM
-===================================================== */
+/* =========================================================
+   FORM SUBMIT
+========================================================= */
 
 document
 .getElementById("readingForm")
@@ -1843,14 +2112,15 @@ document
 
                 e.preventDefault();
 
+
                 alert(
                     "Lütfen önce " +
                     selectedCards +
                     " kart seç."
                 );
 
-                return;
 
+                return;
             }
 
         }
@@ -1861,9 +2131,13 @@ document
         .value =
 
             selectedMethod === "tarot"
+
             ? "Tarot"
+
             : selectedMethod === "katina"
+
             ? "Katina — 65 Kart"
+
             : "Turkish Coffee Reading";
 
 
@@ -1872,8 +2146,11 @@ document
         .value =
 
             selectedMethod === "coffee"
+
             ? "Kahve Falı"
-            : selectedCards + " Kart";
+
+            : selectedCards +
+              " Kart";
 
 
         document
@@ -1887,16 +2164,18 @@ document
         .value =
 
             selectedMethod === "coffee"
+
             ? "Kahve fotoğrafları yüklendi."
+
             : selectedCardNames.join(", ");
 
     }
 );
 
 
-/* =====================================================
-   BAŞLANGIÇ
-===================================================== */
+/* =========================================================
+   START
+========================================================= */
 
 updatePositions();
 
