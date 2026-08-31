@@ -10,10 +10,6 @@
 
 <style>
 
-/* =========================================================
-   ILAYDA MYSTIC — PROFESSIONAL VERSION
-========================================================= */
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -53,9 +49,7 @@ a{
     text-decoration:none;
 }
 
-button,
-input,
-textarea{
+button,input,textarea{
     font-family:inherit;
 }
 
@@ -67,9 +61,7 @@ textarea{
     z-index:1;
 }
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* NAV */
 
 .navbar{
     position:sticky;
@@ -130,9 +122,7 @@ textarea{
     cursor:pointer;
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 .hero{
     text-align:center;
@@ -188,9 +178,7 @@ textarea{
     box-shadow:0 15px 40px rgba(123,70,160,.4);
 }
 
-/* =========================================================
-   GENERAL SECTIONS
-========================================================= */
+/* SECTIONS */
 
 .section{
     padding:65px 0;
@@ -214,9 +202,7 @@ textarea{
     font-size:14px;
 }
 
-/* =========================================================
-   SERVICES
-========================================================= */
+/* SERVICES */
 
 .methods{
     display:grid;
@@ -264,9 +250,7 @@ textarea{
     line-height:1.6;
 }
 
-/* =========================================================
-   HOW IT WORKS
-========================================================= */
+/* HOW */
 
 .steps{
     display:grid;
@@ -305,9 +289,7 @@ textarea{
     line-height:1.6;
 }
 
-/* =========================================================
-   READING AREA
-========================================================= */
+/* READING */
 
 .reading-panel{
     margin-top:20px;
@@ -363,9 +345,7 @@ textarea{
     background:rgba(166,94,220,.18);
 }
 
-/* =========================================================
-   CARDS
-========================================================= */
+/* CARDS */
 
 #cardSelection{
     margin-top:30px;
@@ -519,9 +499,7 @@ textarea{
     color:#e6c58a;
 }
 
-/* =========================================================
-   FORM
-========================================================= */
+/* FORM */
 
 .form-box{
     margin:35px auto 0;
@@ -635,9 +613,7 @@ textarea{
     color:#9e8da8;
 }
 
-/* =========================================================
-   ABOUT
-========================================================= */
+/* ABOUT */
 
 .about-box{
     max-width:800px;
@@ -655,9 +631,7 @@ textarea{
     font-size:15px;
 }
 
-/* =========================================================
-   TRUST
-========================================================= */
+/* TRUST */
 
 .trust{
     display:flex;
@@ -676,9 +650,7 @@ textarea{
     font-size:13px;
 }
 
-/* =========================================================
-   CONTACT
-========================================================= */
+/* CONTACT */
 
 .contact-box{
     max-width:650px;
@@ -691,9 +663,7 @@ textarea{
     line-height:1.7;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 footer{
     text-align:center;
@@ -709,9 +679,7 @@ footer{
     margin-bottom:10px;
 }
 
-/* =========================================================
-   UTILITIES
-========================================================= */
+/* UTILITIES */
 
 .hidden{
     display:none!important;
@@ -732,9 +700,7 @@ footer{
     }
 }
 
-/* =========================================================
-   MOBILE
-========================================================= */
+/* MOBILE */
 
 @media(max-width:850px){
 
@@ -814,10 +780,6 @@ footer{
 
 }
 
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
 @media(max-width:390px){
 
     .tarot-card{
@@ -835,10 +797,6 @@ footer{
 </head>
 
 <body>
-
-<!-- =======================================================
-     NAVBAR
-======================================================= -->
 
 <nav class="navbar">
 
@@ -876,11 +834,6 @@ BEGIN READING
 
 </nav>
 
-
-<!-- =======================================================
-     HERO
-======================================================= -->
-
 <section class="hero" id="home">
 
 <div class="moon">🌙</div>
@@ -911,11 +864,6 @@ class="hero-button">
 
 </section>
 
-
-<!-- =======================================================
-     READINGS
-======================================================= -->
-
 <main class="container">
 
 <section class="section" id="readings">
@@ -929,9 +877,7 @@ Sana en uygun fal türünü seç ve kendi soruna özel
 bir açılım başlat.
 </p>
 
-
 <div class="methods">
-
 
 <div
 class="method active"
@@ -949,7 +895,6 @@ sorular için sezgisel açılım.
 
 </div>
 
-
 <div
 class="method"
 onclick="selectMethod('katina',this)">
@@ -965,7 +910,6 @@ onclick="selectMethod('katina',this)">
 </p>
 
 </div>
-
 
 <div
 class="method"
@@ -983,15 +927,9 @@ kişisel olarak yorumla.
 
 </div>
 
-
 </div>
 
 </section>
-
-
-<!-- =======================================================
-     HOW IT WORKS
-======================================================= -->
 
 <section class="section" id="how-it-works">
 
@@ -1017,7 +955,6 @@ Fal türünü ve sana uygun açılımı seç.
 
 </div>
 
-
 <div class="step">
 
 <div class="step-number">2</div>
@@ -1029,7 +966,6 @@ Sorunu ve gerekli bilgilerini paylaş.
 </p>
 
 </div>
-
 
 <div class="step">
 
@@ -1045,7 +981,6 @@ Açılımın kişisel olarak hazırlanır.
 
 </div>
 
-
 <div class="trust">
 
 <span>✦ Private</span>
@@ -1055,11 +990,6 @@ Açılımın kişisel olarak hazırlanır.
 </div>
 
 </section>
-
-
-<!-- =======================================================
-     READING CONFIGURATION
-======================================================= -->
 
 <section class="section reading-panel">
 
@@ -1087,7 +1017,6 @@ Tek ve net mesaj
 
 </div>
 
-
 <div
 class="option"
 onclick="selectCards(3,this)">
@@ -1099,7 +1028,6 @@ Geçmiş • Şimdi • Gelecek
 </small>
 
 </div>
-
 
 <div
 class="option"
@@ -1116,7 +1044,6 @@ Detaylı açılım
 </div>
 
 </div>
-
 
 <div id="readingTopicSection">
 
@@ -1176,11 +1103,6 @@ onclick="selectReading(this)">
 
 </div>
 
-
-<!-- =====================================================
-     CARD SELECTION
-===================================================== -->
-
 <div id="cardSelection">
 
 <h2 class="section-title">
@@ -1205,11 +1127,6 @@ id="selectedSummary">
 
 </div>
 
-
-<!-- =====================================================
-     FORM
-===================================================== -->
-
 <h2 class="section-title">
 📝 Your Details
 </h2>
@@ -1217,7 +1134,6 @@ id="selectedSummary">
 <p class="section-description">
 Açılımını hazırlayabilmemiz için bilgilerini gir.
 </p>
-
 
 <div class="form-box">
 
@@ -1228,13 +1144,11 @@ method="POST"
 enctype="multipart/form-data"
 >
 
-
 <input
 type="hidden"
 name="fal_turu"
 id="formMethod"
 >
-
 
 <input
 type="hidden"
@@ -1242,20 +1156,17 @@ name="kart_sayisi"
 id="formCardCount"
 >
 
-
 <input
 type="hidden"
 name="acilim_konusu"
 id="formReading"
 >
 
-
 <input
 type="hidden"
 name="secilen_kartlar"
 id="formCards"
 >
-
 
 <label>
 İsim
@@ -1269,7 +1180,6 @@ placeholder="Adınız"
 required
 >
 
-
 <label>
 E-posta
 </label>
@@ -1282,7 +1192,6 @@ placeholder="ornek@email.com"
 required
 >
 
-
 <label>
 Sorun
 </label>
@@ -1293,7 +1202,6 @@ id="question"
 placeholder="Falınızda cevaplanmasını istediğiniz soruyu yazın..."
 required
 ></textarea>
-
 
 <div id="positionsBox">
 
@@ -1307,9 +1215,6 @@ id="positions">
 </div>
 
 </div>
-
-
-<!-- COFFEE -->
 
 <div
 id="coffeeUpload"
@@ -1341,7 +1246,6 @@ id="photoPreview">
 
 </div>
 
-
 <button
 type="submit"
 class="submit">
@@ -1350,9 +1254,7 @@ class="submit">
 
 </button>
 
-
 </form>
-
 
 <p class="notice">
 
@@ -1364,11 +1266,6 @@ amacıyla kullanılacaktır.
 </div>
 
 </section>
-
-
-<!-- =======================================================
-     ABOUT
-======================================================= -->
 
 <section class="section" id="about">
 
@@ -1399,11 +1296,6 @@ sezgisel bir rehberdir.
 
 </section>
 
-
-<!-- =======================================================
-     CONTACT
-======================================================= -->
-
 <section class="section" id="contact">
 
 <h2 class="section-title">
@@ -1423,11 +1315,6 @@ Ilayda Mystic üzerinden bize ulaşabilirsin.
 
 </main>
 
-
-<!-- =======================================================
-     FOOTER
-======================================================= -->
-
 <footer>
 
 <div class="footer-brand">
@@ -1441,7 +1328,6 @@ Tarot • Katina • Turkish Coffee Reading
 © 2026 Ilayda Mystic
 
 </footer>
-
 
 <script>
 
@@ -1461,7 +1347,7 @@ let selectedCardNames = [];
 
 /* =========================================================
    22 TAROT CARDS
-   DOSYA İSİMLERİ AYNEN KORUNDU
+   ⚠️ TAROTA DOKUNULMADI
 ========================================================= */
 
 const tarotCards = [
@@ -1498,7 +1384,7 @@ const tarotCards = [
 
 ["The Devil","the-devil.JPG"],
 
-["The Tower","the-tower.JPG"],
+["The Tower","    the-tower.JPG"],
 
 ["The Star","    the-star.JPG"],
 
@@ -1515,139 +1401,76 @@ const tarotCards = [
 
 /* =========================================================
    65 KATINA CARDS
+   📁 images/katina
 ========================================================= */
 
 const katinaCards = [
 
-["The Seer","images/katina/katina-01-the-seer.png"],
-
-["The Flame","images/katina/katina-02-the-flame.png"],
-
-["The Mirror","images/katina/katina-03-the-mirror.png"],
-
-["The Rose","images/katina/katina-04-the-rose.png"],
-
-["The Veil","images/katina/katina-05-the-veil.png"],
-
-["The Key","images/katina/katina-06-the-key.png"],
-
-["The Crown","images/katina/katina-07-the-crown.png"],
-
-["The Serpent","images/katina/katina-08-the-serpent.png"],
-
-["The Swan","images/katina/katina-09-the-swan.png"],
-
-["The Wolf","images/katina/katina-10-the-wolf.png"],
-
-["The Garden","images/katina/katina-11-the-garden.png"],
-
-["The Letter","images/katina/katina-12-the-letter.png"],
-
-["The Clock","images/katina/katina-13-the-clock.png"],
-
-["The Bridge","images/katina/katina-14-the-bridge.png"],
-
-["The Storm","images/katina/katina-15-the-storm.png"],
-
-["The Lighthouse","images/katina/katina-16-the-lighthouse.png"],
-
-["The Moonlit Rose","images/katina/katina-17-the-moonlit-rose.png"],
-
-["The Sun Gate","images/katina/katina-18-the-sun-gate.png"],
-
-["The Broken Ring","images/katina/katina-19-the-broken-ring.png"],
-
-["The Golden Ring","images/katina/katina-20-the-golden-ring.png"],
-
-["The Empty Chair","images/katina/katina-21-the-empty-chair.png"],
-
-["The Embrace","images/katina/katina-22-the-embrace.png"],
-
-["The Mask","images/katina/katina-23-the-mask.png"],
-
-["The Door","images/katina/katina-24-the-door.png"],
-
-["The Crossroads","images/katina/katina-25-the-crossroads.png"],
-
-["The Compass","images/katina/katina-26-the-compass.png"],
-
-["The Traveler","images/katina/katina-27-the-traveler.png"],
-
-["The Messenger","images/katina/katina-28-the-messenger.png"],
-
-["The Whisper","images/katina/katina-29-the-whisper.png"],
-
-["The Bell","images/katina/katina-30-the-bell.png"],
-
-["The Hourglass","images/katina/katina-31-the-hourglass.png"],
-
-["The Candle","images/katina/katina-32-the-candle.png"],
-
-["The Star Path","images/katina/katina-33-the-star-path.png"],
-
-["The Eclipse","images/katina/katina-34-the-eclipse.png"],
-
-["The Tide","images/katina/katina-35-the-tide.png"],
-
-["The Anchor","images/katina/katina-36-the-anchor.png"],
-
-["The Chains","images/katina/katina-37-the-chains.png"],
-
-["The Thorn","images/katina/katina-38-the-thorn.png"],
-
-["The Healing","images/katina/katina-39-the-healing.png"],
-
-["The Phoenix","images/katina/katina-40-the-phoenix.png"],
-
-["The Feather","images/katina/katina-41-the-feather.png"],
-
-["The Dove","images/katina/katina-42-the-dove.png"],
-
-["The Lion","images/katina/katina-43-the-lion.png"],
-
-["The Queen","images/katina/katina-44-the-queen.png"],
-
-["The King","images/katina/katina-45-the-king.png"],
-
-["The Shadow","images/katina/katina-46-the-shadow.png"],
-
-["The Secret","images/katina/katina-47-the-secret.png"],
-
-["The Choice","images/katina/katina-48-the-choice.png"],
-
-["The Promise","images/katina/katina-49-the-promise.png"],
-
-["The Betrayal","images/katina/katina-50-the-betrayal.png"],
-
-["The Reunion","images/katina/katina-51-the-reunion.png"],
-
-["The Farewell","images/katina/katina-52-the-farewell.png"],
-
-["The Letterbox","images/katina/katina-53-the-letterbox.png"],
-
-["The Heartbeat","images/katina/katina-54-the-heartbeat.png"],
-
-["The Ice","images/katina/katina-55-the-ice.png"],
-
-["The Firebird","images/katina/katina-56-the-firebird.png"],
-
-["The Rose Garden","images/katina/katina-57-the-rose-garden.png"],
-
-["The Stormy Sea","images/katina/katina-58-the-stormy-sea.png"],
-
-["The Golden Thread","images/katina/katina-59-the-golden-thread.png"],
-
-["The Open Window","images/katina/katina-60-the-open-window.png"],
-
-["The Locked Box","images/katina/katina-61-the-locked-box.png"],
-
-["The Rose Letter","images/katina/katina-62-the-rose-letter.png"],
-
-["The Final Chapter","images/katina/katina-63-the-final-chapter.png"],
-
-["The New Chapter","images/katina/katina-64-the-new-chapter.png"],
-
-["The Destiny","images/katina/katina-65-the-destiny.png"]
+["The Seer","katina-01-the-seer.png.JPG"],
+["The Flame","katina-02-the-flame.png.JPG"],
+["The Mirror","katina-03-the-mirror.png.JPG"],
+["The Rose","katina-04-the-rose.png.JPG"],
+["The Veil","katina-05-the-veil.png.JPG"],
+["The Key","katina-06-the-key.png.JPG"],
+["The Crown","katina-07-the-crown.png.JPG"],
+["The Serpent","katina-08-the-serpent.png.JPG"],
+["The Swan","katina-09-the-swan.png.JPG"],
+["The Wolf","katina-10-the-wolf.png.JPG"],
+["The Garden","katina-11-the-garden.png.JPG"],
+["The Letter","katina-12-the-letter.png.JPG"],
+["The Clock","katina-13-the-clock.png.JPG"],
+["The Bridge","katina-14-the-bridge.png.JPG"],
+["The Storm","katina-15-the-storm.png.JPG"],
+["The Lighthouse","katina-16-the-lighthouse.png.JPG"],
+["The Moonlit Rose","katina-17-the-moonlit-rose.png.JPG"],
+["The Sun Gate","katina-18-the-sun-gate.png.JPG"],
+["The Broken Ring","katina-19-the-broken-ring.png.JPG"],
+["The Golden Ring","katina-20-the-golden-ring.png.JPG"],
+["The Empty Chair","katina-21-the-empty-chair.png.JPG"],
+["The Embrace","katina-22-the-embrace.png.JPG"],
+["The Mask","katina-23-the-mask.png.JPG"],
+["The Door","katina-24-the-door.png.JPG"],
+["The Crossroads","katina-25-the-crossroads.png.JPG"],
+["The Compass","katina-26-the-compass.png.JPG"],
+["The Traveler","katina-27-the-traveler.png.JPG"],
+["The Messenger","katina-28-the-messenger.png.JPG"],
+["The Whisper","katina-29-the-whisper.png.JPG"],
+["The Bell","katina-30-the-bell.png.JPG"],
+["The Hourglass","katina-31-the-hourglass.png.JPG"],
+["The Candle","katina-32-the-candle.png.JPG"],
+["The Star Path","katina-33-the-star-path.png.JPG"],
+["The Eclipse","katina-34-the-eclipse.png.JPG"],
+["The Tide","katina-35-the-tide.png.JPG"],
+["The Anchor","katina-36-the-anchor.png.JPG"],
+["The Chains","katina-37-the-chains.png.JPG"],
+["The Thorn","katina-38-the-thorn.png.JPG"],
+["The Healing","katina-39-the-healing.png.JPG"],
+["The Phoenix","katina-40-the-phoenix.png.JPG"],
+["The Feather","katina-41-the-feather.png.JPG"],
+["The Dove","katina-42-the-dove.png.JPG"],
+["The Lion","katina-43-the-lion.png.JPG"],
+["The Queen","katina-44-the-queen.png.JPG"],
+["The King","katina-45-the-king.png.JPG"],
+["The Shadow","katina-46-the-shadow.png.JPG"],
+["The Secret","katina-47-the-secret.png.JPG"],
+["The Choice","katina-48-the-choice.png.JPG"],
+["The Promise","katina-49-the-promise.png.JPG"],
+["The Betrayal","katina-50-the-betrayal.png.JPG"],
+["The Reunion","katina-51-the-reunion.png.JPG"],
+["The Farewell","katina-52-the-farewell.png.JPG"],
+["The Letterbox","katina-53-the-letterbox.png.JPG"],
+["The Heartbeat","katina-54-the-heartbeat.png.JPG"],
+["The Ice","katina-55-the-ice.png.JPG"],
+["The Firebird","katina-56-the-firebird.png.JPG"],
+["The Rose Garden","katina-57-the-rose-garden.png.JPG"],
+["The Stormy Sea","katina-58-the-stormy-sea.png.JPG"],
+["The Golden Thread","katina-59-the-golden-thread.png.JPG"],
+["The Open Window","katina-60-the-open-window.png.JPG"],
+["The Locked Box","katina-61-the-locked-box.png.JPG"],
+["The Rose Letter","katina-62-the-rose-letter.png.JPG"],
+["The Final Chapter","katina-63-the-final-chapter.png.JPG"],
+["The New Chapter","katina-64-the-new-chapter.png.JPG"],
+["The Destiny","katina-65-the-destiny.png.JPG"]
 
 ];
 
@@ -1671,13 +1494,8 @@ Math.floor(
 Math.random() * (i + 1)
 );
 
-let temp = array[i];
-
-array[i] =
-array[randomIndex];
-
-array[randomIndex] =
-temp;
+[array[i], array[randomIndex]] =
+[array[randomIndex], array[i]];
 
 }
 
@@ -1687,22 +1505,32 @@ return array;
 
 
 /* =========================================================
-   IMAGE URL
-   TAROT + KATINA DOSYA YOLLARI DESTEKLENİYOR
+   TAROT IMAGE URL
+   ⚠️ AYNI SİSTEM
 ========================================================= */
 
 function getImageURL(filename){
 
-let pathParts =
-filename
-.split("/")
-.map(part => encodeURIComponent(part))
-.join("/");
-
 return (
 "https://raw.githubusercontent.com/" +
 "ilaydamystic/ilayda-mystic/main/" +
-pathParts
+encodeURIComponent(filename.trim())
+);
+
+}
+
+
+/* =========================================================
+   KATINA IMAGE URL
+   📁 images/katina
+========================================================= */
+
+function getKatinaImageURL(filename){
+
+return (
+"https://raw.githubusercontent.com/" +
+"ilaydamystic/ilayda-mystic/main/images/katina/" +
+encodeURIComponent(filename.trim())
 );
 
 }
@@ -1896,8 +1724,7 @@ positions.appendChild(div);
 
 /* =========================================================
    RENDER CARDS
-   TAROT = 22 KART
-   KATINA = 65 KART
+   ⭐ TAROT + KATINA AYRI AYRI OKUNUYOR
 ========================================================= */
 
 function renderCards(){
@@ -1927,9 +1754,7 @@ selectedCards +
 " kart seçmelisin.";
 
 
-/*
-   Hangi deste seçildiyse onu kullan
-*/
+/* DESTE SEÇ */
 
 let currentDeck =
 selectedMethod === "katina"
@@ -1937,9 +1762,13 @@ selectedMethod === "katina"
 : tarotCards;
 
 
+/* KARIŞTIR */
+
 let shuffled =
 shuffleCards(currentDeck);
 
+
+/* KARTLARI OLUŞTUR */
 
 shuffled.forEach(card=>{
 
@@ -1977,12 +1806,26 @@ document.createElement("img");
 image.alt =
 card[0];
 
+
+/* =====================================================
+   GÖRSEL YOLU
+===================================================== */
+
+if(selectedMethod === "katina"){
+
+image.src =
+getKatinaImageURL(card[1]);
+
+}else{
+
 image.src =
 getImageURL(card[1]);
 
+}
+
 
 /* =====================================================
-   FALLBACK
+   GÖRSEL AÇILMAZSA GITHUB RAW
 ===================================================== */
 
 image.onerror =
@@ -1990,21 +1833,28 @@ function(){
 
 image.onerror = null;
 
-let fallbackPath =
-card[1]
-.split("/")
-.map(part => encodeURIComponent(part))
-.join("/");
+if(selectedMethod === "katina"){
 
 image.src =
 "https://github.com/" +
 "ilaydamystic/ilayda-mystic/" +
-"blob/main/" +
-fallbackPath +
-"?raw=true";
+"raw/refs/heads/main/images/katina/" +
+encodeURIComponent(card[1].trim());
+
+}else{
+
+image.src =
+"https://github.com/" +
+"ilaydamystic/ilayda-mystic/" +
+"raw/refs/heads/main/" +
+encodeURIComponent(card[1].trim());
+
+}
 
 };
 
+
+/* HTML */
 
 front.appendChild(image);
 
